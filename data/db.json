@@ -1,0 +1,480 @@
+{
+  "settings": {
+    "name": "Pressing Élite Faso",
+    "tagline": "L'art de l'élégance et de la propreté",
+    "city": "Ouagadougou",
+    "district": "Ouaga 2000 (Non loin du Monument des Héros)",
+    "phone1": "+226 70 00 11 22",
+    "phone2": "+226 76 33 44 55",
+    "currency": "FCFA",
+    "atelierPin": "2260",
+    "ticketFooter": "Les linges non réclamés après 60 jours seront donnés. Merci de vérifier vos articles avant de quitter le pressing.",
+    "whatsappWelcome": "Bonjour [NOM], bienvenue au Pressing Élite Faso. Votre ticket #[TICKET] de [NOMBRE] article(s) a bien été enregistré. Montant total: [TOTAL] FCFA. Reste à payer: [RESTE] FCFA. Date prévue: [DATE]. Merci pour votre confiance !",
+    "rackLocations": [
+      "Penderie 1",
+      "Penderie 2",
+      "Rayon Linge Plié",
+      "Casier 1"
+    ]
+  },
+  "articles": [
+    {
+      "id": "art-1",
+      "name": "Bazin Riche Brodé (3 pièces)",
+      "category": "Traditionnel & Bazin",
+      "priceWashIron": 3500,
+      "priceIronOnly": 2000,
+      "icon": "sparkles"
+    },
+    {
+      "id": "art-2",
+      "name": "Bazin Simple (Lavage + Amidonnage)",
+      "category": "Traditionnel & Bazin",
+      "priceWashIron": 2000,
+      "priceIronOnly": 1200,
+      "icon": "shirt"
+    },
+    {
+      "id": "art-3",
+      "name": "Faso Dan Fani complet",
+      "category": "Traditionnel & Bazin",
+      "priceWashIron": 3000,
+      "priceIronOnly": 1800,
+      "icon": "gem"
+    },
+    {
+      "id": "art-4",
+      "name": "Boubou Traditionnel (Grand Boubou)",
+      "category": "Traditionnel & Bazin",
+      "priceWashIron": 2500,
+      "priceIronOnly": 1500,
+      "icon": "user"
+    },
+    {
+      "id": "art-5",
+      "name": "Pagne Wax (Complet 3 morceaux)",
+      "category": "Traditionnel & Bazin",
+      "priceWashIron": 1800,
+      "priceIronOnly": 1000,
+      "icon": "palette"
+    },
+    {
+      "id": "art-6",
+      "name": "Koko Dunda complet",
+      "category": "Traditionnel & Bazin",
+      "priceWashIron": 2000,
+      "priceIronOnly": 1200,
+      "icon": "tag"
+    },
+    {
+      "id": "art-7",
+      "name": "Costume 2 pièces (Veste + Pantalon)",
+      "category": "Ville & Quotidien",
+      "priceWashIron": 2500,
+      "priceIronOnly": 1500,
+      "icon": "briefcase"
+    },
+    {
+      "id": "art-8",
+      "name": "Costume 3 pièces",
+      "category": "Ville & Quotidien",
+      "priceWashIron": 3500,
+      "priceIronOnly": 2000,
+      "icon": "award"
+    },
+    {
+      "id": "art-9",
+      "name": "Chemise Ville (Manches longues/courtes)",
+      "category": "Ville & Quotidien",
+      "priceWashIron": 800,
+      "priceIronOnly": 500,
+      "icon": "shirt"
+    },
+    {
+      "id": "art-10",
+      "name": "Pantalon tissu / Jeans",
+      "category": "Ville & Quotidien",
+      "priceWashIron": 1000,
+      "priceIronOnly": 600,
+      "icon": "scissors"
+    },
+    {
+      "id": "art-11",
+      "name": "Robe de soirée / Cérémonie",
+      "category": "Ville & Quotidien",
+      "priceWashIron": 2500,
+      "priceIronOnly": 1500,
+      "icon": "heart"
+    },
+    {
+      "id": "art-12",
+      "name": "Jupe / Chemisier",
+      "category": "Ville & Quotidien",
+      "priceWashIron": 800,
+      "priceIronOnly": 500,
+      "icon": "feather"
+    },
+    {
+      "id": "art-13",
+      "name": "Veste seule",
+      "category": "Ville & Quotidien",
+      "priceWashIron": 1500,
+      "priceIronOnly": 1000,
+      "icon": "shield"
+    },
+    {
+      "id": "art-14",
+      "name": "T-shirt / Polo",
+      "category": "Ville & Quotidien",
+      "priceWashIron": 600,
+      "priceIronOnly": 400,
+      "icon": "smile"
+    },
+    {
+      "id": "art-15",
+      "name": "Couette 2 places / Épaisse",
+      "category": "Maison & Literie",
+      "priceWashIron": 4000,
+      "priceIronOnly": 2500,
+      "icon": "box"
+    },
+    {
+      "id": "art-16",
+      "name": "Drap 2 places + 2 taies",
+      "category": "Maison & Literie",
+      "priceWashIron": 2000,
+      "priceIronOnly": 1200,
+      "icon": "layers"
+    },
+    {
+      "id": "art-17",
+      "name": "Rideaux la paire (Grands)",
+      "category": "Maison & Literie",
+      "priceWashIron": 3000,
+      "priceIronOnly": 2000,
+      "icon": "columns"
+    },
+    {
+      "id": "art-18",
+      "name": "Tapis Salon (Moyen)",
+      "category": "Maison & Literie",
+      "priceWashIron": 5000,
+      "priceIronOnly": 3500,
+      "icon": "grid"
+    }
+  ],
+  "clients": [
+    {
+      "id": "c-1",
+      "name": "M. Ouedraogo Moussa",
+      "phone": "+226 70 23 45 67",
+      "district": "Ouaga 2000",
+      "totalSpent": 30600,
+      "visitsCount": 6,
+      "createdAt": "2026-09-10"
+    },
+    {
+      "id": "c-2",
+      "name": "Mme Sawadogo Fatim",
+      "phone": "+226 76 88 99 00",
+      "district": "Kalgondin",
+      "totalSpent": 18000,
+      "visitsCount": 4,
+      "createdAt": "2026-10-02"
+    },
+    {
+      "id": "c-3",
+      "name": "M. Traore Ibrahim",
+      "phone": "+226 65 12 34 56",
+      "district": "Gounghin",
+      "totalSpent": 12500,
+      "visitsCount": 4,
+      "createdAt": "2026-10-15"
+    }
+  ],
+  "orders": [
+    {
+      "clientName": "M. Traore Ibrahim",
+      "clientPhone": "+226 65 12 34 56",
+      "clientDistrict": "Gounghin",
+      "createdAt": "2026-11-13T20:16:20.602Z",
+      "pickupDate": "2026-11-15 17:00",
+      "rackLocation": "Penderie 1",
+      "isExpress": false,
+      "items": [
+        {
+          "articleId": "art-2",
+          "name": "Bazin Simple (Lavage + Amidonnage)",
+          "service": "Complet (Lavage + Repassage)",
+          "quantity": 2,
+          "unitPrice": 2000,
+          "subtotal": 4000,
+          "notes": ""
+        },
+        {
+          "articleId": "art-5",
+          "name": "Pagne Wax (Complet 3 morceaux)",
+          "service": "Complet (Lavage + Repassage)",
+          "quantity": 1,
+          "unitPrice": 1800,
+          "subtotal": 1800,
+          "notes": ""
+        },
+        {
+          "articleId": "art-8",
+          "name": "Costume 3 pièces",
+          "service": "Complet (Lavage + Repassage)",
+          "quantity": 1,
+          "unitPrice": 3500,
+          "subtotal": 3500,
+          "notes": ""
+        }
+      ],
+      "totalAmount": 9300,
+      "discount": 0,
+      "paidAmount": 0,
+      "balanceDue": 9300,
+      "paymentMethod": "Espèces",
+      "paymentStatus": "Non payé",
+      "status": "recu",
+      "id": "TK-1005",
+      "timeline": [
+        {
+          "time": "2026-11-13T20:16:21.014Z",
+          "event": "Dépôt enregistré à la caisse"
+        }
+      ],
+      "clientId": "c-3"
+    },
+    {
+      "id": "TK-1003",
+      "clientId": "c-1",
+      "clientName": "M. Ouedraogo Moussa",
+      "clientPhone": "+226 70 23 45 67",
+      "clientDistrict": "Ouaga 2000",
+      "createdAt": "2026-11-12T18:44:44.935Z",
+      "pickupDate": "2026-11-13 17:30",
+      "rackLocation": "Penderie 1",
+      "isExpress": false,
+      "items": [
+        {
+          "articleId": "art-1",
+          "name": "Bazin Riche Brodé (3 pièces)",
+          "service": "Complet (Lavage + Repassage)",
+          "quantity": 1,
+          "unitPrice": 3500,
+          "subtotal": 3500,
+          "notes": "Col brodé or, amidonnage ferme"
+        },
+        {
+          "articleId": "art-9",
+          "name": "Chemise Ville",
+          "service": "Complet (Lavage + Repassage)",
+          "quantity": 2,
+          "unitPrice": 800,
+          "subtotal": 1600,
+          "notes": "Cintres bois"
+        }
+      ],
+      "totalAmount": 5100,
+      "discount": 0,
+      "paidAmount": 3000,
+      "balanceDue": 2100,
+      "paymentMethod": "Orange Money",
+      "paymentStatus": "Acompte payé",
+      "status": "pret",
+      "timeline": [
+        {
+          "time": "2026-11-12T18:44:44.935Z",
+          "event": "Dépôt enregistré à la caisse (Acompte 3 000 FCFA)"
+        },
+        {
+          "time": "2026-11-13T07:38:04.935Z",
+          "event": "Lavage & détachage terminés"
+        },
+        {
+          "time": "2026-11-13T14:34:44.935Z",
+          "event": "Repassage & contrôle qualité terminés"
+        },
+        {
+          "time": "2026-11-13T17:44:44.935Z",
+          "event": "4. Prêt au retrait & emballé sous housse (Penderie P-01)"
+        }
+      ]
+    },
+    {
+      "id": "TK-1004",
+      "clientId": "c-2",
+      "clientName": "Mme Sawadogo Fatim",
+      "clientPhone": "+226 76 88 99 00",
+      "clientDistrict": "Kalgondin",
+      "createdAt": "2026-11-13T18:44:44.935Z",
+      "pickupDate": "2026-11-14 16:00",
+      "rackLocation": "Rayon Linge Plié",
+      "isExpress": true,
+      "items": [
+        {
+          "articleId": "art-3",
+          "name": "Faso Dan Fani complet",
+          "service": "Complet (Lavage + Repassage)",
+          "quantity": 1,
+          "unitPrice": 3000,
+          "subtotal": 3000,
+          "notes": "Tissage délicat, repassage doux"
+        },
+        {
+          "articleId": "art-5",
+          "name": "Pagne Wax (Complet 3 morceaux)",
+          "service": "Complet (Lavage + Repassage)",
+          "quantity": 1,
+          "unitPrice": 1800,
+          "subtotal": 1800,
+          "notes": "Couleurs vives"
+        }
+      ],
+      "totalAmount": 5800,
+      "discount": 0,
+      "paidAmount": 2000,
+      "balanceDue": 3800,
+      "paymentMethod": "Moov Money",
+      "paymentStatus": "Acompte payé",
+      "status": "repassage",
+      "timeline": [
+        {
+          "time": "2026-11-13T18:44:44.935Z",
+          "event": "Dépôt express enregistré (Acompte 2 000 FCFA)"
+        },
+        {
+          "time": "2026-11-13T16:44:44.935Z",
+          "event": "2. Lavage pressing délicat terminé"
+        },
+        {
+          "time": "2026-11-13T18:14:44.935Z",
+          "event": "3. En cours de repassage"
+        }
+      ]
+    },
+    {
+      "id": "TK-1002",
+      "clientId": "c-2",
+      "clientName": "Mme Sawadogo Fatim",
+      "clientPhone": "+226 76 88 99 00",
+      "clientDistrict": "Kalgondin",
+      "createdAt": "2026-11-11T14:00:00.000Z",
+      "pickupDate": "2026-11-13 15:00",
+      "rackLocation": "Penderie 2",
+      "isExpress": true,
+      "items": [
+        {
+          "articleId": "art-3",
+          "name": "Faso Dan Fani complet",
+          "service": "Complet (Lavage + Repassage)",
+          "quantity": 1,
+          "unitPrice": 3000,
+          "subtotal": 3000,
+          "notes": ""
+        }
+      ],
+      "totalAmount": 3500,
+      "discount": 0,
+      "paidAmount": 3500,
+      "balanceDue": 0,
+      "paymentMethod": "Moov Money",
+      "paymentStatus": "Soldé",
+      "status": "livre",
+      "deliveredAt": "2026-11-13T15:10:00.000Z",
+      "timeline": [
+        {
+          "time": "2026-11-11T14:00:00.000Z",
+          "event": "Dépôt express"
+        },
+        {
+          "time": "2026-11-13T15:10:00.000Z",
+          "event": "5. Livré au client (Déchargé)"
+        }
+      ]
+    },
+    {
+      "id": "TK-1001",
+      "clientId": "c-1",
+      "clientName": "M. Ouedraogo Moussa",
+      "clientPhone": "+226 70 23 45 67",
+      "clientDistrict": "Ouaga 2000",
+      "createdAt": "2026-11-10T10:30:00.000Z",
+      "pickupDate": "2026-11-12 17:00",
+      "rackLocation": "Penderie 1",
+      "isExpress": false,
+      "items": [
+        {
+          "articleId": "art-7",
+          "name": "Costume 2 pièces",
+          "service": "Complet (Lavage + Repassage)",
+          "quantity": 1,
+          "unitPrice": 2500,
+          "subtotal": 2500,
+          "notes": ""
+        }
+      ],
+      "totalAmount": 2500,
+      "discount": 0,
+      "paidAmount": 2500,
+      "balanceDue": 0,
+      "paymentMethod": "Espèces",
+      "paymentStatus": "Soldé",
+      "status": "livre",
+      "deliveredAt": "2026-11-12T17:45:00.000Z",
+      "timeline": [
+        {
+          "time": "2026-11-10T10:30:00.000Z",
+          "event": "Dépôt"
+        },
+        {
+          "time": "2026-11-12T17:45:00.000Z",
+          "event": "5. Livré au client"
+        }
+      ]
+    }
+  ],
+  "transactions": [
+    {
+      "id": "tx-1",
+      "orderId": "TK-1001",
+      "clientName": "M. Ouedraogo Moussa",
+      "date": "2026-11-12T10:30:00.000Z",
+      "type": "Acompte",
+      "amount": 3000,
+      "method": "Orange Money",
+      "note": "1x Bazin Riche Brodé, 2x Chemise Ville"
+    },
+    {
+      "id": "tx-2",
+      "orderId": "TK-1002",
+      "clientName": "Mme Sawadogo Fatim",
+      "date": "2026-11-11T14:00:00.000Z",
+      "type": "Paiement complet",
+      "amount": 5500,
+      "method": "Moov Money",
+      "note": "1x Faso Dan Fani complet, 1x Robe de soirée"
+    },
+    {
+      "id": "tx-3",
+      "orderId": "TK-1000",
+      "clientName": "M. Traore Ibrahim",
+      "date": "2026-11-10T09:00:00.000Z",
+      "type": "Paiement complet",
+      "amount": 2500,
+      "method": "Espèces",
+      "note": "1x Costume 2 pièces"
+    },
+    {
+      "id": "tx-1794592680030",
+      "orderId": "TK-1001",
+      "clientName": "M. Ouedraogo Moussa",
+      "date": "2026-11-13T17:58:00.031Z",
+      "type": "Solde au retrait",
+      "amount": 2100,
+      "method": "Espèces",
+      "note": "Règlement final du ticket #TK-1001"
+    }
+  ]
+}

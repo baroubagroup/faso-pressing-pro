@@ -1,0 +1,20 @@
+{
+  "name": "faso-pressing-pro",
+  "version": "1.0.0",
+  "description": "Application de gestion pour pressing au Burkina Faso",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "pressing",
+    "burkina-faso",
+    "pos",
+    "caisse",
+    "atelier",
+    "whatsapp"
+  ],
+  "author": "FasoPressing",
+  "license": "MIT"
+}
