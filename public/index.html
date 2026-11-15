@@ -525,22 +525,22 @@
     <!-- Topbar épurée & translucide -->
     <header class="bg-white/80 backdrop-blur-2xl sticky top-0 z-20 border-b border-black/[0.05] px-4 sm:px-8 py-3 flex items-center justify-between no-print shadow-xs">
       
-      <!-- Titre & Bouton Replier Navigation -->
-      <div class="flex items-center space-x-3">
+      <!-- Titre & Bouton Replier Navigation (Flex No-Wrap Élégant) -->
+      <div class="flex items-center space-x-3 shrink-0">
         <!-- Bouton Replier/Déplier Sidebar Desktop -->
-        <button onclick="toggleSidebarCollapse()" title="Replier / Déplier la navigation latérale" class="hidden md:inline-flex items-center justify-center p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/90 active:scale-95 transition-all">
+        <button onclick="toggleSidebarCollapse()" title="Replier / Déplier la navigation latérale" class="hidden md:inline-flex items-center justify-center p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/90 active:scale-95 transition-all shrink-0">
           <i id="topbarSidebarToggleIcon" data-lucide="panel-left" class="w-4 h-4"></i>
         </button>
         <!-- Bouton Menu Mobile -->
-        <button onclick="toggleMobileSidebar()" class="md:hidden text-[#64748B] hover:text-[#0F172A] p-1.5 rounded-xl hover:bg-black/[0.04]">
+        <button onclick="toggleMobileSidebar()" class="md:hidden text-[#64748B] hover:text-[#0F172A] p-1.5 rounded-xl hover:bg-black/[0.04] shrink-0">
           <i data-lucide="menu" class="w-5 h-5"></i>
         </button>
-        <div>
-          <div class="flex items-center space-x-2">
-            <span class="text-xs text-[#94A3B8] font-medium hidden sm:inline">Pressing & Blanchisserie</span>
-            <span class="text-xs text-[#94A3B8] hidden sm:inline">&bull;</span>
-            <h1 id="topbarPageTitle" class="text-base sm:text-lg font-black text-[#0F172A] tracking-tight">Tableau de Bord</h1>
-            <span id="topbarPlatformBadge" class="hidden sm:inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-sky-50 text-sky-700 border border-sky-200">
+        <div class="shrink-0">
+          <div class="flex items-center space-x-2 whitespace-nowrap">
+            <span class="text-xs text-[#94A3B8] font-medium hidden lg:inline">Pressing & Blanchisserie</span>
+            <span class="text-xs text-[#94A3B8] hidden lg:inline">&bull;</span>
+            <h1 id="topbarPageTitle" class="text-base sm:text-lg font-black text-[#0F172A] tracking-tight whitespace-nowrap">Tableau de Bord</h1>
+            <span id="topbarPlatformBadge" class="hidden xl:inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-sky-50 text-sky-700 border border-sky-200 shrink-0">
               <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
               <span>Web Cloud</span>
             </span>
@@ -1120,53 +1120,164 @@
 
 
       <!-- ========================================== -->
-      <!-- 6. VUE CLIENTS & FICHES                   -->
+      <!-- 6. VUE CLIENTS & FICHES (STYLE BENTO PRESTIGE) -->
       <!-- ========================================== -->
-      <div id="view-clients" class="tab-view hidden space-y-4">
-        <div class="sm:flex items-center justify-between">
+      <div id="view-clients" class="tab-view hidden space-y-6">
+        
+        <!-- En-tête Répertoire Clients -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white/70 backdrop-blur-xl p-5 sm:p-6 rounded-[28px] border border-white shadow-xs">
           <div>
-            <h2 class="text-xl font-black tracking-tight text-[#0F172A]">Répertoire des Clients</h2>
-            <p class="text-xs text-[#64748B]">Consultez la fiche complète de chaque client avec l'historique chronologique de ses dépôts.</p>
+            <div class="flex items-center space-x-2">
+              <h2 class="text-xl sm:text-2xl font-black tracking-tight text-[#0F172A]">Répertoire des Clients</h2>
+              <span id="clientsTotalCountBadge" class="text-xs font-black px-2.5 py-0.5 rounded-full bg-sky-50 text-sky-700 border border-sky-200/60 font-mono">0 client(s)</span>
+            </div>
+            <p class="text-xs text-[#64748B] mt-1 font-medium">Fiches clients détaillées, historique des dépôts & contacts WhatsApp directs.</p>
           </div>
-          <input type="text" id="clientSearchInput" oninput="renderClientsTable()" placeholder="Rechercher (Nom, Tél)..." class="mt-3 sm:mt-0 text-xs bg-white border border-black/[0.08] rounded-2xl px-3.5 py-2 w-64 focus:outline-none focus:border-[#0071E3] shadow-sm">
+
+          <div class="flex items-center space-x-3">
+            <!-- Recherche rapide client -->
+            <div class="relative w-full sm:w-64">
+              <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3.5 top-3 text-[#94A3B8]"></i>
+              <input type="text" id="clientSearchInput" oninput="renderClientsTable()" placeholder="Rechercher nom, numéro, quartier..." class="w-full pl-9 pr-4 py-2 text-xs bg-[#F1F5F9] focus:bg-white border border-transparent focus:border-[#0071E3] rounded-2xl focus:outline-none transition-all placeholder:text-[#94A3B8]">
+            </div>
+
+            <!-- Commutateur Vue Bento / Tableau -->
+            <div class="flex items-center bg-[#F1F5F9] p-1 rounded-2xl border border-black/[0.04]">
+              <button onclick="setClientsViewMode('cards')" id="btnClientsViewCards" title="Vue Cartes Bento" class="p-1.5 rounded-xl text-xs font-bold transition-all bg-white text-[#0F172A] shadow-xs">
+                <i data-lucide="layout-grid" class="w-4 h-4"></i>
+              </button>
+              <button onclick="setClientsViewMode('table')" id="btnClientsViewTable" title="Vue Tableau Détaillé" class="p-1.5 rounded-xl text-xs font-bold transition-all text-[#64748B] hover:text-[#0F172A]">
+                <i data-lucide="table" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div class="apple-glass border border-white overflow-hidden">
+        <!-- 3 Bento Mini-KPIs Clients -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <!-- KPI 1 : Total Clients -->
+          <div class="bento-card apple-glass bg-white p-5 rounded-[28px] border border-white flex items-center justify-between shadow-xs">
+            <div>
+              <span class="text-xs text-[#64748B] font-bold block">Clients Répertoriés</span>
+              <span id="kpiClientsCount" class="text-2xl font-black text-[#0F172A] font-mono mt-1 block">0</span>
+              <span class="text-[10px] font-semibold text-sky-600 flex items-center space-x-1 mt-0.5">
+                <i data-lucide="check-circle" class="w-3 h-3"></i>
+                <span>Base active locale</span>
+              </span>
+            </div>
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-500 to-blue-600 text-white flex items-center justify-center shadow-lg shadow-sky-500/25">
+              <i data-lucide="users" class="w-5 h-5"></i>
+            </div>
+          </div>
+
+          <!-- KPI 2 : Clients VIP & Fidèles -->
+          <div class="bento-card apple-glass bg-white p-5 rounded-[28px] border border-white flex items-center justify-between shadow-xs">
+            <div>
+              <span class="text-xs text-[#64748B] font-bold block">Clients VIP (>= 4 dépôts)</span>
+              <span id="kpiClientsVIP" class="text-2xl font-black text-amber-600 font-mono mt-1 block">0</span>
+              <span class="text-[10px] font-semibold text-amber-600 flex items-center space-x-1 mt-0.5">
+                <i data-lucide="crown" class="w-3 h-3"></i>
+                <span>Fidélité récompensée</span>
+              </span>
+            </div>
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center shadow-lg shadow-amber-500/25">
+              <i data-lucide="crown" class="w-5 h-5"></i>
+            </div>
+          </div>
+
+          <!-- KPI 3 : Recettes Totales Clients -->
+          <div class="bento-card apple-glass bg-white p-5 rounded-[28px] border border-white flex items-center justify-between shadow-xs">
+            <div>
+              <span class="text-xs text-[#64748B] font-bold block">Volume Cumulé Clients</span>
+              <span id="kpiClientsTotalSpent" class="text-2xl font-black text-emerald-700 font-mono mt-1 block">0 FCFA</span>
+              <span class="text-[10px] font-semibold text-emerald-600 flex items-center space-x-1 mt-0.5">
+                <i data-lucide="trending-up" class="w-3 h-3"></i>
+                <span>Chiffre d'affaires fidélisé</span>
+              </span>
+            </div>
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-600 text-white flex items-center justify-center shadow-lg shadow-emerald-500/25">
+              <i data-lucide="wallet" class="w-5 h-5"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conteneur 1 : Grille des Cartes Bento Clients (Vue par Défaut) -->
+        <div id="clientsCardsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+
+        <!-- Conteneur 2 : Tableau Professionnel (Vue Alternative) -->
+        <div id="clientsTableWrapper" class="apple-glass bg-white rounded-[28px] border border-white overflow-hidden shadow-xs hidden">
           <div class="overflow-x-auto">
             <table class="w-full text-left text-xs">
               <thead>
                 <tr class="border-b border-black/[0.04] bg-[#F8F9FA]/80 text-[#94A3B8] font-bold text-[10px] uppercase tracking-wider">
-                  <th class="py-3 px-4">Client</th>
-                  <th class="py-3 px-4">Téléphone</th>
-                  <th class="py-3 px-4">Quartier</th>
-                  <th class="py-3 px-4 text-center">Visites</th>
-                  <th class="py-3 px-4 text-right">Total Dépensé</th>
-                  <th class="py-3 px-4 text-center">Actions</th>
+                  <th class="py-3.5 px-5">Client</th>
+                  <th class="py-3.5 px-4">Téléphone</th>
+                  <th class="py-3.5 px-4">Quartier</th>
+                  <th class="py-3.5 px-4 text-center">Visites</th>
+                  <th class="py-3.5 px-4 text-right">Total Dépensé</th>
+                  <th class="py-3.5 px-5 text-center">Actions</th>
                 </tr>
               </thead>
               <tbody id="clientsFullTable" class="divide-y divide-black/[0.03]"></tbody>
             </table>
           </div>
         </div>
+
       </div>
 
 
       <!-- ========================================== -->
-      <!-- 7. VUE GRILLE TARIFAIRE                    -->
+      <!-- 7. VUE GRILLE TARIFAIRE (STYLE BENTO PRESTIGE) -->
       <!-- ========================================== -->
-      <div id="view-tarifs" class="tab-view hidden space-y-4">
-        <div class="flex items-center justify-between">
+      <div id="view-tarifs" class="tab-view hidden space-y-6">
+        
+        <!-- En-tête Grille Tarifaire -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white/70 backdrop-blur-xl p-5 sm:p-6 rounded-[28px] border border-white shadow-xs">
           <div>
-            <h2 class="text-xl font-black tracking-tight text-[#0F172A]">Catalogue & Tarification</h2>
-            <p class="text-xs text-[#64748B]">Barème officiel en FCFA (Lavage+Repassage vs Repassage seul).</p>
+            <div class="flex items-center space-x-2">
+              <h2 class="text-xl sm:text-2xl font-black tracking-tight text-[#0F172A]">Catalogue & Grille Tarifaire</h2>
+              <span id="tarifsTotalCountBadge" class="text-xs font-black px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200/60 font-mono">18 articles</span>
+            </div>
+            <p class="text-xs text-[#64748B] mt-1 font-medium">Barème certifié de l'atelier en FCFA &bull; Tarifs Lavage+Repassage complet & Repassage seul.</p>
           </div>
-          <button onclick="openArticleModal(); soundEngine.pop();" class="bg-gradient-to-r from-[#0F172A] to-[#1E293B] hover:from-[#1E293B] hover:to-[#334155] text-white font-bold px-4 py-2.5 rounded-2xl text-xs flex items-center space-x-1.5 shadow-sm active:scale-95 transition-all">
-            <i data-lucide="plus" class="w-3.5 h-3.5 text-emerald-400"></i>
-            <span>Ajouter un Article</span>
+          
+          <div class="flex items-center space-x-3">
+            <!-- Recherche d'articles rapide -->
+            <div class="relative w-full sm:w-60">
+              <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3.5 top-3 text-[#94A3B8]"></i>
+              <input type="text" id="tarifsSearchInput" oninput="renderTarifs()" placeholder="Rechercher article, tissu..." class="w-full pl-9 pr-4 py-2 text-xs bg-[#F1F5F9] focus:bg-white border border-transparent focus:border-[#0071E3] rounded-2xl focus:outline-none transition-all placeholder:text-[#94A3B8]">
+            </div>
+
+            <!-- Bouton Ajouter Article -->
+            <button onclick="openArticleModal(); soundEngine.pop();" class="shrink-0 bg-gradient-to-r from-[#0071E3] to-[#005BB5] hover:from-[#005BB5] hover:to-[#00478F] text-white font-bold px-4 py-2.5 rounded-2xl text-xs flex items-center space-x-2 shadow-glow-blue active:scale-95 transition-all">
+              <i data-lucide="plus" class="w-4 h-4"></i>
+              <span class="hidden sm:inline">Nouvel Article</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filtres Catégories Bento Pills -->
+        <div class="flex items-center space-x-2 overflow-x-auto pb-1 no-scrollbar text-xs">
+          <button onclick="filterTarifsCategory('all')" id="btnFilterTarif-all" class="tarif-filter-pill active px-4 py-2 rounded-2xl font-bold bg-[#0F172A] text-white shadow-xs transition-all flex items-center space-x-1.5 shrink-0">
+            <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+            <span>Tous les Articles</span>
+          </button>
+          <button onclick="filterTarifsCategory('Traditionnel & Bazin')" id="btnFilterTarif-Traditionnel" class="tarif-filter-pill px-4 py-2 rounded-2xl font-bold bg-white/90 hover:bg-purple-50 text-slate-700 hover:text-purple-700 border border-black/[0.05] transition-all flex items-center space-x-1.5 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+            <span>Traditionnel & Bazin</span>
+          </button>
+          <button onclick="filterTarifsCategory('Ville & Quotidien')" id="btnFilterTarif-Ville" class="tarif-filter-pill px-4 py-2 rounded-2xl font-bold bg-white/90 hover:bg-blue-50 text-slate-700 hover:text-blue-700 border border-black/[0.05] transition-all flex items-center space-x-1.5 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+            <span>Ville & Quotidien</span>
+          </button>
+          <button onclick="filterTarifsCategory('Maison & Literie')" id="btnFilterTarif-Maison" class="tarif-filter-pill px-4 py-2 rounded-2xl font-bold bg-white/90 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 border border-black/[0.05] transition-all flex items-center space-x-1.5 shrink-0">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span>Maison & Literie</span>
           </button>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tarifsCardsContainer"></div>
+        <!-- Grille des Cartes Bento d'Articles -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="tarifsCardsContainer"></div>
       </div>
 
     </main>
@@ -2668,6 +2779,8 @@
       }
       if (tabName === 'calendar') renderCalendar();
       if (tabName === 'cash') renderCashJournal();
+      if (tabName === 'tarifs') renderTarifs();
+      if (tabName === 'clients') renderClientsTable();
       if (window.lucide) lucide.createIcons();
     }
 
@@ -3493,58 +3606,213 @@
     }
 
     // ==========================================
-    // 6. CLIENTS & FICHES
+    // 6. CLIENTS & FICHES (STYLE BENTO PRESTIGE)
     // ==========================================
+    let currentClientsViewMode = 'cards'; // 'cards' ou 'table'
+
+    function setClientsViewMode(mode) {
+      currentClientsViewMode = mode;
+      soundEngine.pop();
+      const btnCards = document.getElementById('btnClientsViewCards');
+      const btnTable = document.getElementById('btnClientsViewTable');
+      const cardsGrid = document.getElementById('clientsCardsContainer');
+      const tableWrap = document.getElementById('clientsTableWrapper');
+
+      if (mode === 'cards') {
+        if (btnCards) { btnCards.classList.add('bg-white', 'text-[#0F172A]', 'shadow-xs'); btnCards.classList.remove('text-[#64748B]'); }
+        if (btnTable) { btnTable.classList.remove('bg-white', 'text-[#0F172A]', 'shadow-xs'); btnTable.classList.add('text-[#64748B]'); }
+        if (cardsGrid) cardsGrid.classList.remove('hidden');
+        if (tableWrap) tableWrap.classList.add('hidden');
+      } else {
+        if (btnTable) { btnTable.classList.add('bg-white', 'text-[#0F172A]', 'shadow-xs'); btnTable.classList.remove('text-[#64748B]'); }
+        if (btnCards) { btnCards.classList.remove('bg-white', 'text-[#0F172A]', 'shadow-xs'); btnCards.classList.add('text-[#64748B]'); }
+        if (cardsGrid) cardsGrid.classList.add('hidden');
+        if (tableWrap) tableWrap.classList.remove('hidden');
+      }
+      renderClientsTable();
+    }
+
     function renderClientsTable() {
       const clients = appState.clients || [];
-      const search = (document.getElementById('clientSearchInput')?.value || '').toLowerCase();
+      const search = (document.getElementById('clientSearchInput')?.value || '').toLowerCase().trim();
+      const cardsContainer = document.getElementById('clientsCardsContainer');
       const tbody = document.getElementById('clientsFullTable');
-      tbody.innerHTML = '';
+
+      // Mettre à jour les KPIs Clients
+      const totalCount = clients.length;
+      const vipCount = clients.filter(c => (c.visitsCount || 1) >= 4).length;
+      const totalSpentAll = clients.reduce((sum, c) => sum + (c.totalSpent || 0), 0);
+
+      const kpiCount = document.getElementById('kpiClientsCount');
+      const kpiVIP = document.getElementById('kpiClientsVIP');
+      const kpiSpent = document.getElementById('kpiClientsTotalSpent');
+      const badge = document.getElementById('clientsTotalCountBadge');
+
+      if (kpiCount) kpiCount.textContent = totalCount;
+      if (kpiVIP) kpiVIP.textContent = vipCount;
+      if (kpiSpent) kpiSpent.textContent = formatFCFA(totalSpentAll);
+      if (badge) badge.textContent = `${totalCount} client(s)`;
 
       const filtered = clients.filter(c => {
         if (!search) return true;
-        return c.name.toLowerCase().includes(search) || c.phone.toLowerCase().includes(search) || (c.district || '').toLowerCase().includes(search);
+        return c.name.toLowerCase().includes(search) || 
+               c.phone.toLowerCase().includes(search) || 
+               (c.district || '').toLowerCase().includes(search);
       });
 
-      if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" class="text-center py-8 text-[#94A3B8] italic font-medium">Aucun client trouvé.</td></tr>`;
-        return;
+      // 1. Rendu Vue Cartes Bento (Haute Définition)
+      if (cardsContainer) {
+        cardsContainer.innerHTML = '';
+        if (filtered.length === 0) {
+          cardsContainer.innerHTML = `
+            <div class="col-span-full py-12 text-center bg-white/80 rounded-[30px] border border-dashed border-slate-200">
+              <div class="w-12 h-12 mx-auto rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400 mb-3">
+                <i data-lucide="users" class="w-6 h-6"></i>
+              </div>
+              <p class="text-sm font-bold text-slate-600">Aucun client trouvé.</p>
+              <p class="text-xs text-slate-400 mt-1">Vérifiez l'orthographe du nom ou du numéro de téléphone.</p>
+            </div>
+          `;
+        } else {
+          filtered.forEach(client => {
+            const cleanPhone = client.phone.replace(/\D/g, '');
+            const initials = client.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+            const visits = client.visitsCount || 1;
+            const isVIP = visits >= 4;
+            const avatarGrad = isVIP ? 'from-amber-500 via-orange-500 to-amber-700 shadow-amber-500/25' : 'from-[#0F172A] via-[#1E293B] to-[#334155] shadow-slate-900/25';
+            
+            const card = document.createElement('div');
+            card.className = "bento-card apple-glass bg-white/95 rounded-[30px] p-5 sm:p-6 border border-slate-100 hover:border-[#0071E3]/40 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden cursor-pointer";
+            card.onclick = (e) => {
+              if (!e.target.closest('a') && !e.target.closest('button')) openClientProfile(client.id);
+            };
+
+            card.innerHTML = `
+              <div>
+                <!-- En-tête Client avec Bulle 3D & Avatar -->
+                <div class="flex items-start justify-between">
+                  <div class="flex items-center space-x-3.5">
+                    <!-- Bulle 3D Initiale Client -->
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr ${avatarGrad} text-white font-black text-base flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300 shrink-0">
+                      ${initials}
+                    </div>
+                    <div>
+                      <div class="flex items-center space-x-1.5">
+                        <h3 class="font-black text-[#0F172A] text-base group-hover:text-[#0071E3] transition-colors leading-tight">
+                          ${escapeHtml(client.name)}
+                        </h3>
+                      </div>
+                      <div class="flex items-center space-x-2 mt-1">
+                        ${isVIP ? `
+                          <span class="text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200/80 flex items-center space-x-1">
+                            <i data-lucide="crown" class="w-2.5 h-2.5 text-amber-600"></i>
+                            <span>VIP Gold</span>
+                          </span>
+                        ` : `
+                          <span class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200/60">
+                            Client Régulier
+                          </span>
+                        `}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Coordonnées & Quartier -->
+                <div class="mt-4 p-3 bg-[#F8FAFC] rounded-2xl border border-slate-200/60 space-y-1.5 text-xs">
+                  <div class="flex items-center space-x-2 text-slate-700">
+                    <i data-lucide="phone" class="w-3.5 h-3.5 text-slate-400"></i>
+                    <span class="font-mono font-bold">${client.phone}</span>
+                  </div>
+                  <div class="flex items-center space-x-2 text-slate-500">
+                    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400"></i>
+                    <span class="font-medium">${escapeHtml(client.district || 'Ouagadougou')}</span>
+                  </div>
+                </div>
+
+                <!-- Mini Capsules Métriques Client -->
+                <div class="mt-3 grid grid-cols-2 gap-2 text-xs">
+                  <div class="p-2.5 bg-slate-50 rounded-xl border border-slate-100">
+                    <span class="text-[10px] text-slate-400 font-bold block">Visites & Dépôts</span>
+                    <span class="text-sm font-black text-slate-800 font-mono mt-0.5 block">${visits} visite(s)</span>
+                  </div>
+                  <div class="p-2.5 bg-emerald-50/70 rounded-xl border border-emerald-100">
+                    <span class="text-[10px] text-emerald-600 font-bold block">Total Dépensé</span>
+                    <span class="text-sm font-black text-emerald-700 font-mono mt-0.5 block">${formatFCFA(client.totalSpent || 0)}</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Actions Fiche & WhatsApp -->
+              <div class="mt-4 pt-3.5 border-t border-black/[0.05] flex items-center justify-between text-xs">
+                <button onclick="event.stopPropagation(); openClientProfile('${client.id}'); soundEngine.pop();" class="inline-flex items-center space-x-1.5 text-xs font-bold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-xl transition-all active:scale-95">
+                  <i data-lucide="user" class="w-3.5 h-3.5 text-slate-500"></i>
+                  <span>Fiche Client</span>
+                </button>
+
+                <a href="https://wa.me/${cleanPhone}" target="_blank" onclick="event.stopPropagation()" class="inline-flex items-center space-x-1.5 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 px-3.5 py-1.5 rounded-xl shadow-xs active:scale-95 transition-all">
+                  <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                  <span>WhatsApp</span>
+                </a>
+              </div>
+
+              <div class="card-glare"></div>
+            `;
+            cardsContainer.appendChild(card);
+          });
+        }
       }
 
-      filtered.forEach(client => {
-        const tr = document.createElement('tr');
-        tr.className = "hover:bg-white/80 cursor-pointer transition-colors";
-        tr.onclick = (e) => {
-          if (!e.target.closest('a') && !e.target.closest('button')) openClientProfile(client.id);
-        };
+      // 2. Rendu Vue Tableau Détaillé
+      if (tbody) {
+        tbody.innerHTML = '';
+        if (filtered.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="6" class="text-center py-8 text-[#94A3B8] italic font-medium">Aucun client trouvé.</td></tr>`;
+        } else {
+          filtered.forEach(client => {
+            const tr = document.createElement('tr');
+            tr.className = "hover:bg-slate-50/80 cursor-pointer transition-colors";
+            tr.onclick = (e) => {
+              if (!e.target.closest('a') && !e.target.closest('button')) openClientProfile(client.id);
+            };
 
-        const cleanPhone = client.phone.replace(/\D/g, '');
-        const initials = client.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+            const cleanPhone = client.phone.replace(/\D/g, '');
+            const initials = client.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+            const visits = client.visitsCount || 1;
+            const isVIP = visits >= 4;
 
-        tr.innerHTML = `
-          <td class="py-3 px-4">
-            <div class="flex items-center space-x-2.5">
-              <span class="w-7 h-7 rounded-xl bg-gradient-to-tr from-[#0F172A] to-[#334155] text-white font-black text-[11px] flex items-center justify-center">${initials}</span>
-              <span class="font-black text-[#0F172A]">${escapeHtml(client.name)}</span>
-            </div>
-          </td>
-          <td class="py-3 px-4 text-[#64748B] font-mono text-xs">${client.phone}</td>
-          <td class="py-3 px-4 text-[#64748B] font-medium">${escapeHtml(client.district || '-')}</td>
-          <td class="py-3 px-4 text-center"><span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#F1F5F9] text-[#0F172A] font-mono">${client.visitsCount || 1} visite(s)</span></td>
-          <td class="py-3 px-4 text-right font-black font-mono text-[#0F172A]">${formatFCFA(client.totalSpent || 0)}</td>
-          <td class="py-3 px-4 text-center space-x-2 whitespace-nowrap">
-            <button onclick="event.stopPropagation(); openClientProfile('${client.id}'); soundEngine.pop();" class="text-xs bg-white border border-black/[0.06] text-[#0F172A] hover:bg-[#0071E3] hover:text-white font-bold px-3 py-1.5 rounded-xl transition-colors shadow-xs">
-              Fiche
-            </button>
-            <a href="https://wa.me/${cleanPhone}" target="_blank" onclick="event.stopPropagation()" class="inline-flex items-center space-x-1 text-xs bg-emerald-50 text-emerald-800 hover:bg-emerald-100 font-bold px-3 py-1.5 rounded-xl transition-colors">
-              <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600"></i>
-              <span>WhatsApp</span>
-            </a>
-          </td>
-        `;
-        tbody.appendChild(tr);
-      });
-      lucide.createIcons();
+            tr.innerHTML = `
+              <td class="py-3.5 px-5">
+                <div class="flex items-center space-x-3">
+                  <span class="w-8 h-8 rounded-xl bg-gradient-to-tr ${isVIP ? 'from-amber-500 to-orange-500' : 'from-[#0F172A] to-[#334155]'} text-white font-black text-xs flex items-center justify-center shadow-xs">${initials}</span>
+                  <div>
+                    <span class="font-black text-[#0F172A] block text-xs">${escapeHtml(client.name)}</span>
+                    ${isVIP ? '<span class="text-[9px] font-bold text-amber-600">VIP Gold</span>' : ''}
+                  </div>
+                </div>
+              </td>
+              <td class="py-3.5 px-4 text-[#64748B] font-mono text-xs font-bold">${client.phone}</td>
+              <td class="py-3.5 px-4 text-[#64748B] font-medium text-xs">${escapeHtml(client.district || '-')}</td>
+              <td class="py-3.5 px-4 text-center">
+                <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-[#F1F5F9] text-[#0F172A] font-mono">${visits} visite(s)</span>
+              </td>
+              <td class="py-3.5 px-4 text-right font-black font-mono text-emerald-700 text-xs">${formatFCFA(client.totalSpent || 0)}</td>
+              <td class="py-3.5 px-5 text-center space-x-2 whitespace-nowrap">
+                <button onclick="event.stopPropagation(); openClientProfile('${client.id}'); soundEngine.pop();" class="text-xs bg-slate-100 hover:bg-[#0071E3] hover:text-white text-[#0F172A] font-bold px-3 py-1.5 rounded-xl transition-all shadow-xs">
+                  Fiche
+                </button>
+                <a href="https://wa.me/${cleanPhone}" target="_blank" onclick="event.stopPropagation()" class="inline-flex items-center space-x-1 text-xs bg-emerald-50 text-emerald-800 hover:bg-emerald-600 hover:text-white font-bold px-3 py-1.5 rounded-xl transition-all">
+                  <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-600 group-hover:text-white"></i>
+                  <span>WhatsApp</span>
+                </a>
+              </td>
+            `;
+            tbody.appendChild(tr);
+          });
+        }
+      }
+
+      if (window.lucide) lucide.createIcons();
     }
 
     function openClientProfile(clientId) {
@@ -3670,42 +3938,158 @@
     }
 
     // ==========================================
-    // 7. TARIFS & ARTICLES
+    // 7. TARIFS & ARTICLES (STYLE BENTO PRESTIGE)
     // ==========================================
+    let currentTarifFilterCategory = 'all';
+
+    function filterTarifsCategory(cat) {
+      currentTarifFilterCategory = cat;
+      soundEngine.pop();
+      document.querySelectorAll('.tarif-filter-pill').forEach(btn => {
+        btn.classList.remove('bg-[#0F172A]', 'text-white', 'shadow-xs');
+        btn.classList.add('bg-white/90', 'text-slate-700');
+      });
+      const activeBtnId = cat === 'all' ? 'btnFilterTarif-all' : 
+                          cat.includes('Traditionnel') ? 'btnFilterTarif-Traditionnel' :
+                          cat.includes('Ville') ? 'btnFilterTarif-Ville' : 'btnFilterTarif-Maison';
+      const activeBtn = document.getElementById(activeBtnId);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-white/90', 'text-slate-700');
+        activeBtn.classList.add('bg-[#0F172A]', 'text-white', 'shadow-xs');
+      }
+      renderTarifs();
+    }
+
     function renderTarifs() {
       const container = document.getElementById('tarifsCardsContainer');
+      if (!container) return;
       container.innerHTML = '';
       const articles = appState.articles || [];
+      const search = (document.getElementById('tarifsSearchInput')?.value || '').toLowerCase().trim();
 
-      articles.forEach(art => {
+      const filtered = articles.filter(art => {
+        if (currentTarifFilterCategory !== 'all' && art.category !== currentTarifFilterCategory) return false;
+        if (search && !art.name.toLowerCase().includes(search) && !art.category.toLowerCase().includes(search)) return false;
+        return true;
+      });
+
+      const badge = document.getElementById('tarifsTotalCountBadge');
+      if (badge) badge.textContent = `${filtered.length} article(s)`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-12 text-center bg-white/80 rounded-[30px] border border-dashed border-slate-200">
+            <div class="w-12 h-12 mx-auto rounded-2xl bg-slate-100 flex items-center justify-center text-slate-400 mb-3">
+              <i data-lucide="tag" class="w-6 h-6"></i>
+            </div>
+            <p class="text-sm font-bold text-slate-600">Aucun article ne correspond à votre recherche.</p>
+            <p class="text-xs text-slate-400 mt-1">Modifiez vos critères ou ajoutez un nouvel article au barème.</p>
+          </div>
+        `;
+        if (window.lucide) lucide.createIcons();
+        return;
+      }
+
+      const categoryThemes = {
+        'Traditionnel & Bazin': {
+          gradient: 'from-[#863bff] via-[#7020ea] to-[#4c0ca8]',
+          shadow: 'shadow-purple-500/30',
+          pillBg: 'bg-purple-50 text-purple-700 border-purple-200/80',
+          dot: 'bg-purple-500',
+          defaultIcon: 'sparkles'
+        },
+        'Ville & Quotidien': {
+          gradient: 'from-[#0071E3] via-[#005bb5] to-[#00478f]',
+          shadow: 'shadow-blue-500/30',
+          pillBg: 'bg-sky-50 text-sky-700 border-sky-200/80',
+          dot: 'bg-sky-500',
+          defaultIcon: 'shirt'
+        },
+        'Maison & Literie': {
+          gradient: 'from-[#059669] via-[#047857] to-[#064e3b]',
+          shadow: 'shadow-emerald-500/30',
+          pillBg: 'bg-emerald-50 text-emerald-700 border-emerald-200/80',
+          dot: 'bg-emerald-500',
+          defaultIcon: 'layers'
+        },
+        'default': {
+          gradient: 'from-[#f59e0b] via-[#d97706] to-[#b45309]',
+          shadow: 'shadow-amber-500/30',
+          pillBg: 'bg-amber-50 text-amber-700 border-amber-200/80',
+          dot: 'bg-amber-500',
+          defaultIcon: 'tag'
+        }
+      };
+
+      filtered.forEach(art => {
+        const theme = categoryThemes[art.category] || categoryThemes['default'];
         const card = document.createElement('div');
-        card.className = "bento-card apple-glass p-5 rounded-[28px] border border-white flex flex-col justify-between";
+        card.className = "bento-card apple-glass bg-white/95 rounded-[30px] p-5 sm:p-6 border border-slate-100 hover:border-[#0071E3]/40 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative overflow-hidden";
+        
         card.innerHTML = `
           <div>
-            <div class="flex items-center justify-between">
-              <span class="text-[10px] font-black uppercase tracking-wider text-[#64748B] bg-[#F1F5F9] px-2.5 py-1 rounded-xl">${escapeHtml(art.category)}</span>
-              <button onclick="openArticleModal('${art.id}'); soundEngine.pop();" class="text-[#64748B] hover:text-[#0F172A] p-1.5 rounded-lg hover:bg-black/[0.04]" title="Modifier le tarif">
-                <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
-              </button>
+            <!-- Ligne Catégorie & Bulle 3D d'icône flottante -->
+            <div class="flex items-start justify-between">
+              <div class="space-y-1.5 pr-2">
+                <span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${theme.pillBg} border">
+                  <span class="w-1.5 h-1.5 rounded-full ${theme.dot}"></span>
+                  <span>${escapeHtml(art.category)}</span>
+                </span>
+                <h3 class="font-black text-[#0F172A] text-base sm:text-lg tracking-tight group-hover:text-[#0071E3] transition-colors leading-snug pt-1">
+                  ${escapeHtml(art.name)}
+                </h3>
+              </div>
+              
+              <!-- Bulle 3D Flottante avec dégradé et ombre luminescente (Style Bento Dashboard) -->
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr ${theme.gradient} text-white flex items-center justify-center shadow-lg ${theme.shadow} group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shrink-0">
+                <i data-lucide="${art.icon || theme.defaultIcon}" class="w-5 h-5 text-white"></i>
+              </div>
             </div>
-            <h3 class="font-black text-[#0F172A] text-xs mt-2.5 leading-snug">${escapeHtml(art.name)}</h3>
           </div>
 
-          <div class="mt-4 pt-3 border-t border-black/[0.04] grid grid-cols-2 gap-2 text-xs">
-            <div>
-              <span class="text-[#64748B] block text-[10px] font-medium">Lavage + Repassage</span>
-              <strong class="text-emerald-700 font-black text-xs font-mono">${formatFCFA(art.priceWashIron)}</strong>
+          <!-- Doubles Capsules Tarifaires Bento -->
+          <div class="mt-5 grid grid-cols-2 gap-2.5">
+            <!-- Capsule 1 : Lavage + Fer -->
+            <div class="bg-gradient-to-br from-emerald-50/90 to-teal-50/40 border border-emerald-200/70 rounded-2xl p-3 flex flex-col justify-between shadow-xs">
+              <div class="flex items-center space-x-1.5 text-[10px] font-bold text-emerald-800 uppercase tracking-wider">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Lavage + Fer</span>
+              </div>
+              <div class="mt-2 text-base sm:text-lg font-black font-mono text-emerald-700 tracking-tight">
+                ${formatFCFA(art.priceWashIron)}
+              </div>
             </div>
-            <div class="text-right">
-              <span class="text-[#64748B] block text-[10px] font-medium">Repassage seul</span>
-              <strong class="text-[#0F172A] font-bold text-xs font-mono">${formatFCFA(art.priceIronOnly)}</strong>
+
+            <!-- Capsule 2 : Repassage Seul -->
+            <div class="bg-[#F8FAFC] border border-slate-200/70 rounded-2xl p-3 flex flex-col justify-between shadow-xs">
+              <div class="flex items-center space-x-1.5 text-[10px] font-bold text-slate-600 uppercase tracking-wider">
+                <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span>
+                <span>Repassage Seul</span>
+              </div>
+              <div class="mt-2 text-base sm:text-lg font-black font-mono text-slate-800 tracking-tight">
+                ${formatFCFA(art.priceIronOnly)}
+              </div>
             </div>
           </div>
+
+          <!-- Barre d'Action Inférieure Haute Finition -->
+          <div class="mt-4 pt-3.5 border-t border-black/[0.05] flex items-center justify-between text-xs">
+            <button onclick="openArticleModal('${art.id}'); soundEngine.pop();" class="inline-flex items-center space-x-1.5 text-xs font-bold text-slate-600 hover:text-slate-900 bg-slate-100/90 hover:bg-slate-200/90 px-3 py-1.5 rounded-xl transition-all active:scale-95">
+              <i data-lucide="edit-3" class="w-3.5 h-3.5 text-slate-500"></i>
+              <span>Modifier</span>
+            </button>
+
+            <button onclick="openNewDepositModal(); soundEngine.pop();" class="inline-flex items-center space-x-1 text-xs font-bold text-[#0071E3] hover:text-white bg-blue-50 hover:bg-[#0071E3] px-3.5 py-1.5 rounded-xl transition-all shadow-xs active:scale-95">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+              <span>Dépôt</span>
+            </button>
+          </div>
+
           <div class="card-glare"></div>
         `;
         container.appendChild(card);
       });
-      lucide.createIcons();
+      if (window.lucide) lucide.createIcons();
     }
 
     // CATALOGUE & PANIER DÉPÔT
