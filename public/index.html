@@ -362,7 +362,7 @@
                 </span>
                 <span class="sidebar-full-item">Tableau de Bord</span>
               </div>
-              <span class="sidebar-full-item text-[10px] font-mono opacity-80">1</span>
+              <kbd class="sidebar-full-item text-[10px] font-mono bg-white/10 text-slate-400 px-1.5 py-0.5 rounded border border-white/10">⌘1</kbd>
             </button>
 
             <button onclick="switchTab('workshop')" id="nav-workshop" title="Suivi d'Atelier" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
@@ -400,7 +400,7 @@
                 </span>
                 <span class="sidebar-full-item">Tous les Tickets</span>
               </div>
-              <span class="sidebar-full-item text-[10px] font-mono opacity-80">4</span>
+              <span id="badgeTotalOrders" class="sidebar-full-item text-[10px] font-black px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 font-mono border border-indigo-500/30">0</span>
             </button>
 
             <button onclick="switchTab('cash')" id="nav-cash" title="Caisse & Recettes" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
@@ -410,7 +410,7 @@
                 </span>
                 <span class="sidebar-full-item">Caisse & Recettes</span>
               </div>
-              <span class="sidebar-full-item text-[10px] font-mono opacity-80">5</span>
+              <kbd class="sidebar-full-item text-[10px] font-mono bg-white/10 text-slate-400 px-1.5 py-0.5 rounded border border-white/10">⌘5</kbd>
             </button>
 
             <button onclick="switchTab('clients')" id="nav-clients" title="Répertoire Clients" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
@@ -420,7 +420,7 @@
                 </span>
                 <span class="sidebar-full-item">Répertoire Clients</span>
               </div>
-              <span class="sidebar-full-item text-[10px] font-mono opacity-80">6</span>
+              <span id="badgeClientsCount" class="sidebar-full-item text-[10px] font-black px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-300 font-mono border border-sky-500/30">0</span>
             </button>
 
             <button onclick="switchTab('tarifs')" id="nav-tarifs" title="Grille Tarifaire" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
@@ -430,7 +430,7 @@
                 </span>
                 <span class="sidebar-full-item">Grille Tarifaire</span>
               </div>
-              <span class="sidebar-full-item text-[10px] font-mono opacity-80">7</span>
+              <span id="badgeTarifsCount" class="sidebar-full-item text-[10px] font-black px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 font-mono border border-purple-500/30">0</span>
             </button>
 
           </div>
@@ -3519,6 +3519,15 @@
       if (todayBadge) todayBadge.textContent = todayDeliveries.length;
       document.getElementById('badgeTodayDeliveries').textContent = todayDeliveries.length;
       document.getElementById('capsuleTodayOrders').textContent = todayDeliveries.length;
+
+      const totalOrdersBadge = document.getElementById('badgeTotalOrders');
+      if (totalOrdersBadge) totalOrdersBadge.textContent = orders.length;
+
+      const clientsCountBadge = document.getElementById('badgeClientsCount');
+      if (clientsCountBadge) clientsCountBadge.textContent = (appState.clients || []).length;
+
+      const tarifsCountBadge = document.getElementById('badgeTarifsCount');
+      if (tarifsCountBadge) tarifsCountBadge.textContent = (appState.articles || []).length;
 
       // Capsule Summary text
       document.getElementById('commandCapsuleSummary').textContent = 

@@ -9,21 +9,21 @@ echo.
 
 cd /d "%~dp0"
 
-:: 1. Priorité au binaire natif haute performance (Démarrage instantané < 1 sec)
-if exist "..\dist-electron\win-unpacked\FasoPressing Pro.exe" (
-    echo [*] Lancement ultra-rapide de FasoPressing Pro...
-    start "" "..\dist-electron\win-unpacked\FasoPressing Pro.exe"
-    exit
-)
-
-:: 2. Version Portable autonome
-if exist "FasoPressing-Pro-Portable.exe" (
+:: 1. Priorité à la version Portable autonome dans le dossier courant
+if exist "%~dp0FasoPressing-Pro-Portable.exe" (
     echo [*] Lancement de FasoPressing Pro Portable (.exe)...
-    start "" "FasoPressing-Pro-Portable.exe"
+    start "" "%~dp0FasoPressing-Pro-Portable.exe"
     exit
 )
 
-:: 3. Moteur Electron embarqué
+:: 2. Version décompressée haute performance
+if exist "%~dp0..\dist-electron\win-unpacked\FasoPressing Pro.exe" (
+    echo [*] Lancement de FasoPressing Pro Unpacked...
+    start "" "%~dp0..\dist-electron\win-unpacked\FasoPressing Pro.exe"
+    exit
+)
+
+:: 3. Moteur Electron local (Node)
 cd /d "%~dp0\.."
 if exist "node_modules\electron\dist\electron.exe" (
     echo [*] Lancement via le moteur Electron local...
