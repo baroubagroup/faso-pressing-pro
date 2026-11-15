@@ -476,5 +476,12 @@
       "method": "Espèces",
       "note": "Règlement final du ticket #TK-1001"
     }
-  ]
+  ],
+  "categories": [
+    "Traditionnel & Bazin",
+    "Ville & Quotidien",
+    "Maison & Literie",
+    "Divers & Accessoires"
+  ],
+  "expenses": []
 }

@@ -8,6 +8,13 @@ const DB_FILE = path.join(__dirname, 'data', 'db.json');
 
 // Données initiales typiques du Burkina Faso
 const initialData = {
+    categories: [
+    "Traditionnel & Bazin",
+    "Ville & Quotidien",
+    "Maison & Literie",
+    "Divers & Accessoires"
+  ],
+  expenses: [],
   settings: {
     name: "Pressing Élite Faso",
     tagline: "L'art de l'élégance et de la propreté",
@@ -428,6 +435,53 @@ const server = http.createServer((req, res) => {
         writeDB(db);
         res.writeHead(200);
         res.end(JSON.stringify({ success: true, settings: db.settings }));
+        return;
+      }
+
+      
+      // POST /api/expenses (Enregistrer ou mettre à jour une dépense)
+      if (pathname === '/api/expenses' && req.method === 'POST') {
+        const expense = payload;
+        if (!expense.id) expense.id = `EXP-${Date.now()}`;
+        if (!expense.date) expense.date = new Date().toISOString();
+        if (!db.expenses) db.expenses = [];
+        
+        const existingIdx = db.expenses.findIndex(e => e.id === expense.id);
+        if (existingIdx >= 0) {
+          db.expenses[existingIdx] = expense;
+        } else {
+          db.expenses.unshift(expense);
+        }
+        writeDB(db);
+        res.writeHead(200);
+        res.end(JSON.stringify({ success: true, expense, expenses: db.expenses }));
+        return;
+      }
+
+      // DELETE /api/expenses/:id (Supprimer une dépense)
+      if (pathname.startsWith('/api/expenses/') && req.method === 'DELETE') {
+        const expId = pathname.replace('/api/expenses/', '');
+        if (!db.expenses) db.expenses = [];
+        db.expenses = db.expenses.filter(e => e.id !== expId);
+        writeDB(db);
+        res.writeHead(200);
+        res.end(JSON.stringify({ success: true, expenses: db.expenses }));
+        return;
+      }
+
+      // POST /api/categories (Ajouter ou mettre à jour les catégories)
+      if (pathname === '/api/categories' && req.method === 'POST') {
+        if (Array.isArray(payload.categories)) {
+          db.categories = payload.categories;
+        } else if (payload.name) {
+          if (!db.categories) db.categories = ["Traditionnel & Bazin", "Ville & Quotidien", "Maison & Literie"];
+          if (!db.categories.includes(payload.name)) {
+            db.categories.push(payload.name);
+          }
+        }
+        writeDB(db);
+        res.writeHead(200);
+        res.end(JSON.stringify({ success: true, categories: db.categories }));
         return;
       }
 
