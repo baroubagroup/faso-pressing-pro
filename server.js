@@ -480,7 +480,8 @@ const server = http.createServer((req, res) => {
   });
 });
 
-server.listen(PORT, '0.0.0.0', () => {
+if (!process.env.VERCEL) {
+  server.listen(PORT, '0.0.0.0', () => {
   const ips = getLocalIPs();
   console.log(`\n======================================================`);
   console.log(`  🇧🇫 FASOPRESSING PRO - DÉMARRÉ AVEC SUCCÈS !`);
@@ -491,4 +492,8 @@ server.listen(PORT, '0.0.0.0', () => {
     ips.forEach(ip => console.log(`   👉 http://${ip}:${PORT}`));
   }
   console.log(`======================================================\n`);
-});
+  });
+}
+
+module.exports = server;
+
