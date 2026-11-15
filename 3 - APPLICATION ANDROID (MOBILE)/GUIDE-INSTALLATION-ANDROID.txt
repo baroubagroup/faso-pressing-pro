@@ -1,0 +1,24 @@
+========================================================================
+📱 FASO PRESSING PRO - APPLICATION MOBILE ANDROID
+========================================================================
+
+Vous disposez de 2 méthodes simples pour utiliser l'application sur smartphone ou tablette Android :
+
+------------------------------------------------------------------------
+MÉTHODE 1 : INSTALLATION INSTANTANÉE (Recommandée & Sans Fichier)
+------------------------------------------------------------------------
+1. Ouvrez Google Chrome sur votre téléphone ou tablette Android.
+2. Rendez-vous sur le lien officiel :
+   https://faso-pressing-pro.vercel.app
+3. En bas de l'écran, Chrome vous propose automatiquement :
+   "Ajouter FasoPressing à l'écran d'accueil" (ou cliquez sur les 3 petits points verticaux en haut à droite > "Installer l'application").
+4. Une véritable icône d'application "FasoPressing Pro" apparaît sur votre écran d'accueil Android !
+5. Quand vous l'ouvrez, elle s'affiche en plein écran sans barre d'adresse, avec le badge [📱 ANDROID MOBILE].
+
+------------------------------------------------------------------------
+MÉTHODE 2 : PROJET ANDROID NATIF STUDIO & GRADLE
+------------------------------------------------------------------------
+1. Ce dossier contient le projet complet Android Studio (Gradle).
+2. Ouvrez ce dossier "3 - APPLICATION ANDROID (MOBILE)" directement dans Android Studio.
+3. Branchez votre smartphone en USB (mode Débogage USB) ou lancez un émulateur.
+4. Cliquez sur "Run" (ou "Build > Build Bundle(s) / APK(s) > Build APK(s)") pour générer le fichier APK de distribution.

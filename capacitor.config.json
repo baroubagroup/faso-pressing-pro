@@ -1,0 +1,14 @@
+{
+  "appId": "com.baroubagroup.fasopressing",
+  "appName": "FasoPressing Pro",
+  "webDir": "public",
+  "server": {
+    "url": "https://faso-pressing-pro.vercel.app",
+    "cleartext": true
+  },
+  "android": {
+    "allowMixedContent": true,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": true
+  }
+}

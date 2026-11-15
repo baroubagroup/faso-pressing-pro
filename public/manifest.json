@@ -1,0 +1,22 @@
+{
+  "name": "FasoPressing Pro",
+  "short_name": "FasoPressing",
+  "description": "Application professionnelle de gestion de pressing et blanchisserie au Burkina Faso",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F172A",
+  "theme_color": "#0F172A",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/vendor/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/vendor/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

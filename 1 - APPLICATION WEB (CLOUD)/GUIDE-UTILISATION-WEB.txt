@@ -1,0 +1,16 @@
+========================================================================
+🌐 FASO PRESSING PRO - VERSION CLOUD WEB (VERCEL & SUPABASE)
+========================================================================
+
+1. LIEN D'ACCÈS OFFICIEL :
+   https://faso-pressing-pro.vercel.app
+
+2. AVANTAGES :
+   - Accessible depuis n'importe quel ordinateur, tablette, iPhone ou smartphone.
+   - Synchronisé en direct avec la base de données cloud Supabase.
+   - Toujours à jour sans aucune installation nécessaire.
+   - Sécurisé par code PIN atelier (code par défaut: 2260).
+
+3. DÉPÔT GITHUB LIÉ :
+   https://github.com/baroubagroup/faso-pressing-pro
+   (Tout changement poussé sur la branche 'main' est automatiquement déployé en ligne sur Vercel).

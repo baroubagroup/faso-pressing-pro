@@ -1,0 +1,20 @@
+========================================================================
+💻 FASO PRESSING PRO - APPLICATION BUREAU WINDOWS
+========================================================================
+
+1. COMMENT LANCER L'APPLICATION BUREAU :
+   - Faites un double-clic sur le fichier :
+     "LANCER-APPLICATION-WINDOWS.bat"
+
+2. CE QUI SE PASSE :
+   - Le moteur local de caisse démarre instantanément sur votre machine.
+   - Une fenêtre dédiée indépendante s'ouvre avec la marque FasoPressing Pro.
+   - L'interface affiche le badge [💻 WINDOWS BUREAU].
+   - Fonctionne à 100% même si Internet est coupé.
+
+3. RACCOURCIS CLAVIER WINDOWS :
+   - F11         : Basculer en mode Plein Écran POS (Caisse tactile)
+   - Ctrl + N    : Enregistrer un nouveau dépôt de linge
+   - Ctrl + K    : Recherche Spotlight rapide (Client ou Ticket)
+   - Ctrl + P    : Imprimer le ticket de caisse / reçu thermique
+   - 1 à 7       : Basculer rapidement entre les onglets

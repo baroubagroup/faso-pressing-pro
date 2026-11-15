@@ -2,8 +2,14 @@
 <html lang="fr" class="h-full bg-[#F5F5F7] text-[#0F172A]">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Pressing Élite Faso 🇧🇫 — Système POS & Atelier Apple Grade</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0F172A">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="FasoPressing">
+  <meta name="mobile-web-app-capable" content="yes">
   
   <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -180,6 +186,40 @@
       display: inline-block;
     }
 
+    /* Sidebar Réduction & Fluidité Maximale */
+    #appSidebar {
+      transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s ease-out !important;
+    }
+    #appMainContent {
+      transition: padding-left 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    #appSidebar.is-collapsed {
+      width: 4.5rem !important; /* 72px */
+    }
+    #appSidebar.is-collapsed .sidebar-full-item {
+      display: none !important;
+    }
+    #appSidebar.is-collapsed .sidebar-collapsed-item {
+      display: flex !important;
+    }
+    #appSidebar.is-collapsed .sidebar-link {
+      justify-content: center !important;
+      padding-left: 0.5rem !important;
+      padding-right: 0.5rem !important;
+    }
+    #appSidebar.is-collapsed .sidebar-section-title {
+      display: none !important;
+    }
+    #appMainContent.is-collapsed {
+      padding-left: 4.5rem !important;
+    }
+    .sidebar-collapsed-item {
+      display: none;
+    }
+    .tab-view {
+      transition: opacity 0.08s ease-out;
+    }
+
     /* Sidebar Dark Prestige Styles */
     #appSidebar {
       background: linear-gradient(180deg, #0A1128 0%, #0D182E 50%, #070D1A 100%) !important;
@@ -259,45 +299,51 @@
       <!-- En-tête macOS avec Traffic Lights et Logo de Prestige -->
       <div class="p-6 pb-4 border-b border-white/10">
         
-        <!-- macOS Window Controls (Traffic Lights) -->
+        <!-- macOS Window Controls (Traffic Lights) & Toggle Réduction -->
         <div class="flex items-center justify-between mb-4">
           <div class="flex items-center space-x-2">
             <span class="traffic-dot bg-[#FF5F56] border border-[#E0443E]"></span>
             <span class="traffic-dot bg-[#FFBD2E] border border-[#DEA123]"></span>
             <span class="traffic-dot bg-[#27C93F] border border-[#1AAB29]"></span>
           </div>
-          <span class="text-[10px] font-mono font-bold tracking-wider text-slate-400">v2.8 FASO PRO</span>
-          <button onclick="toggleMobileSidebar()" class="md:hidden text-slate-400 hover:text-white p-1 rounded-lg">
-            <i data-lucide="x" class="w-5 h-5"></i>
-          </button>
+          <span class="sidebar-full-item text-[10px] font-mono font-bold tracking-wider text-slate-400">v2.8 FASO PRO</span>
+          <div class="flex items-center space-x-1">
+            <button onclick="toggleSidebarCollapse()" title="Réduire / Agrandir le menu latéral" class="hidden md:flex text-slate-400 hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors">
+              <i id="sidebarHeaderCollapseIcon" data-lucide="panel-left-close" class="w-4 h-4"></i>
+            </button>
+            <button onclick="toggleMobileSidebar()" class="md:hidden text-slate-400 hover:text-white p-1 rounded-lg">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
         </div>
 
         <!-- Marque & Badge de Prestige -->
         <div class="flex items-center space-x-3.5 cursor-pointer group" onclick="switchTab('dashboard')">
-          <div id="headerLogoContainer" class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#1E293B] to-[#334155] border border-white/15 text-white flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform relative overflow-hidden">
+          <div id="headerLogoContainer" class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#1E293B] to-[#334155] border border-white/15 text-white flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform relative overflow-hidden shrink-0">
             <i data-lucide="sparkles" class="w-5 h-5 text-emerald-400"></i>
             <div class="absolute inset-0 bg-gradient-to-t from-emerald-500/20 to-transparent"></div>
           </div>
-          <div>
+          <div class="sidebar-full-item">
             <div class="flex items-center space-x-1.5">
               <span class="font-black text-sm tracking-tight text-white" id="headerPressingName">Pressing Élite Faso</span>
             </div>
             <div class="flex items-center space-x-1.5 mt-0.5">
               <span class="text-[9px] font-black tracking-widest px-1.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">PRO POS</span>
-              <span class="text-[11px] text-slate-400 font-medium" id="headerTagline">Ouagadougou 🇧🇫</span>
+              <span id="sidebarPlatformBadge" class="text-[9px] font-black tracking-wider px-1.5 py-0.5 rounded-md bg-sky-500/25 text-sky-300 border border-sky-500/40">🌐 CLOUD WEB</span>
+              <span class="text-[11px] text-slate-400 font-medium hidden sm:inline" id="headerTagline">Ouagadougou 🇧🇫</span>
             </div>
           </div>
         </div>
 
         <!-- Bouton Nouveau Dépôt Flottant Unique -->
-        <button onclick="openNewDepositModal(); soundEngine.pop();" class="w-full mt-4 py-3 px-3.5 bg-gradient-to-r from-[#0071E3] to-[#005BB5] hover:from-[#005BB5] hover:to-[#00478F] text-white rounded-2xl text-xs font-black shadow-glow-blue flex items-center justify-between active:scale-[0.98] transition-all group border border-white/15">
+        <button onclick="openNewDepositModal(); soundEngine.pop();" title="Nouveau Dépôt Linge (⌘N)" class="w-full mt-4 py-3 px-3.5 bg-gradient-to-r from-[#0071E3] to-[#005BB5] hover:from-[#005BB5] hover:to-[#00478F] text-white rounded-2xl text-xs font-black shadow-glow-blue flex items-center justify-between active:scale-[0.98] transition-all group border border-white/15">
           <div class="flex items-center space-x-2">
             <span class="w-5 h-5 rounded-lg bg-white/20 text-white flex items-center justify-center group-hover:rotate-90 transition-transform">
               <i data-lucide="plus" class="w-3.5 h-3.5"></i>
             </span>
-            <span>Nouveau Dépôt Linge</span>
+            <span class="sidebar-full-item">Nouveau Dépôt Linge</span>
           </div>
-          <kbd class="text-[10px] font-mono bg-white/20 text-white px-1.5 py-0.5 rounded-md">⌘N</kbd>
+          <kbd class="sidebar-full-item text-[10px] font-mono bg-white/20 text-white px-1.5 py-0.5 rounded-md">⌘N</kbd>
         </button>
 
       </div>
@@ -307,37 +353,37 @@
         
         <!-- SECTION 1 : APERÇU -->
         <div>
-          <span class="px-3 text-[10px] font-black tracking-wider uppercase text-slate-400 block mb-2">VUE D'ENSEMBLE</span>
+          <span class="sidebar-section-title px-3 text-[10px] font-black tracking-wider uppercase text-slate-400 block mb-2">VUE D'ENSEMBLE</span>
           <div class="space-y-1" id="navGroupOverview">
             
-            <button onclick="switchTab('dashboard')" id="nav-dashboard" class="sidebar-link nav-pill-active w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-bold transition-all">
+            <button onclick="switchTab('dashboard')" id="nav-dashboard" title="Tableau de Bord" class="sidebar-link nav-pill-active w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-bold transition-all">
               <div class="flex items-center space-x-3">
-                <span class="nav-icon-box w-7 h-7 rounded-xl flex items-center justify-center text-white">
+                <span class="nav-icon-box w-7 h-7 rounded-xl flex items-center justify-center text-white shrink-0">
                   <i data-lucide="layout-grid" class="w-4 h-4"></i>
                 </span>
-                <span>Tableau de Bord</span>
+                <span class="sidebar-full-item">Tableau de Bord</span>
               </div>
-              <span class="text-[10px] font-mono opacity-80">1</span>
+              <span class="sidebar-full-item text-[10px] font-mono opacity-80">1</span>
             </button>
 
-            <button onclick="switchTab('workshop')" id="nav-workshop" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
+            <button onclick="switchTab('workshop')" id="nav-workshop" title="Suivi d'Atelier" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
               <div class="flex items-center space-x-3">
-                <span class="nav-icon-box w-7 h-7 rounded-xl flex items-center justify-center text-amber-400">
+                <span class="nav-icon-box w-7 h-7 rounded-xl flex items-center justify-center text-amber-400 shrink-0">
                   <i data-lucide="clock" class="w-4 h-4"></i>
                 </span>
-                <span>Suivi d'Atelier</span>
+                <span class="sidebar-full-item">Suivi d'Atelier</span>
               </div>
-              <span id="badgeActiveOrders" class="text-[10px] font-black px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-mono border border-amber-500/30">0</span>
+              <span id="badgeActiveOrders" class="sidebar-full-item text-[10px] font-black px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-mono border border-amber-500/30">0</span>
             </button>
 
-            <button onclick="switchTab('calendar')" id="nav-calendar" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
+            <button onclick="switchTab('calendar')" id="nav-calendar" title="Planning & Retraits" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
               <div class="flex items-center space-x-3">
-                <span class="nav-icon-box w-7 h-7 rounded-xl flex items-center justify-center text-emerald-400">
+                <span class="nav-icon-box w-7 h-7 rounded-xl flex items-center justify-center text-emerald-400 shrink-0">
                   <i data-lucide="calendar" class="w-4 h-4"></i>
                 </span>
-                <span>Planning & Retraits</span>
+                <span class="sidebar-full-item">Planning & Retraits</span>
               </div>
-              <span id="badgeTodayDeliveries" class="text-[10px] font-black px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono border border-emerald-500/30">0</span>
+              <span id="badgeTodayDeliveries" class="sidebar-full-item text-[10px] font-black px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono border border-emerald-500/30">0</span>
             </button>
 
           </div>
@@ -345,47 +391,47 @@
 
         <!-- SECTION 2 : GESTION OPÉRATIONNELLE -->
         <div>
-          <span class="px-3 text-[10px] font-black tracking-wider uppercase text-slate-400 block mb-2">GESTION & CAISSE</span>
+          <span class="sidebar-section-title px-3 text-[10px] font-black tracking-wider uppercase text-slate-400 block mb-2">GESTION & CAISSE</span>
           <div class="space-y-1" id="navGroupManagement">
             
-            <button onclick="switchTab('orders')" id="nav-orders" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
+            <button onclick="switchTab('orders')" id="nav-orders" title="Tous les Tickets" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
               <div class="flex items-center space-x-3">
-                <span class="nav-icon-box w-7 h-7 rounded-xl flex items-center justify-center text-indigo-400">
+                <span class="nav-icon-box w-7 h-7 rounded-xl flex items-center justify-center text-indigo-400 shrink-0">
                   <i data-lucide="receipt" class="w-4 h-4"></i>
                 </span>
-                <span>Tous les Tickets</span>
+                <span class="sidebar-full-item">Tous les Tickets</span>
               </div>
-              <span class="text-[10px] font-mono opacity-80">4</span>
+              <span class="sidebar-full-item text-[10px] font-mono opacity-80">4</span>
             </button>
 
-            <button onclick="switchTab('cash')" id="nav-cash" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
+            <button onclick="switchTab('cash')" id="nav-cash" title="Caisse & Recettes" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
               <div class="flex items-center space-x-3">
-                <span class="nav-icon-box w-7 h-7 rounded-xl flex items-center justify-center text-emerald-400">
+                <span class="nav-icon-box w-7 h-7 rounded-xl flex items-center justify-center text-emerald-400 shrink-0">
                   <i data-lucide="wallet" class="w-4 h-4"></i>
                 </span>
-                <span>Caisse & Recettes</span>
+                <span class="sidebar-full-item">Caisse & Recettes</span>
               </div>
-              <span class="text-[10px] font-mono opacity-80">5</span>
+              <span class="sidebar-full-item text-[10px] font-mono opacity-80">5</span>
             </button>
 
-            <button onclick="switchTab('clients')" id="nav-clients" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
+            <button onclick="switchTab('clients')" id="nav-clients" title="Répertoire Clients" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
               <div class="flex items-center space-x-3">
-                <span class="nav-icon-box w-7 h-7 rounded-xl flex items-center justify-center text-sky-400">
+                <span class="nav-icon-box w-7 h-7 rounded-xl flex items-center justify-center text-sky-400 shrink-0">
                   <i data-lucide="users" class="w-4 h-4"></i>
                 </span>
-                <span>Répertoire Clients</span>
+                <span class="sidebar-full-item">Répertoire Clients</span>
               </div>
-              <span class="text-[10px] font-mono opacity-80">6</span>
+              <span class="sidebar-full-item text-[10px] font-mono opacity-80">6</span>
             </button>
 
-            <button onclick="switchTab('tarifs')" id="nav-tarifs" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
+            <button onclick="switchTab('tarifs')" id="nav-tarifs" title="Grille Tarifaire" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
               <div class="flex items-center space-x-3">
-                <span class="nav-icon-box w-7 h-7 rounded-xl flex items-center justify-center text-purple-400">
+                <span class="nav-icon-box w-7 h-7 rounded-xl flex items-center justify-center text-purple-400 shrink-0">
                   <i data-lucide="tags" class="w-4 h-4"></i>
                 </span>
-                <span>Grille Tarifaire</span>
+                <span class="sidebar-full-item">Grille Tarifaire</span>
               </div>
-              <span class="text-[10px] font-mono opacity-80">7</span>
+              <span class="sidebar-full-item text-[10px] font-mono opacity-80">7</span>
             </button>
 
           </div>
@@ -393,11 +439,11 @@
 
       </div>
 
-      <!-- Bas de Sidebar : Mini Jauge Atelier & Contrôles Audio/Paramètres -->
-      <div class="p-4 border-t border-white/10 bg-black/20 backdrop-blur-md space-y-3">
+      <!-- Bas de Sidebar : Mini Jauge Atelier & Contrôles Audio/Paramètres & Barouba Group -->
+      <div class="p-3 sm:p-4 border-t border-white/10 bg-black/20 backdrop-blur-md space-y-3">
         
         <!-- Widget Capacité Atelier Express -->
-        <div class="p-3 bg-white/[0.06] rounded-2xl border border-white/10 shadow-sm">
+        <div class="sidebar-full-item p-3 bg-white/[0.06] rounded-2xl border border-white/10 shadow-sm">
           <div class="flex items-center justify-between text-[11px] mb-1.5">
             <span class="font-extrabold text-white flex items-center space-x-1.5">
               <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -412,7 +458,7 @@
 
         <!-- Statut Offline & Toggles -->
         <div class="flex items-center justify-between px-1 text-xs">
-          <div class="flex items-center space-x-2">
+          <div class="sidebar-full-item flex items-center space-x-2">
             <span class="relative flex h-2 w-2">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
@@ -420,15 +466,15 @@
             <span class="text-[11px] font-bold text-slate-300">First Offline</span>
           </div>
 
-          <div class="flex items-center space-x-1">
+          <div class="flex items-center justify-center w-full md:w-auto space-x-1">
             <!-- Toggle Effets Sonores Apple Taptic -->
             <button onclick="toggleSoundEngine()" id="soundToggleBtn" title="Effets sonores taptics" class="p-1.5 text-slate-400 hover:text-white rounded-xl hover:bg-white/10 transition-colors">
               <i data-lucide="volume-2" class="w-4 h-4 text-emerald-400"></i>
             </button>
 
-            <!-- À Propos & Abonnement -->
-            <button onclick="openAboutModal(); soundEngine.pop();" title="À Propos & Abonnement Pro" class="p-1.5 text-slate-400 hover:text-white rounded-xl hover:bg-white/10 transition-colors">
-              <i data-lucide="info" class="w-4 h-4 text-sky-400"></i>
+            <!-- À Propos Barouba Group -->
+            <button onclick="openAboutModal(); soundEngine.pop();" title="À Propos de Barouba Group & Licence" class="p-1.5 text-slate-400 hover:text-white rounded-xl hover:bg-white/10 transition-colors">
+              <i data-lucide="info" class="w-4 h-4 text-purple-400"></i>
             </button>
 
             <!-- Paramètres -->
@@ -440,7 +486,26 @@
             <button onclick="lockScreen(); soundEngine.click();" title="Verrouiller le terminal" class="p-1.5 text-slate-400 hover:text-white rounded-xl hover:bg-white/10 transition-colors">
               <i data-lucide="lock" class="w-4 h-4"></i>
             </button>
+
+            <!-- Bouton Réduire / Agrandir Sidebar -->
+            <button onclick="toggleSidebarCollapse()" title="Réduire / Agrandir le menu" class="hidden md:flex p-1.5 text-slate-400 hover:text-white rounded-xl hover:bg-white/10 transition-colors">
+              <i data-lucide="chevrons-left" class="w-4 h-4"></i>
+            </button>
           </div>
+        </div>
+
+        <!-- Signature BAROUBA GROUP -->
+        <div class="sidebar-full-item pt-2.5 border-t border-white/10 flex items-center justify-between text-[11px] cursor-pointer hover:opacity-90 transition-opacity" onclick="openAboutModal()">
+          <div class="flex items-center space-x-2">
+            <div class="w-5 h-5 rounded-lg bg-gradient-to-tr from-[#7e14ff] to-[#47bfff] p-0.5 flex items-center justify-center shrink-0 shadow-xs">
+              <img src="/assets/barouba-logo.svg" alt="Barouba Group" class="w-full h-full object-contain">
+            </div>
+            <div class="leading-tight">
+              <span class="font-extrabold text-white text-[11px] block tracking-wide">BAROUBA GROUP</span>
+              <span class="text-[9px] text-purple-300 block">Éditeur Logiciel &bull; BF 🇧🇫</span>
+            </div>
+          </div>
+          <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-200 border border-purple-400/30">PRO</span>
         </div>
 
       </div>
@@ -455,13 +520,18 @@
   <!-- ========================================== -->
   <!-- ZONE DE CONTENU PRINCIPALE (WORKSPACE)    -->
   <!-- ========================================== -->
-  <div class="flex-1 flex flex-col md:pl-72 min-w-0 min-h-screen">
+  <div id="appMainContent" class="flex-1 flex flex-col md:pl-72 min-w-0 min-h-screen">
     
     <!-- Topbar épurée & translucide -->
-    <header class="bg-white/70 backdrop-blur-2xl sticky top-0 z-20 border-b border-black/[0.05] px-4 sm:px-8 py-3.5 flex items-center justify-between no-print shadow-sm">
+    <header class="bg-white/80 backdrop-blur-2xl sticky top-0 z-20 border-b border-black/[0.05] px-4 sm:px-8 py-3 flex items-center justify-between no-print shadow-xs">
       
-      <!-- Titre & Breadcrumb -->
+      <!-- Titre & Bouton Replier Navigation -->
       <div class="flex items-center space-x-3">
+        <!-- Bouton Replier/Déplier Sidebar Desktop -->
+        <button onclick="toggleSidebarCollapse()" title="Replier / Déplier la navigation latérale" class="hidden md:inline-flex items-center justify-center p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/90 active:scale-95 transition-all">
+          <i id="topbarSidebarToggleIcon" data-lucide="panel-left" class="w-4 h-4"></i>
+        </button>
+        <!-- Bouton Menu Mobile -->
         <button onclick="toggleMobileSidebar()" class="md:hidden text-[#64748B] hover:text-[#0F172A] p-1.5 rounded-xl hover:bg-black/[0.04]">
           <i data-lucide="menu" class="w-5 h-5"></i>
         </button>
@@ -470,6 +540,10 @@
             <span class="text-xs text-[#94A3B8] font-medium hidden sm:inline">Pressing & Blanchisserie</span>
             <span class="text-xs text-[#94A3B8] hidden sm:inline">&bull;</span>
             <h1 id="topbarPageTitle" class="text-base sm:text-lg font-black text-[#0F172A] tracking-tight">Tableau de Bord</h1>
+            <span id="topbarPlatformBadge" class="hidden sm:inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-sky-50 text-sky-700 border border-sky-200">
+              <span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+              <span>Web Cloud</span>
+            </span>
           </div>
         </div>
       </div>
@@ -486,6 +560,13 @@
           <!-- Dropdown Résultats -->
           <div id="topSearchResults" class="absolute top-11 right-0 w-80 bg-white/95 backdrop-blur-2xl border border-black/[0.08] rounded-2xl shadow-apple-modal z-50 hidden max-h-72 overflow-y-auto p-1.5 divide-y divide-black/[0.04]"></div>
         </div>
+
+        <!-- Bouton Plein Écran Plein Confort -->
+        <button onclick="toggleAppFullScreen()" title="Basculer en Plein Écran (F11)" class="flex items-center space-x-1.5 px-3 py-2 text-xs font-bold text-slate-700 bg-[#F1F5F9] hover:bg-[#E2E8F0] active:scale-95 rounded-full transition-all border border-black/[0.04]">
+          <i id="topbarFullscreenIcon" data-lucide="maximize" class="w-3.5 h-3.5 text-[#0071E3]"></i>
+          <span class="hidden sm:inline">Plein Écran</span>
+          <kbd class="hidden lg:inline text-[9px] font-mono bg-white px-1 py-0.5 rounded border border-black/10 text-slate-500">F11</kbd>
+        </button>
 
         <!-- Bouton Dépôt Topbar -->
         <button onclick="openNewDepositModal(); soundEngine.pop();" class="hidden sm:inline-flex items-center space-x-1.5 px-4 py-2 bg-gradient-to-r from-[#0071E3] to-[#005BB5] hover:from-[#005BB5] hover:to-[#00478F] text-white text-xs font-bold rounded-full shadow-glow-blue active:scale-95 transition-all">
@@ -1812,17 +1893,19 @@
 
   <!-- MODAL : À PROPOS & ABONNEMENT PRO         -->
   <!-- ========================================== -->
-  <div id="modalAbout" class="fixed inset-0 z-50 bg-[#0F172A]/60 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-y-auto no-print">
+  <!-- MODAL À PROPOS : BAROUBA GROUP FASO        -->
+  <!-- ========================================== -->
+  <div id="modalAbout" class="fixed inset-0 z-50 bg-[#0F172A]/70 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-y-auto no-print">
     <div class="apple-glass bg-white w-full max-w-lg rounded-[34px] shadow-apple-modal p-6 sm:p-7 space-y-5 border border-white">
       
       <div class="flex items-center justify-between border-b border-black/[0.04] pb-3">
-        <div class="flex items-center space-x-2.5">
-          <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#0F172A] to-[#1E293B] text-white flex items-center justify-center shadow-xs">
-            <i data-lucide="info" class="w-4 h-4 text-emerald-400"></i>
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#7e14ff] to-[#47bfff] p-1.5 shadow-md flex items-center justify-center">
+            <img src="/assets/barouba-logo.svg" alt="Barouba Group" class="w-full h-full object-contain filter drop-shadow">
           </div>
           <div>
-            <h3 class="font-black text-sm text-[#0F172A]">À Propos & Licence d'Abonnement</h3>
-            <span class="text-[10px] text-[#64748B]">Terminal Certifié Pressing Faso</span>
+            <h3 class="font-black text-sm text-[#0F172A] tracking-tight">BAROUBA GROUP</h3>
+            <span class="text-[10px] text-purple-700 font-bold bg-purple-50 px-2 py-0.5 rounded-full border border-purple-200">Éditeur & Concepteur Officiel &bull; BF 🇧🇫</span>
           </div>
         </div>
         <button onclick="closeAboutModal()" class="text-[#64748B] hover:text-[#0F172A] p-1.5 rounded-full hover:bg-black/[0.04]">
@@ -1830,54 +1913,65 @@
         </button>
       </div>
 
-      <!-- Hero Card Pro -->
-      <div class="bg-gradient-to-br from-[#0B1E38] via-[#0D3859] to-[#064E3B] text-white p-5 rounded-2xl shadow-md relative overflow-hidden space-y-2 border border-white/10">
+      <!-- Hero Card Barouba Group Prestige -->
+      <div class="bg-gradient-to-br from-[#0c0d26] via-[#1a1340] to-[#0a192f] text-white p-5 rounded-2xl shadow-xl relative overflow-hidden space-y-3 border border-purple-500/30">
         <div class="flex items-center justify-between">
-          <span class="text-[10px] font-mono font-bold tracking-widest text-emerald-300 uppercase">PRESSING POS FASO</span>
-          <span class="text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 flex items-center space-x-1">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
-            <span>Abonnement Actif</span>
+          <div class="flex items-center space-x-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-[10px] font-mono font-bold tracking-widest text-emerald-300 uppercase">SUITE PRO FASO PRESSING</span>
+          </div>
+          <span class="text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-400/30 flex items-center space-x-1">
+            <i data-lucide="shield-check" class="w-3 h-3 text-cyan-300"></i>
+            <span>Certifié Barouba</span>
           </span>
         </div>
-        <h4 class="text-xl font-black tracking-tight text-white">FasoPressing POS & Atelier</h4>
-        <p class="text-xs text-slate-200/90 font-medium leading-relaxed">
-          Version 2.8.5 &bull; Édition Pro Burkina Faso (Ouagadougou & Bobo-Dioulasso)
-        </p>
+        <div>
+          <h4 class="text-xl font-black tracking-tight text-white flex items-center space-x-2">
+            <span>FasoPressing Pro</span>
+            <span class="text-xs font-mono font-bold px-2 py-0.5 rounded-md bg-white/10 text-cyan-300">v2.8.5</span>
+          </h4>
+          <p class="text-xs text-slate-200/90 font-medium leading-relaxed mt-1">
+            Solution professionnelle de gestion de pressing, caisse, atelier et suivi WhatsApp, éditée par <strong>Barouba Group</strong> pour les pressings d'élite au Burkina Faso.
+          </p>
+        </div>
       </div>
 
-      <!-- Détails Abonnement & Licence -->
+      <!-- Détails Éditeur & Licence -->
       <div class="bg-[#F8F9FA] rounded-2xl p-4 space-y-2.5 text-xs">
         <div class="flex items-center justify-between pb-2 border-b border-black/[0.04]">
-          <span class="text-[#64748B] font-semibold">Formule souscrite :</span>
-          <span class="font-black text-[#0F172A] flex items-center space-x-1">
-            <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-500"></i>
-            <span>Abonnement Annuel Pro Illimité</span>
+          <span class="text-[#64748B] font-semibold">Éditeur du Logiciel :</span>
+          <span class="font-black text-[#0F172A] flex items-center space-x-1.5">
+            <span class="w-2 h-2 rounded-full bg-[#863bff]"></span>
+            <span class="text-purple-700 font-extrabold tracking-wide">BAROUBA GROUP</span>
           </span>
         </div>
         <div class="flex items-center justify-between pb-2 border-b border-black/[0.04]">
-          <span class="text-[#64748B] font-semibold">Validité :</span>
-          <span class="font-bold text-emerald-700 font-mono">Actif &bull; Renouvellement 31/12/2027</span>
+          <span class="text-[#64748B] font-semibold">Licence & Statut :</span>
+          <span class="font-bold text-emerald-700 font-mono flex items-center space-x-1">
+            <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-500"></i>
+            <span>Licence Pro Illimitée</span>
+          </span>
         </div>
         <div class="flex items-center justify-between pb-2 border-b border-black/[0.04]">
           <span class="text-[#64748B] font-semibold">Mode d'exécution :</span>
-          <span class="font-bold text-[#0F172A]">100% First-Offline & Réseau Local Wi-Fi</span>
+          <span class="font-bold text-[#0F172A]">100% Hors Ligne (First-Offline) & Réseau Local</span>
         </div>
         <div class="flex items-center justify-between">
-          <span class="text-[#64748B] font-semibold">Identifiant Terminal :</span>
-          <span class="font-mono text-[11px] font-bold text-[#0071E3] bg-blue-50 px-2 py-0.5 rounded-md">FP-BF-OUAGA-7001</span>
+          <span class="text-[#64748B] font-semibold">Siège & Conception :</span>
+          <span class="font-bold text-slate-800">Ouagadougou, Burkina Faso 🇧🇫</span>
         </div>
       </div>
 
-      <!-- Développeurs & Contact -->
+      <!-- Support & Contact Barouba Group -->
       <div class="space-y-2 text-xs">
-        <span class="font-bold text-[#0F172A] block">Développeurs & Support Technique</span>
+        <span class="font-bold text-[#0F172A] block">Support Direct Barouba Group</span>
         <p class="text-[#64748B] text-[11px] leading-relaxed">
-          Application spécialement conçue et personnalisée pour les pressings professionnels. Pour renouvellement, assistance sur site ou formation :
+          Pour une assistance personnalisée, une intégration multi-sites ou le déploiement sur plusieurs terminaux, l'équipe technique de Barouba Group est à votre entière disposition.
         </p>
         <div class="pt-1 flex flex-col sm:flex-row gap-2">
-          <a href="https://wa.me/22670001122?text=Bonjour%20Support%20FasoPressing%20Pro" target="_blank" class="flex-1 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold flex items-center justify-center space-x-1.5 shadow-sm active:scale-95 transition-all text-xs">
+          <a href="https://wa.me/22670001122?text=Bonjour%20Barouba%20Group,%20je%20vous%20contacte%20concernant%20FasoPressing%20Pro" target="_blank" class="flex-1 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold flex items-center justify-center space-x-2 shadow-sm active:scale-95 transition-all text-xs">
             <i data-lucide="message-circle" class="w-4 h-4"></i>
-            <span>Assistance WhatsApp (+226 70 00 11 22)</span>
+            <span>WhatsApp Barouba Group (+226 70 00 11 22)</span>
           </a>
           <button onclick="closeAboutModal()" class="py-2.5 px-4 bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#0F172A] rounded-xl font-bold text-xs transition-colors">
             Fermer
@@ -2269,25 +2363,27 @@
     function init3DCardTilts() {
       const cards = document.querySelectorAll('.bento-card');
       cards.forEach(card => {
+        if (card.dataset.tiltReady === 'true') return;
+        card.dataset.tiltReady = 'true';
         card.addEventListener('mousemove', (e) => {
           const rect = card.getBoundingClientRect();
           const x = e.clientX - rect.left;
           const y = e.clientY - rect.top;
           const centerX = rect.width / 2;
           const centerY = rect.height / 2;
-          const rotateX = ((y - centerY) / centerY) * -5;
-          const rotateY = ((x - centerX) / centerX) * 5;
+          const rotateX = ((y - centerY) / centerY) * -3;
+          const rotateY = ((x - centerX) / centerX) * 3;
 
-          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px) scale3d(1.015, 1.015, 1.015)`;
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
           
           const glare = card.querySelector('.card-glare');
           if (glare) {
-            glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.7), transparent 60%)`;
+            glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.4), transparent 60%)`;
           }
         });
 
         card.addEventListener('mouseleave', () => {
-          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale3d(1, 1, 1)';
+          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
         });
       });
     }
@@ -2540,6 +2636,7 @@
 
     function switchTab(tabName) {
       soundEngine.pop();
+      // Masquer tous les onglets sans délai
       document.querySelectorAll('.tab-view').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.sidebar-link').forEach(btn => {
         btn.classList.remove('nav-pill-active', 'font-bold');
@@ -2550,9 +2647,7 @@
 
       if (activeView) {
         activeView.classList.remove('hidden');
-        if (typeof gsap !== 'undefined') {
-          gsap.fromTo(activeView, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
-        }
+        activeView.style.opacity = '1';
       }
       if (activeBtn) {
         activeBtn.classList.add('nav-pill-active', 'font-bold');
@@ -2562,9 +2657,9 @@
 
       const sidebar = document.getElementById('appSidebar');
       const overlay = document.getElementById('mobileSidebarOverlay');
-      if (!sidebar.classList.contains('-translate-x-full') && window.innerWidth < 768) {
+      if (sidebar && !sidebar.classList.contains('-translate-x-full') && window.innerWidth < 768) {
         sidebar.classList.add('-translate-x-full');
-        overlay.classList.add('hidden');
+        if (overlay) overlay.classList.add('hidden');
       }
 
       if (tabName === 'dashboard') {
@@ -2573,7 +2668,58 @@
       }
       if (tabName === 'calendar') renderCalendar();
       if (tabName === 'cash') renderCashJournal();
-      lucide.createIcons();
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // Gestion de la réduction de la navigation latérale (Replier / Déplier)
+    function toggleSidebarCollapse() {
+      const sidebar = document.getElementById('appSidebar');
+      const main = document.getElementById('appMainContent');
+      if (!sidebar || !main) return;
+      const isCollapsed = sidebar.classList.toggle('is-collapsed');
+      main.classList.toggle('is-collapsed', isCollapsed);
+      localStorage.setItem('faso_sidebar_collapsed', isCollapsed ? 'true' : 'false');
+      
+      const headIcon = document.getElementById('sidebarHeaderCollapseIcon');
+      if (headIcon) {
+        headIcon.setAttribute('data-lucide', isCollapsed ? 'panel-left-open' : 'panel-left-close');
+      }
+      if (window.lucide) lucide.createIcons();
+      soundEngine.pop();
+    }
+
+    // Gestion du Mode Plein Écran
+    function toggleAppFullScreen() {
+      soundEngine.pop();
+      try {
+        if (!document.fullscreenElement) {
+          if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen();
+          }
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          }
+        }
+      } catch (err) {
+        console.warn('Plein écran non supporté:', err);
+      }
+    }
+
+    function initSidebarState() {
+      try {
+        const saved = localStorage.getItem('faso_sidebar_collapsed');
+        if (saved === 'true' && window.innerWidth >= 1024) {
+          const sidebar = document.getElementById('appSidebar');
+          const main = document.getElementById('appMainContent');
+          if (sidebar && main) {
+            sidebar.classList.add('is-collapsed');
+            main.classList.add('is-collapsed');
+            const headIcon = document.getElementById('sidebarHeaderCollapseIcon');
+            if (headIcon) headIcon.setAttribute('data-lucide', 'panel-left-open');
+          }
+        }
+      } catch (e) {}
     }
 
     // Recherche Spotlight Universelle
@@ -4732,7 +4878,61 @@
       }
     });
 
+    // ==========================================
+    // DÉTECTION DE PLATEFORME (WEB / WINDOWS / ANDROID)
+    // ==========================================
+    function detectPlatform() {
+      const ua = (navigator.userAgent || '').toLowerCase();
+      if (window.isElectron || ua.includes('electron')) {
+        return 'windows';
+      }
+      if (window.Capacitor || ua.includes('android') || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches && /android|iphone|ipad/i.test(ua))) {
+        return 'android';
+      }
+      return 'web';
+    }
+
+    function applyPlatformBranding() {
+      const platform = detectPlatform();
+      const sidebarBadge = document.getElementById('sidebarPlatformBadge');
+      const topbarBadge = document.getElementById('topbarPlatformBadge');
+
+      if (platform === 'windows') {
+        if (sidebarBadge) {
+          sidebarBadge.className = 'text-[9px] font-black tracking-wider px-2 py-0.5 rounded-md bg-indigo-500/30 text-indigo-200 border border-indigo-400/50 shadow-sm';
+          sidebarBadge.innerHTML = '💻 WINDOWS BUREAU';
+        }
+        if (topbarBadge) {
+          topbarBadge.className = 'hidden sm:inline-flex items-center space-x-1.5 px-3 py-0.5 rounded-full text-[11px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 shadow-sm';
+          topbarBadge.innerHTML = '<span class="w-2 h-2 rounded-full bg-indigo-600 animate-pulse"></span><span>App Bureau Windows</span>';
+        }
+        document.title = 'FasoPressing Pro - Bureau Windows';
+      } else if (platform === 'android') {
+        if (sidebarBadge) {
+          sidebarBadge.className = 'text-[9px] font-black tracking-wider px-2 py-0.5 rounded-md bg-emerald-500/30 text-emerald-200 border border-emerald-400/50 shadow-sm';
+          sidebarBadge.innerHTML = '📱 ANDROID MOBILE';
+        }
+        if (topbarBadge) {
+          topbarBadge.className = 'hidden sm:inline-flex items-center space-x-1.5 px-3 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-sm';
+          topbarBadge.innerHTML = '<span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span><span>App Mobile Android</span>';
+        }
+        document.title = 'FasoPressing Pro - Android Mobile';
+      } else {
+        if (sidebarBadge) {
+          sidebarBadge.className = 'text-[9px] font-black tracking-wider px-2 py-0.5 rounded-md bg-sky-500/25 text-sky-300 border border-sky-400/40';
+          sidebarBadge.innerHTML = '🌐 CLOUD WEB';
+        }
+        if (topbarBadge) {
+          topbarBadge.className = 'hidden sm:inline-flex items-center space-x-1.5 px-3 py-0.5 rounded-full text-[11px] font-bold bg-sky-50 text-sky-700 border border-sky-200 shadow-sm';
+          topbarBadge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span><span>Version Cloud Web</span>';
+        }
+        document.title = 'Pressing Élite Faso - POS & Caisse';
+      }
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
+      initSidebarState();
+      applyPlatformBranding();
       fetchAppData();
     });
   </script>
