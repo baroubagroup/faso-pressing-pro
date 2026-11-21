@@ -5,7 +5,10 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "electron:start": "electron \"2 - APPLICATION WINDOWS (BUREAU)/main.js\"",
+    "electron:pack": "electron-builder --dir",
+    "electron:dist": "electron-builder --win portable --win nsis"
   },
   "keywords": [
     "pressing",
