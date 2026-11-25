@@ -232,11 +232,11 @@
       flex-direction: column !important;
       align-items: center !important;
       justify-content: center !important;
-      padding: 0.55rem 0.25rem !important;
-      min-height: 3.75rem !important;
+      padding: 0.45rem 0.2rem !important;
+      min-height: 3.35rem !important;
       width: 100% !important;
-      border-radius: 1.1rem !important;
-      margin-bottom: 0.35rem !important;
+      border-radius: 1rem !important;
+      margin-bottom: 0.25rem !important;
       text-align: center !important;
     }
     #appSidebar.is-collapsed .sidebar-item-main {
@@ -251,8 +251,8 @@
       margin-left: 0 !important;
     }
     #appSidebar.is-collapsed .nav-icon-box {
-      width: 1.75rem !important;
-      height: 1.75rem !important;
+      width: 1.6rem !important;
+      height: 1.6rem !important;
       margin: 0 auto !important;
       display: flex !important;
       align-items: center !important;
@@ -267,16 +267,15 @@
       padding: 0.75rem 0.5rem 0.5rem 0.5rem !important;
     }
     #appSidebar.is-collapsed .sidebar-nav-container {
-      padding-left: 0.5rem !important;
-      padding-right: 0.5rem !important;
-      padding-top: 0.5rem !important;
+      padding: 0.4rem 0.35rem !important;
+      flex: 1 1 0% !important;
+      overflow-y: auto !important;
+    }
+    #appSidebar.is-collapsed .sidebar-nav-group {
+      margin-bottom: 0.25rem !important;
     }
     #appSidebar.is-collapsed .sidebar-footer-box {
-      padding: 0.5rem !important;
-    }
-    #appSidebar.is-collapsed .sidebar-footer-controls {
-      flex-direction: column !important;
-      gap: 0.35rem !important;
+      display: none !important;
     }
 
     .tab-view {
@@ -369,10 +368,10 @@
     <div class="flex flex-col h-full">
       
       <!-- En-tête macOS avec Traffic Lights et Logo de Prestige -->
-      <div class="sidebar-header-box p-6 pb-4 border-b border-white/10">
+      <div class="sidebar-header-box p-4 pb-3 border-b border-white/10">
         
         <!-- MODE RÉDUIT (RAIL) : Emblème Barouba + Bouton >> Déplier + Mini Bouton Dépôt -->
-        <div class="sidebar-collapsed-item flex flex-col items-center justify-center space-y-2.5 mb-1">
+        <div class="sidebar-collapsed-item flex flex-col items-center justify-center space-y-2 mb-1">
           <div class="flex items-center justify-between w-full px-0.5">
             <!-- Emblème Circulaire Barouba Group -->
             <div onclick="switchTab('author'); soundEngine.pop();" title="BAROUBA GROUP - Éditeur Logiciel" class="w-9 h-9 rounded-full overflow-hidden border border-amber-400/50 shadow-md bg-black flex items-center justify-center cursor-pointer hover:scale-105 transition-transform shrink-0">
@@ -393,7 +392,7 @@
         <!-- MODE ÉTENDU : Traffic Lights, Marque & Nouveau Dépôt -->
         <div class="sidebar-full-item">
           <!-- macOS Window Controls (Traffic Lights) & Toggle Réduction -->
-          <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center justify-between mb-2.5">
             <div class="flex items-center space-x-2">
               <span class="traffic-dot bg-[#FF5F56] border border-[#E0443E]"></span>
               <span class="traffic-dot bg-[#FFBD2E] border border-[#DEA123]"></span>
@@ -412,7 +411,7 @@
 
           <!-- Marque & Badge de Prestige -->
           <div class="flex items-center space-x-3.5 cursor-pointer group" onclick="switchTab('dashboard')">
-            <div id="headerLogoContainer" class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#1E293B] to-[#334155] border border-white/15 text-white flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform relative overflow-hidden shrink-0">
+            <div id="headerLogoContainer" class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#1E293B] to-[#334155] border border-white/15 text-white flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform relative overflow-hidden shrink-0">
               <i data-lucide="sparkles" class="w-5 h-5 text-emerald-400"></i>
               <div class="absolute inset-0 bg-gradient-to-t from-emerald-500/20 to-transparent"></div>
             </div>
@@ -428,7 +427,7 @@
           </div>
 
           <!-- Bouton Nouveau Dépôt Flottant Unique -->
-          <button onclick="openNewDepositModal(); soundEngine.pop();" title="Nouveau Dépôt Linge (⌘N)" class="w-full mt-4 py-3 px-3.5 bg-gradient-to-r from-[#0071E3] to-[#005BB5] hover:from-[#005BB5] hover:to-[#00478F] text-white rounded-2xl text-xs font-black shadow-glow-blue flex items-center justify-between active:scale-[0.98] transition-all group border border-white/15">
+          <button onclick="openNewDepositModal(); soundEngine.pop();" title="Nouveau Dépôt Linge (⌘N)" class="w-full mt-2.5 py-2.5 px-3.5 bg-gradient-to-r from-[#0071E3] to-[#005BB5] hover:from-[#005BB5] hover:to-[#00478F] text-white rounded-2xl text-xs font-black shadow-glow-blue flex items-center justify-between active:scale-[0.98] transition-all group border border-white/15">
             <div class="flex items-center space-x-2">
               <span class="w-5 h-5 rounded-lg bg-white/20 text-white flex items-center justify-center group-hover:rotate-90 transition-transform">
                 <i data-lucide="plus" class="w-3.5 h-3.5"></i>
@@ -442,11 +441,11 @@
       </div>
 
       <!-- Navigation macOS avec Pills interactifs -->
-      <div class="sidebar-nav-container flex-1 overflow-y-auto px-4 py-4 space-y-6">
+      <div class="sidebar-nav-container flex-1 overflow-y-auto px-3.5 py-3 space-y-3.5">
         
         <!-- SECTION 1 : APERÇU -->
         <div class="sidebar-nav-group">
-          <span class="sidebar-section-title px-3 text-[10px] font-black tracking-wider uppercase text-slate-400 block mb-2">VUE D'ENSEMBLE</span>
+          <span class="sidebar-section-title px-3 text-[10px] font-black tracking-wider uppercase text-slate-400 block mb-1">VUE D'ENSEMBLE</span>
           <div class="space-y-1" id="navGroupOverview">
             
             <button onclick="switchTab('dashboard')" id="nav-dashboard" title="Tableau de Bord" class="sidebar-link nav-pill-active w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-bold transition-all">
@@ -487,7 +486,7 @@
 
         <!-- SECTION 2 : GESTION OPÉRATIONNELLE -->
         <div class="sidebar-nav-group">
-          <span class="sidebar-section-title px-3 text-[10px] font-black tracking-wider uppercase text-slate-400 block mb-2">GESTION & CAISSE</span>
+          <span class="sidebar-section-title px-3 text-[10px] font-black tracking-wider uppercase text-slate-400 block mb-1">GESTION & CAISSE</span>
           <div class="space-y-1" id="navGroupManagement">
             
             <button onclick="switchTab('orders')" id="nav-orders" title="Tous les Tickets" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
@@ -552,67 +551,50 @@
       </div>
 
       <!-- Bas de Sidebar : Mini Jauge Atelier & Contrôles Audio/Paramètres & Barouba Group -->
-      <div class="sidebar-footer-box p-3 sm:p-4 border-t border-white/10 bg-black/20 backdrop-blur-md space-y-3">
+      <div class="sidebar-footer-box px-3.5 py-2 border-t border-white/10 bg-black/25 backdrop-blur-md space-y-2">
         
-        <!-- Widget Capacité Atelier Express -->
-        <div class="sidebar-full-item p-3 bg-white/[0.06] rounded-2xl border border-white/10 shadow-sm">
-          <div class="flex items-center justify-between text-[11px] mb-1.5">
-            <span class="font-extrabold text-white flex items-center space-x-1.5">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>Charge Atelier</span>
-            </span>
-            <span id="sidebarWorkshopPct" class="font-mono font-bold text-emerald-400">15%</span>
-          </div>
-          <div class="w-full bg-white/10 rounded-full h-1.5 overflow-hidden">
-            <div id="sidebarWorkshopBar" class="bg-gradient-to-r from-emerald-400 to-[#0071E3] h-1.5 rounded-full transition-all duration-700" style="width: 15%"></div>
-          </div>
-        </div>
-
-        <!-- Statut Offline & Toggles -->
-        <div class="flex items-center justify-between px-1 text-xs">
-          
-
-          <div class="sidebar-footer-controls flex items-center justify-center w-full md:w-auto space-x-1">
-            <!-- Toggle Effets Sonores Apple Taptic -->
-            <button onclick="toggleSoundEngine()" id="soundToggleBtn" title="Effets sonores taptics" class="p-1.5 text-slate-400 hover:text-white rounded-xl hover:bg-white/10 transition-colors">
-              <i data-lucide="volume-2" class="w-4 h-4 text-emerald-400"></i>
-            </button>
-
-            <!-- À Propos Barouba Group -->
-            <button onclick="openAboutModal(); soundEngine.pop();" title="À Propos de Barouba Group & Licence" class="p-1.5 text-slate-400 hover:text-white rounded-xl hover:bg-white/10 transition-colors">
-              <i data-lucide="info" class="w-4 h-4 text-purple-400"></i>
-            </button>
-
-            <!-- Paramètres -->
-            <button onclick="openSettingsModal(); soundEngine.pop();" title="Paramètres & Sauvegardes" class="p-1.5 text-slate-400 hover:text-white rounded-xl hover:bg-white/10 transition-colors">
-              <i data-lucide="settings" class="w-4 h-4"></i>
-            </button>
-
-            <!-- Verrouiller -->
-            <button onclick="lockScreen(); soundEngine.click();" title="Verrouiller le terminal" class="p-1.5 text-slate-400 hover:text-white rounded-xl hover:bg-white/10 transition-colors">
-              <i data-lucide="lock" class="w-4 h-4"></i>
-            </button>
-
-            <!-- Bouton Réduire / Agrandir Sidebar -->
-            <button onclick="toggleSidebarCollapse()" title="Réduire / Agrandir le menu" class="hidden md:flex p-1.5 text-slate-400 hover:text-white rounded-xl hover:bg-white/10 transition-colors">
-              <i data-lucide="chevrons-left" class="w-4 h-4"></i>
-            </button>
-          </div>
-        </div>
-
-                <!-- Signature BAROUBA GROUP -->
-        <div class="sidebar-full-item pt-2.5 border-t border-white/10 flex items-center justify-between text-[11px] cursor-pointer hover:opacity-90 transition-opacity" onclick="switchTab('author')">
+        <!-- Indicateur Épuré Capacité Atelier (1 seule ligne discrète) -->
+        <div class="sidebar-full-item flex items-center justify-between text-[11px] px-1 pb-1">
+          <span class="font-bold text-slate-300 flex items-center space-x-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Charge Atelier</span>
+          </span>
           <div class="flex items-center space-x-2">
-            <div class="w-6 h-6 rounded-full overflow-hidden border border-amber-400/40 shadow-xs shrink-0 bg-black flex items-center justify-center">
-              <img src="assets/barouba-logo.png" alt="Barouba Group" class="w-full h-full object-cover">
+            <div class="w-16 bg-white/10 rounded-full h-1.5 overflow-hidden">
+              <div id="sidebarWorkshopBar" class="bg-gradient-to-r from-emerald-400 to-[#0071E3] h-1.5 rounded-full transition-all duration-700" style="width: 15%"></div>
             </div>
-            <div class="leading-tight">
-              <span class="font-extrabold text-white text-[11px] block tracking-wide">BAROUBA GROUP</span>
-              <span class="text-[9px] text-amber-300/80 block">Éditeur Logiciel &bull; BF 🇧🇫</span>
-            </div>
+            <span id="sidebarWorkshopPct" class="font-mono font-bold text-emerald-400 text-xs">15%</span>
           </div>
-          <span class="text-[9px] font-black px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-200 border border-amber-400/30">PRO</span>
-        </div></div>
+        </div>
+
+        <!-- Rangée Horizontale des Utilitaires (Mode Déroulé Uniquement) -->
+        <div class="sidebar-footer-controls flex items-center justify-between w-full pt-1.5 border-t border-white/10 px-0.5">
+          <!-- Toggle Effets Sonores Apple Taptic -->
+          <button onclick="toggleSoundEngine()" id="soundToggleBtn" title="Effets sonores taptics" class="p-1.5 text-slate-400 hover:text-white rounded-xl hover:bg-white/10 transition-colors">
+            <i data-lucide="volume-2" class="w-4 h-4 text-emerald-400"></i>
+          </button>
+
+          <!-- À Propos -->
+          <button onclick="openAboutModal(); soundEngine.pop();" title="À Propos & Licence" class="p-1.5 text-slate-400 hover:text-white rounded-xl hover:bg-white/10 transition-colors">
+            <i data-lucide="info" class="w-4 h-4 text-purple-400"></i>
+          </button>
+
+          <!-- Paramètres -->
+          <button onclick="openSettingsModal(); soundEngine.pop();" title="Paramètres & Sauvegardes" class="p-1.5 text-slate-400 hover:text-white rounded-xl hover:bg-white/10 transition-colors">
+            <i data-lucide="settings" class="w-4 h-4"></i>
+          </button>
+
+          <!-- Verrouiller -->
+          <button onclick="lockScreen(); soundEngine.click();" title="Verrouiller le terminal" class="p-1.5 text-slate-400 hover:text-white rounded-xl hover:bg-white/10 transition-colors">
+            <i data-lucide="lock" class="w-4 h-4"></i>
+          </button>
+
+          <!-- Bouton Réduire Sidebar -->
+          <button onclick="toggleSidebarCollapse()" title="Réduire le menu" class="hidden md:flex p-1.5 text-slate-400 hover:text-white rounded-xl hover:bg-white/10 transition-colors">
+            <i data-lucide="chevrons-left" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
 
       </div>
 
