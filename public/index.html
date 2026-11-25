@@ -186,7 +186,7 @@
       display: inline-block;
     }
 
-    /* Sidebar Réduction & Fluidité Maximale */
+    /* Sidebar Réduction & Mode Rail Ergonomique */
     #appSidebar {
       transition: width 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s ease-out !important;
     }
@@ -194,7 +194,10 @@
       transition: padding-left 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
     }
     #appSidebar.is-collapsed {
-      width: 4.5rem !important; /* 72px */
+      width: 5.5rem !important; /* 88px */
+    }
+    #appMainContent.is-collapsed {
+      padding-left: 5.5rem !important;
     }
     #appSidebar.is-collapsed .sidebar-full-item {
       display: none !important;
@@ -202,20 +205,80 @@
     #appSidebar.is-collapsed .sidebar-collapsed-item {
       display: flex !important;
     }
-    #appSidebar.is-collapsed .sidebar-link {
-      justify-content: center !important;
-      padding-left: 0.5rem !important;
-      padding-right: 0.5rem !important;
+    .sidebar-collapsed-item {
+      display: none !important;
     }
     #appSidebar.is-collapsed .sidebar-section-title {
       display: none !important;
     }
-    #appMainContent.is-collapsed {
-      padding-left: 4.5rem !important;
-    }
-    .sidebar-collapsed-item {
+
+    /* Navigation Mode Rail (Icône en haut, Nom en dessous) */
+    .sidebar-collapsed-label {
       display: none;
     }
+    #appSidebar.is-collapsed .sidebar-collapsed-label {
+      display: block !important;
+      font-size: 10px !important;
+      font-weight: 700 !important;
+      letter-spacing: -0.01em !important;
+      line-height: 1.15 !important;
+      margin-top: 4px !important;
+      text-align: center !important;
+      white-space: nowrap !important;
+      color: #94A3B8;
+    }
+    #appSidebar.is-collapsed .sidebar-link {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 0.55rem 0.25rem !important;
+      min-height: 3.75rem !important;
+      width: 100% !important;
+      border-radius: 1.1rem !important;
+      margin-bottom: 0.35rem !important;
+      text-align: center !important;
+    }
+    #appSidebar.is-collapsed .sidebar-item-main {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      margin: 0 !important;
+      gap: 0 !important;
+    }
+    #appSidebar.is-collapsed .sidebar-item-main > * + * {
+      margin-left: 0 !important;
+    }
+    #appSidebar.is-collapsed .nav-icon-box {
+      width: 1.75rem !important;
+      height: 1.75rem !important;
+      margin: 0 auto !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    #appSidebar.is-collapsed .nav-icon-box svg,
+    #appSidebar.is-collapsed .nav-icon-box i {
+      width: 1.25rem !important;
+      height: 1.25rem !important;
+    }
+    #appSidebar.is-collapsed .sidebar-header-box {
+      padding: 0.75rem 0.5rem 0.5rem 0.5rem !important;
+    }
+    #appSidebar.is-collapsed .sidebar-nav-container {
+      padding-left: 0.5rem !important;
+      padding-right: 0.5rem !important;
+      padding-top: 0.5rem !important;
+    }
+    #appSidebar.is-collapsed .sidebar-footer-box {
+      padding: 0.5rem !important;
+    }
+    #appSidebar.is-collapsed .sidebar-footer-controls {
+      flex-direction: column !important;
+      gap: 0.35rem !important;
+    }
+
     .tab-view {
       transition: opacity 0.08s ease-out;
     }
@@ -238,6 +301,15 @@
       background: linear-gradient(135deg, #0071E3 0%, #005BB5 100%) !important;
       color: #FFFFFF !important;
       box-shadow: 0 4px 18px -2px rgba(0, 113, 227, 0.5) !important;
+    }
+    .sidebar-link.nav-pill-active .nav-icon-box,
+    .sidebar-link.nav-pill-active .nav-icon-box i,
+    .sidebar-link.nav-pill-active .nav-icon-box svg,
+    .sidebar-link.nav-pill-active .sidebar-collapsed-label {
+      color: #FFFFFF !important;
+    }
+    #appSidebar.is-collapsed .sidebar-link:hover .sidebar-collapsed-label {
+      color: #FFFFFF !important;
     }
     .sidebar-link.nav-pill-active i,
     .sidebar-link.nav-pill-active span,
@@ -297,90 +369,115 @@
     <div class="flex flex-col h-full">
       
       <!-- En-tête macOS avec Traffic Lights et Logo de Prestige -->
-      <div class="p-6 pb-4 border-b border-white/10">
+      <div class="sidebar-header-box p-6 pb-4 border-b border-white/10">
         
-        <!-- macOS Window Controls (Traffic Lights) & Toggle Réduction -->
-        <div class="flex items-center justify-between mb-4">
-          <div class="flex items-center space-x-2">
-            <span class="traffic-dot bg-[#FF5F56] border border-[#E0443E]"></span>
-            <span class="traffic-dot bg-[#FFBD2E] border border-[#DEA123]"></span>
-            <span class="traffic-dot bg-[#27C93F] border border-[#1AAB29]"></span>
-          </div>
-          <span class="sidebar-full-item text-[10px] font-mono font-bold tracking-wider text-slate-400">v2.8 FASO PRO</span>
-          <div class="flex items-center space-x-1">
-            <button onclick="toggleSidebarCollapse()" title="Réduire / Agrandir le menu latéral" class="hidden md:flex text-slate-400 hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors">
-              <i id="sidebarHeaderCollapseIcon" data-lucide="panel-left-close" class="w-4 h-4"></i>
-            </button>
-            <button onclick="toggleMobileSidebar()" class="md:hidden text-slate-400 hover:text-white p-1 rounded-lg">
-              <i data-lucide="x" class="w-5 h-5"></i>
+        <!-- MODE RÉDUIT (RAIL) : Emblème Barouba + Bouton >> Déplier + Mini Bouton Dépôt -->
+        <div class="sidebar-collapsed-item flex flex-col items-center justify-center space-y-2.5 mb-1">
+          <div class="flex items-center justify-between w-full px-0.5">
+            <!-- Emblème Circulaire Barouba Group -->
+            <div onclick="switchTab('author'); soundEngine.pop();" title="BAROUBA GROUP - Éditeur Logiciel" class="w-9 h-9 rounded-full overflow-hidden border border-amber-400/50 shadow-md bg-black flex items-center justify-center cursor-pointer hover:scale-105 transition-transform shrink-0">
+              <img src="assets/barouba-logo.png" alt="Barouba Group" class="w-full h-full object-cover">
+            </div>
+            <!-- Bouton >> Déplier Sidebar -->
+            <button onclick="toggleSidebarCollapse()" title="Déplier le menu complet" class="w-7 h-7 rounded-lg bg-white/10 hover:bg-white/20 text-white flex items-center justify-center active:scale-95 transition-all">
+              <i data-lucide="chevrons-right" class="w-4 h-4 text-slate-300"></i>
             </button>
           </div>
+          <!-- Mini Bouton Dépôt Rapide -->
+          <button onclick="openNewDepositModal(); soundEngine.pop();" title="Nouveau Dépôt Linge" class="w-full py-1.5 bg-gradient-to-r from-[#0071E3] to-[#005BB5] hover:brightness-110 text-white rounded-xl text-[10px] font-black flex flex-col items-center justify-center shadow-md active:scale-95 transition-all border border-white/20">
+            <i data-lucide="plus" class="w-3.5 h-3.5 mb-0.5"></i>
+            <span>Dépôt</span>
+          </button>
         </div>
 
-        <!-- Marque & Badge de Prestige -->
-        <div class="flex items-center space-x-3.5 cursor-pointer group" onclick="switchTab('dashboard')">
-          <div id="headerLogoContainer" class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#1E293B] to-[#334155] border border-white/15 text-white flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform relative overflow-hidden shrink-0">
-            <i data-lucide="sparkles" class="w-5 h-5 text-emerald-400"></i>
-            <div class="absolute inset-0 bg-gradient-to-t from-emerald-500/20 to-transparent"></div>
-          </div>
-          <div class="sidebar-full-item">
-            <div class="flex items-center space-x-1.5">
-              <span class="font-black text-sm tracking-tight text-white" id="headerPressingName">Pressing Élite Faso</span>
+        <!-- MODE ÉTENDU : Traffic Lights, Marque & Nouveau Dépôt -->
+        <div class="sidebar-full-item">
+          <!-- macOS Window Controls (Traffic Lights) & Toggle Réduction -->
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center space-x-2">
+              <span class="traffic-dot bg-[#FF5F56] border border-[#E0443E]"></span>
+              <span class="traffic-dot bg-[#FFBD2E] border border-[#DEA123]"></span>
+              <span class="traffic-dot bg-[#27C93F] border border-[#1AAB29]"></span>
             </div>
-            <div class="flex items-center space-x-1.5 mt-0.5">
-              <span class="text-[9px] font-black tracking-widest px-1.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">PRO POS</span>
-              <span class="text-[11px] text-slate-400 font-medium hidden sm:inline" id="headerTagline">Ouagadougou 🇧🇫</span>
+            <span class="text-[10px] font-mono font-bold tracking-wider text-slate-400">v2.8 FASO PRO</span>
+            <div class="flex items-center space-x-1">
+              <button onclick="toggleSidebarCollapse()" title="Réduire en Mode Rail" class="hidden md:flex text-slate-400 hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors">
+                <i id="sidebarHeaderCollapseIcon" data-lucide="chevrons-left" class="w-4 h-4"></i>
+              </button>
+              <button onclick="toggleMobileSidebar()" class="md:hidden text-slate-400 hover:text-white p-1 rounded-lg">
+                <i data-lucide="x" class="w-5 h-5"></i>
+              </button>
             </div>
           </div>
-        </div>
 
-        <!-- Bouton Nouveau Dépôt Flottant Unique -->
-        <button onclick="openNewDepositModal(); soundEngine.pop();" title="Nouveau Dépôt Linge (⌘N)" class="w-full mt-4 py-3 px-3.5 bg-gradient-to-r from-[#0071E3] to-[#005BB5] hover:from-[#005BB5] hover:to-[#00478F] text-white rounded-2xl text-xs font-black shadow-glow-blue flex items-center justify-between active:scale-[0.98] transition-all group border border-white/15">
-          <div class="flex items-center space-x-2">
-            <span class="w-5 h-5 rounded-lg bg-white/20 text-white flex items-center justify-center group-hover:rotate-90 transition-transform">
-              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
-            </span>
-            <span class="sidebar-full-item">Nouveau Dépôt Linge</span>
+          <!-- Marque & Badge de Prestige -->
+          <div class="flex items-center space-x-3.5 cursor-pointer group" onclick="switchTab('dashboard')">
+            <div id="headerLogoContainer" class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#1E293B] to-[#334155] border border-white/15 text-white flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform relative overflow-hidden shrink-0">
+              <i data-lucide="sparkles" class="w-5 h-5 text-emerald-400"></i>
+              <div class="absolute inset-0 bg-gradient-to-t from-emerald-500/20 to-transparent"></div>
+            </div>
+            <div>
+              <div class="flex items-center space-x-1.5">
+                <span class="font-black text-sm tracking-tight text-white" id="headerPressingName">Pressing Élite Faso</span>
+              </div>
+              <div class="flex items-center space-x-1.5 mt-0.5">
+                <span class="text-[9px] font-black tracking-widest px-1.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">PRO POS</span>
+                <span class="text-[11px] text-slate-400 font-medium hidden sm:inline" id="headerTagline">Ouagadougou 🇧🇫</span>
+              </div>
+            </div>
           </div>
-          <kbd class="sidebar-full-item text-[10px] font-mono bg-white/20 text-white px-1.5 py-0.5 rounded-md">⌘N</kbd>
-        </button>
+
+          <!-- Bouton Nouveau Dépôt Flottant Unique -->
+          <button onclick="openNewDepositModal(); soundEngine.pop();" title="Nouveau Dépôt Linge (⌘N)" class="w-full mt-4 py-3 px-3.5 bg-gradient-to-r from-[#0071E3] to-[#005BB5] hover:from-[#005BB5] hover:to-[#00478F] text-white rounded-2xl text-xs font-black shadow-glow-blue flex items-center justify-between active:scale-[0.98] transition-all group border border-white/15">
+            <div class="flex items-center space-x-2">
+              <span class="w-5 h-5 rounded-lg bg-white/20 text-white flex items-center justify-center group-hover:rotate-90 transition-transform">
+                <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+              </span>
+              <span>Nouveau Dépôt Linge</span>
+            </div>
+            <kbd class="text-[10px] font-mono bg-white/20 text-white px-1.5 py-0.5 rounded-md">⌘N</kbd>
+          </button>
+        </div>
 
       </div>
 
       <!-- Navigation macOS avec Pills interactifs -->
-      <div class="flex-1 overflow-y-auto px-4 py-4 space-y-6">
+      <div class="sidebar-nav-container flex-1 overflow-y-auto px-4 py-4 space-y-6">
         
         <!-- SECTION 1 : APERÇU -->
-        <div>
+        <div class="sidebar-nav-group">
           <span class="sidebar-section-title px-3 text-[10px] font-black tracking-wider uppercase text-slate-400 block mb-2">VUE D'ENSEMBLE</span>
           <div class="space-y-1" id="navGroupOverview">
             
             <button onclick="switchTab('dashboard')" id="nav-dashboard" title="Tableau de Bord" class="sidebar-link nav-pill-active w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-bold transition-all">
-              <div class="flex items-center space-x-3">
+              <div class="sidebar-item-main flex items-center space-x-3">
                 <span class="nav-icon-box w-7 h-7 rounded-xl flex items-center justify-center text-white shrink-0">
                   <i data-lucide="layout-grid" class="w-4 h-4"></i>
                 </span>
                 <span class="sidebar-full-item">Tableau de Bord</span>
+                <span class="sidebar-collapsed-label">Tableau</span>
               </div>
               <kbd class="sidebar-full-item text-[10px] font-mono bg-white/10 text-slate-400 px-1.5 py-0.5 rounded border border-white/10">⌘1</kbd>
             </button>
 
             <button onclick="switchTab('workshop')" id="nav-workshop" title="Suivi d'Atelier" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
-              <div class="flex items-center space-x-3">
+              <div class="sidebar-item-main flex items-center space-x-3">
                 <span class="nav-icon-box w-7 h-7 rounded-xl flex items-center justify-center text-amber-400 shrink-0">
                   <i data-lucide="clock" class="w-4 h-4"></i>
                 </span>
                 <span class="sidebar-full-item">Suivi d'Atelier</span>
+                <span class="sidebar-collapsed-label">Atelier</span>
               </div>
               <span id="badgeActiveOrders" class="sidebar-full-item text-[10px] font-black px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-mono border border-amber-500/30">0</span>
             </button>
 
             <button onclick="switchTab('calendar')" id="nav-calendar" title="Planning & Retraits" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
-              <div class="flex items-center space-x-3">
+              <div class="sidebar-item-main flex items-center space-x-3">
                 <span class="nav-icon-box w-7 h-7 rounded-xl flex items-center justify-center text-emerald-400 shrink-0">
                   <i data-lucide="calendar" class="w-4 h-4"></i>
                 </span>
                 <span class="sidebar-full-item">Planning & Retraits</span>
+                <span class="sidebar-collapsed-label">Planning</span>
               </div>
               <span id="badgeTodayDeliveries" class="sidebar-full-item text-[10px] font-black px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono border border-emerald-500/30">0</span>
             </button>
@@ -389,57 +486,62 @@
         </div>
 
         <!-- SECTION 2 : GESTION OPÉRATIONNELLE -->
-        <div>
+        <div class="sidebar-nav-group">
           <span class="sidebar-section-title px-3 text-[10px] font-black tracking-wider uppercase text-slate-400 block mb-2">GESTION & CAISSE</span>
           <div class="space-y-1" id="navGroupManagement">
             
             <button onclick="switchTab('orders')" id="nav-orders" title="Tous les Tickets" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
-              <div class="flex items-center space-x-3">
+              <div class="sidebar-item-main flex items-center space-x-3">
                 <span class="nav-icon-box w-7 h-7 rounded-xl flex items-center justify-center text-indigo-400 shrink-0">
                   <i data-lucide="receipt" class="w-4 h-4"></i>
                 </span>
                 <span class="sidebar-full-item">Tous les Tickets</span>
+                <span class="sidebar-collapsed-label">Tickets</span>
               </div>
               <span id="badgeTotalOrders" class="sidebar-full-item text-[10px] font-black px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 font-mono border border-indigo-500/30">0</span>
             </button>
 
             <button onclick="switchTab('cash')" id="nav-cash" title="Caisse & Recettes" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
-              <div class="flex items-center space-x-3">
+              <div class="sidebar-item-main flex items-center space-x-3">
                 <span class="nav-icon-box w-7 h-7 rounded-xl flex items-center justify-center text-emerald-400 shrink-0">
                   <i data-lucide="wallet" class="w-4 h-4"></i>
                 </span>
                 <span class="sidebar-full-item">Caisse & Recettes</span>
+                <span class="sidebar-collapsed-label">Caisse</span>
               </div>
               <kbd class="sidebar-full-item text-[10px] font-mono bg-white/10 text-slate-400 px-1.5 py-0.5 rounded border border-white/10">⌘5</kbd>
             </button>
 
             <button onclick="switchTab('clients')" id="nav-clients" title="Répertoire Clients" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
-              <div class="flex items-center space-x-3">
+              <div class="sidebar-item-main flex items-center space-x-3">
                 <span class="nav-icon-box w-7 h-7 rounded-xl flex items-center justify-center text-sky-400 shrink-0">
                   <i data-lucide="users" class="w-4 h-4"></i>
                 </span>
                 <span class="sidebar-full-item">Répertoire Clients</span>
+                <span class="sidebar-collapsed-label">Clients</span>
               </div>
               <span id="badgeClientsCount" class="sidebar-full-item text-[10px] font-black px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-300 font-mono border border-sky-500/30">0</span>
             </button>
 
             <button onclick="switchTab('tarifs')" id="nav-tarifs" title="Grille Tarifaire" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all">
-              <div class="flex items-center space-x-3">
+              <div class="sidebar-item-main flex items-center space-x-3">
                 <span class="nav-icon-box w-7 h-7 rounded-xl flex items-center justify-center text-purple-400 shrink-0">
                   <i data-lucide="tags" class="w-4 h-4"></i>
                 </span>
                 <span class="sidebar-full-item">Grille Tarifaire</span>
+                <span class="sidebar-collapsed-label">Tarifs</span>
               </div>
               <span id="badgeTarifsCount" class="sidebar-full-item text-[10px] font-black px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 font-mono border border-purple-500/30">0</span>
             </button>
 
             <!-- Onglet Dédié Auteurs & Éditeur : BAROUBA GROUP -->
             <button onclick="switchTab('author')" id="nav-author" title="Auteurs & Éditeur (BAROUBA GROUP)" class="sidebar-link w-full flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold transition-all border border-amber-500/20 bg-amber-500/5 hover:bg-amber-500/10">
-              <div class="flex items-center space-x-3">
+              <div class="sidebar-item-main flex items-center space-x-3">
                 <span class="nav-icon-box w-7 h-7 rounded-xl flex items-center justify-center text-amber-400 shrink-0">
                   <i data-lucide="award" class="w-4 h-4"></i>
                 </span>
                 <span class="sidebar-full-item font-bold text-amber-200">Auteurs & Éditeur</span>
+                <span class="sidebar-collapsed-label text-amber-300">Auteurs</span>
               </div>
               <span class="sidebar-full-item text-[9px] font-black px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-mono border border-amber-500/40">BAROUBA</span>
             </button>
@@ -450,7 +552,7 @@
       </div>
 
       <!-- Bas de Sidebar : Mini Jauge Atelier & Contrôles Audio/Paramètres & Barouba Group -->
-      <div class="p-3 sm:p-4 border-t border-white/10 bg-black/20 backdrop-blur-md space-y-3">
+      <div class="sidebar-footer-box p-3 sm:p-4 border-t border-white/10 bg-black/20 backdrop-blur-md space-y-3">
         
         <!-- Widget Capacité Atelier Express -->
         <div class="sidebar-full-item p-3 bg-white/[0.06] rounded-2xl border border-white/10 shadow-sm">
@@ -470,7 +572,7 @@
         <div class="flex items-center justify-between px-1 text-xs">
           
 
-          <div class="flex items-center justify-center w-full md:w-auto space-x-1">
+          <div class="sidebar-footer-controls flex items-center justify-center w-full md:w-auto space-x-1">
             <!-- Toggle Effets Sonores Apple Taptic -->
             <button onclick="toggleSoundEngine()" id="soundToggleBtn" title="Effets sonores taptics" class="p-1.5 text-slate-400 hover:text-white rounded-xl hover:bg-white/10 transition-colors">
               <i data-lucide="volume-2" class="w-4 h-4 text-emerald-400"></i>
@@ -3504,7 +3606,11 @@
       
       const headIcon = document.getElementById('sidebarHeaderCollapseIcon');
       if (headIcon) {
-        headIcon.setAttribute('data-lucide', isCollapsed ? 'panel-left-open' : 'panel-left-close');
+        headIcon.setAttribute('data-lucide', isCollapsed ? 'chevrons-right' : 'chevrons-left');
+      }
+      const topbarIcon = document.getElementById('topbarSidebarToggleIcon');
+      if (topbarIcon) {
+        topbarIcon.setAttribute('data-lucide', isCollapsed ? 'panel-left-open' : 'panel-left-close');
       }
       if (window.lucide) lucide.createIcons();
       soundEngine.pop();
@@ -3538,7 +3644,9 @@
             sidebar.classList.add('is-collapsed');
             main.classList.add('is-collapsed');
             const headIcon = document.getElementById('sidebarHeaderCollapseIcon');
-            if (headIcon) headIcon.setAttribute('data-lucide', 'panel-left-open');
+            if (headIcon) headIcon.setAttribute('data-lucide', 'chevrons-right');
+            const topbarIcon = document.getElementById('topbarSidebarToggleIcon');
+            if (topbarIcon) topbarIcon.setAttribute('data-lucide', 'panel-left-open');
           }
         }
       } catch (e) {}
