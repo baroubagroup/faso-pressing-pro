@@ -330,17 +330,63 @@
 
     /* Top Ribbon Navigation Styles (Style Word / Office / Desktop Moderne) */
     .top-nav-link {
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 0.625rem !important;
+      padding: 0.45rem 0.85rem !important;
+      border-radius: 0.875rem !important; /* 14px */
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.03) 100%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.14) !important;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+      color: #E2E8F0 !important;
+      font-size: 0.75rem !important;
+      font-weight: 700 !important;
+      letter-spacing: -0.01em !important;
+      cursor: pointer !important;
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      user-select: none !important;
     }
     .top-nav-link:hover {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.08) 100%) !important;
+      border-color: rgba(255, 255, 255, 0.35) !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+      transform: translateY(-1.5px) !important;
       color: #FFFFFF !important;
-      background: rgba(255, 255, 255, 0.1) !important;
+    }
+    .top-nav-link:active {
+      transform: translateY(0.5px) scale(0.98) !important;
     }
     .top-nav-link.nav-pill-active {
       background: linear-gradient(135deg, #0071E3 0%, #005BB5 100%) !important;
       color: #FFFFFF !important;
-      box-shadow: 0 4px 16px -2px rgba(0, 113, 227, 0.5) !important;
-      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+      border-color: rgba(255, 255, 255, 0.45) !important;
+      box-shadow: 0 4px 18px -1px rgba(0, 113, 227, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+      transform: translateY(0) !important;
+    }
+    .top-nav-link .top-nav-icon-box {
+      width: 1.85rem !important;
+      height: 1.85rem !important;
+      border-radius: 0.625rem !important;
+      background: rgba(0, 0, 0, 0.35) !important;
+      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-shrink: 0 !important;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4) !important;
+      transition: all 0.2s ease !important;
+    }
+    .top-nav-link:hover .top-nav-icon-box {
+      background: rgba(0, 0, 0, 0.5) !important;
+      border-color: rgba(255, 255, 255, 0.25) !important;
+      transform: scale(1.05) !important;
+    }
+    .top-nav-link.nav-pill-active .top-nav-icon-box {
+      background: rgba(255, 255, 255, 0.25) !important;
+      border-color: rgba(255, 255, 255, 0.4) !important;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
     }
     .top-nav-link.nav-pill-active span,
     .top-nav-link.nav-pill-active i,
@@ -348,8 +394,66 @@
       color: #FFFFFF !important;
       stroke: #FFFFFF !important;
     }
-    .top-nav-link.nav-pill-active .top-nav-icon-box {
+    .top-nav-badge {
+      font-size: 0.65rem !important;
+      font-weight: 900 !important;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+      padding: 0.15rem 0.45rem !important;
+      border-radius: 9999px !important;
+      background: rgba(255, 255, 255, 0.12) !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      color: #F8FAFC !important;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+      transition: all 0.2s ease !important;
+    }
+    .top-nav-link.nav-pill-active .top-nav-badge {
       background: rgba(255, 255, 255, 0.25) !important;
+      border-color: rgba(255, 255, 255, 0.45) !important;
+      color: #FFFFFF !important;
+    }
+
+    /* Style spécifique pour l'onglet Auteurs & Éditeur (Barouba Group) */
+    .top-nav-link-author {
+      background: linear-gradient(180deg, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0.05) 100%) !important;
+      border: 1px solid rgba(245, 158, 11, 0.35) !important;
+      color: #FDE68A !important;
+    }
+    .top-nav-link-author:hover {
+      background: linear-gradient(180deg, rgba(245, 158, 11, 0.25) 0%, rgba(245, 158, 11, 0.1) 100%) !important;
+      border-color: rgba(245, 158, 11, 0.5) !important;
+      color: #FFFFFF !important;
+    }
+    .top-nav-link-author.nav-pill-active {
+      background: linear-gradient(135deg, #0071E3 0%, #005BB5 100%) !important;
+      border-color: rgba(255, 255, 255, 0.45) !important;
+      color: #FFFFFF !important;
+    }
+
+    /* Barre de défilement horizontale bien visible et stylée pour le Ruban Haut */
+    #topRibbonNavScroll {
+      overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(0, 113, 227, 0.7) rgba(255, 255, 255, 0.08);
+      scroll-behavior: smooth;
+      padding-bottom: 6px;
+      -webkit-overflow-scrolling: touch;
+    }
+    #topRibbonNavScroll::-webkit-scrollbar {
+      height: 6px;
+    }
+    #topRibbonNavScroll::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
+      margin: 0 4px;
+    }
+    #topRibbonNavScroll::-webkit-scrollbar-thumb {
+      background: linear-gradient(90deg, #0071E3, #38BDF8);
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 0 8px rgba(0, 113, 227, 0.5);
+    }
+    #topRibbonNavScroll::-webkit-scrollbar-thumb:hover {
+      background: #60A5FA;
     }
 
     /* Modes de Disposition : Haut (Ruban) vs Côté (Sidebar) */
@@ -780,88 +884,103 @@
     <!-- ========================================== -->
     <!-- RUBAN DE NAVIGATION SUPÉRIEUR (STYLE WORD) -->
     <!-- ========================================== -->
-    <div id="appTopRibbonBar" class="bg-gradient-to-r from-[#0A1128] via-[#0D182E] to-[#070D1A] border-b border-white/10 px-4 sm:px-8 py-2 sticky top-[53px] z-19 no-print shadow-md">
-      <div class="flex items-center justify-between gap-3 overflow-x-auto no-scrollbar">
+    <!-- ========================================== -->
+    <!-- RUBAN DE NAVIGATION SUPÉRIEUR (STYLE WORD) -->
+    <!-- ========================================== -->
+    <div id="appTopRibbonBar" class="bg-gradient-to-r from-[#070D1C] via-[#0D182E] to-[#070D1C] border-b border-white/10 px-2 sm:px-6 py-2.5 sticky top-[53px] z-19 no-print shadow-xl">
+      <div class="flex items-center justify-between gap-2 max-w-full">
         
-        <!-- 8 Onglets Horizontaux avec Icônes, Titres et Badges Dynamiques -->
-        <nav class="flex items-center space-x-1 sm:space-x-2 shrink-0">
-          
-          <!-- 1. Tableau de Bord -->
-          <button onclick="switchTab('dashboard')" id="top-nav-dashboard" title="Tableau de Bord Exécutif" class="top-nav-link flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer whitespace-nowrap shrink-0">
-            <span class="top-nav-icon-box w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center text-blue-400 shrink-0">
-              <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
-            </span>
-            <span>Tableau de Bord</span>
-            <kbd class="hidden xl:inline-block text-[9px] font-mono bg-white/10 text-slate-400 px-1.5 py-0.5 rounded border border-white/10">⌘1</kbd>
-          </button>
+        <!-- Flèche Défilement Gauche (Visible quand écran réduit) -->
+        <button onclick="scrollRibbon('left')" id="btnRibbonScrollLeft" title="Défiler vers la gauche" class="hidden sm:flex items-center justify-center w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 active:scale-95 text-white border border-white/15 shadow-sm shrink-0 transition-all cursor-pointer">
+          <i data-lucide="chevron-left" class="w-4 h-4"></i>
+        </button>
 
-          <!-- 2. Suivi d'Atelier -->
-          <button onclick="switchTab('workshop')" id="top-nav-workshop" title="Suivi d'Atelier & Retraits" class="top-nav-link flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer whitespace-nowrap shrink-0">
-            <span class="top-nav-icon-box w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center text-amber-400 shrink-0">
-              <i data-lucide="clock" class="w-3.5 h-3.5"></i>
-            </span>
-            <span>Suivi d'Atelier</span>
-            <span id="topBadgeActiveOrders" class="text-[10px] font-black px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-mono border border-amber-500/30">0</span>
-          </button>
+        <!-- Zone Défilante des 8 Boutons d'Onglets avec Barre Visible -->
+        <div id="topRibbonNavScroll" class="flex-1 overflow-x-auto">
+          <nav class="flex items-center space-x-2 shrink-0 py-0.5 px-1 min-w-max">
+            
+            <!-- 1. Tableau de Bord -->
+            <button onclick="switchTab('dashboard')" id="top-nav-dashboard" title="Tableau de Bord Exécutif" class="top-nav-link">
+              <span class="top-nav-icon-box text-sky-400">
+                <i data-lucide="layout-grid" class="w-4 h-4"></i>
+              </span>
+              <span>Tableau de Bord</span>
+              <kbd class="hidden xl:inline-block text-[9px] font-mono bg-white/10 text-slate-300 px-1.5 py-0.5 rounded border border-white/10">⌘1</kbd>
+            </button>
 
-          <!-- 3. Planning & Retraits -->
-          <button onclick="switchTab('calendar')" id="top-nav-calendar" title="Planning des Retraits" class="top-nav-link flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer whitespace-nowrap shrink-0">
-            <span class="top-nav-icon-box w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center text-emerald-400 shrink-0">
-              <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
-            </span>
-            <span>Planning & Retraits</span>
-            <span id="topBadgeTodayDeliveries" class="text-[10px] font-black px-1.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono border border-emerald-500/30">0</span>
-          </button>
+            <!-- 2. Suivi d'Atelier -->
+            <button onclick="switchTab('workshop')" id="top-nav-workshop" title="Suivi d'Atelier & Retraits" class="top-nav-link">
+              <span class="top-nav-icon-box text-amber-400">
+                <i data-lucide="clock" class="w-4 h-4"></i>
+              </span>
+              <span>Suivi d'Atelier</span>
+              <span id="topBadgeActiveOrders" class="top-nav-badge text-amber-300">0</span>
+            </button>
 
-          <!-- 4. Tous les Tickets -->
-          <button onclick="switchTab('orders')" id="top-nav-orders" title="Tous les Tickets & Commandes" class="top-nav-link flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer whitespace-nowrap shrink-0">
-            <span class="top-nav-icon-box w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center text-indigo-400 shrink-0">
-              <i data-lucide="receipt" class="w-3.5 h-3.5"></i>
-            </span>
-            <span>Tous les Tickets</span>
-            <span id="topBadgeTotalOrders" class="text-[10px] font-black px-1.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 font-mono border border-indigo-500/30">0</span>
-          </button>
+            <!-- 3. Planning & Retraits -->
+            <button onclick="switchTab('calendar')" id="top-nav-calendar" title="Planning des Retraits" class="top-nav-link">
+              <span class="top-nav-icon-box text-emerald-400">
+                <i data-lucide="calendar" class="w-4 h-4"></i>
+              </span>
+              <span>Planning & Retraits</span>
+              <span id="topBadgeTodayDeliveries" class="top-nav-badge text-emerald-300">0</span>
+            </button>
 
-          <!-- 5. Caisse & Recettes -->
-          <button onclick="switchTab('cash')" id="top-nav-cash" title="Caisse & Recettes" class="top-nav-link flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer whitespace-nowrap shrink-0">
-            <span class="top-nav-icon-box w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center text-emerald-400 shrink-0">
-              <i data-lucide="wallet" class="w-3.5 h-3.5"></i>
-            </span>
-            <span>Caisse & Recettes</span>
-            <kbd class="hidden xl:inline-block text-[9px] font-mono bg-white/10 text-slate-400 px-1.5 py-0.5 rounded border border-white/10">⌘5</kbd>
-          </button>
+            <!-- 4. Tous les Tickets -->
+            <button onclick="switchTab('orders')" id="top-nav-orders" title="Tous les Tickets & Commandes" class="top-nav-link">
+              <span class="top-nav-icon-box text-indigo-400">
+                <i data-lucide="receipt" class="w-4 h-4"></i>
+              </span>
+              <span>Tous les Tickets</span>
+              <span id="topBadgeTotalOrders" class="top-nav-badge text-indigo-300">0</span>
+            </button>
 
-          <!-- 6. Répertoire Clients -->
-          <button onclick="switchTab('clients')" id="top-nav-clients" title="Répertoire Clients" class="top-nav-link flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer whitespace-nowrap shrink-0">
-            <span class="top-nav-icon-box w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center text-sky-400 shrink-0">
-              <i data-lucide="users" class="w-3.5 h-3.5"></i>
-            </span>
-            <span>Répertoire Clients</span>
-            <span id="topBadgeClientsCount" class="text-[10px] font-black px-1.5 py-0.5 rounded-full bg-sky-500/20 text-sky-300 font-mono border border-sky-500/30">0</span>
-          </button>
+            <!-- 5. Caisse & Recettes -->
+            <button onclick="switchTab('cash')" id="top-nav-cash" title="Caisse & Recettes" class="top-nav-link">
+              <span class="top-nav-icon-box text-teal-400">
+                <i data-lucide="wallet" class="w-4 h-4"></i>
+              </span>
+              <span>Caisse & Recettes</span>
+              <kbd class="hidden xl:inline-block text-[9px] font-mono bg-white/10 text-slate-300 px-1.5 py-0.5 rounded border border-white/10">⌘5</kbd>
+            </button>
 
-          <!-- 7. Grille Tarifaire -->
-          <button onclick="switchTab('tarifs')" id="top-nav-tarifs" title="Catalogue & Grille Tarifaire" class="top-nav-link flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer whitespace-nowrap shrink-0">
-            <span class="top-nav-icon-box w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center text-purple-400 shrink-0">
-              <i data-lucide="tags" class="w-3.5 h-3.5"></i>
-            </span>
-            <span>Grille Tarifaire</span>
-            <span id="topBadgeTarifsCount" class="text-[10px] font-black px-1.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 font-mono border border-purple-500/30">0</span>
-          </button>
+            <!-- 6. Répertoire Clients -->
+            <button onclick="switchTab('clients')" id="top-nav-clients" title="Répertoire Clients" class="top-nav-link">
+              <span class="top-nav-icon-box text-sky-400">
+                <i data-lucide="users" class="w-4 h-4"></i>
+              </span>
+              <span>Répertoire Clients</span>
+              <span id="topBadgeClientsCount" class="top-nav-badge text-sky-300">0</span>
+            </button>
 
-          <!-- 8. Auteurs & Éditeur : BAROUBA GROUP -->
-          <button onclick="switchTab('author')" id="top-nav-author" title="Auteurs & Éditeur (BAROUBA GROUP)" class="top-nav-link flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-semibold text-amber-200 border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 transition-all cursor-pointer whitespace-nowrap shrink-0">
-            <span class="top-nav-icon-box w-6 h-6 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-300 shrink-0">
-              <i data-lucide="award" class="w-3.5 h-3.5"></i>
-            </span>
-            <span class="font-bold">Auteurs & Éditeur</span>
-            <span class="text-[9px] font-black px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-mono border border-amber-500/40">BAROUBA</span>
-          </button>
+            <!-- 7. Grille Tarifaire -->
+            <button onclick="switchTab('tarifs')" id="top-nav-tarifs" title="Catalogue & Grille Tarifaire" class="top-nav-link">
+              <span class="top-nav-icon-box text-purple-400">
+                <i data-lucide="tags" class="w-4 h-4"></i>
+              </span>
+              <span>Grille Tarifaire</span>
+              <span id="topBadgeTarifsCount" class="top-nav-badge text-purple-300">0</span>
+            </button>
 
-        </nav>
+            <!-- 8. Auteurs & Éditeur : BAROUBA GROUP -->
+            <button onclick="switchTab('author')" id="top-nav-author" title="Auteurs & Éditeur (BAROUBA GROUP)" class="top-nav-link top-nav-link-author">
+              <span class="top-nav-icon-box text-amber-300 bg-amber-500/20 border-amber-500/30">
+                <i data-lucide="award" class="w-4 h-4"></i>
+              </span>
+              <span>Auteurs & Éditeur</span>
+              <span class="top-nav-badge text-amber-300 border-amber-400/40 bg-amber-500/20">BAROUBA</span>
+            </button>
+
+          </nav>
+        </div>
+
+        <!-- Flèche Défilement Droite (Visible quand écran réduit) -->
+        <button onclick="scrollRibbon('right')" id="btnRibbonScrollRight" title="Défiler vers la droite" class="hidden sm:flex items-center justify-center w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 active:scale-95 text-white border border-white/15 shadow-sm shrink-0 transition-all cursor-pointer">
+          <i data-lucide="chevron-right" class="w-4 h-4"></i>
+        </button>
 
         <!-- Indicateur Atelier à droite du Ruban -->
-        <div class="hidden lg:flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-[11px] shrink-0">
+        <div class="hidden 2xl:flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-[11px] shrink-0 ml-1">
           <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           <span class="text-slate-300 font-medium">Charge Atelier :</span>
           <span id="topWorkshopPct" class="font-mono font-bold text-emerald-400">13%</span>
@@ -3767,7 +3886,11 @@
       }
       if (activeTopBtn) {
         activeTopBtn.classList.add('nav-pill-active', 'font-bold');
+        try {
+          activeTopBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        } catch (e) {}
       }
+      if (typeof updateRibbonScrollButtons === 'function') setTimeout(updateRibbonScrollButtons, 150);
 
       document.getElementById('topbarPageTitle').textContent = tabTitles[tabName] || 'Pressing Élite';
 
@@ -3833,6 +3956,43 @@
     // ========================================================
     // GESTION DU MODE DE NAVIGATION (RUBAN HAUT / MENU LATÉRAL)
     // ========================================================
+// ========================================================
+    // DÉFILEMENT FLUIDE DU RUBAN SUPÉRIEUR (STYLE WORD / BUREAU)
+    // ========================================================
+    function scrollRibbon(direction) {
+      const container = document.getElementById('topRibbonNavScroll');
+      if (!container) return;
+      soundEngine.pop();
+      const scrollAmount = direction === 'left' ? -260 : 260;
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      setTimeout(updateRibbonScrollButtons, 220);
+    }
+
+    function updateRibbonScrollButtons() {
+      const container = document.getElementById('topRibbonNavScroll');
+      const btnLeft = document.getElementById('btnRibbonScrollLeft');
+      const btnRight = document.getElementById('btnRibbonScrollRight');
+      if (!container || !btnLeft || !btnRight) return;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      if (maxScroll <= 5) {
+        btnLeft.classList.add('opacity-30', 'pointer-events-none');
+        btnRight.classList.add('opacity-30', 'pointer-events-none');
+      } else {
+        btnLeft.classList.remove('pointer-events-none');
+        btnRight.classList.remove('pointer-events-none');
+        if (container.scrollLeft <= 5) {
+          btnLeft.classList.add('opacity-30');
+        } else {
+          btnLeft.classList.remove('opacity-30');
+        }
+        if (container.scrollLeft >= maxScroll - 5) {
+          btnRight.classList.add('opacity-30');
+        } else {
+          btnRight.classList.remove('opacity-30');
+        }
+      }
+    }
+
     function initNavLayout() {
       try {
         const saved = localStorage.getItem('faso_nav_layout') || 'top';
@@ -6626,6 +6786,12 @@
     window.addEventListener('DOMContentLoaded', () => {
       initSidebarState();
       initNavLayout();
+      const rScroll = document.getElementById('topRibbonNavScroll');
+      if (rScroll) {
+        rScroll.addEventListener('scroll', updateRibbonScrollButtons, { passive: true });
+        window.addEventListener('resize', updateRibbonScrollButtons, { passive: true });
+        setTimeout(updateRibbonScrollButtons, 300);
+      }
       applyPlatformBranding();
       fetchAppData();
     });
