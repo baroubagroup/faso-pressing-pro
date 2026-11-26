@@ -236,12 +236,20 @@
       "balanceDue": 9300,
       "paymentMethod": "Espèces",
       "paymentStatus": "Non payé",
-      "status": "recu",
+      "status": "repassage",
       "id": "TK-1005",
       "timeline": [
         {
           "time": "2026-11-13T20:16:21.014Z",
           "event": "Dépôt enregistré à la caisse"
+        },
+        {
+          "time": "2026-11-26T10:10:59.803Z",
+          "event": "Statut changé : 2. Au lavage & détachage"
+        },
+        {
+          "time": "2026-11-26T10:11:01.428Z",
+          "event": "Statut changé : 3. Au repassage & amidonnage"
         }
       ],
       "clientId": "c-3"
