@@ -328,21 +328,21 @@
       stroke: currentColor;
     }
 
-    /* Top Ribbon Navigation Styles (Style Apple Glass Luminous & Office Prestige) */
+    /* Top Ribbon Navigation Styles (Bleu Nuit Cobalt & Saphir Prestige - Ni noir dur, ni blanc) */
     .top-nav-link {
       display: inline-flex !important;
       flex-direction: column !important;
       align-items: center !important;
       justify-content: center !important;
       gap: 0.25rem !important;
-      padding: 0.45rem 0.5rem 0.35rem 0.5rem !important;
+      padding: 0.4rem 0.5rem 0.35rem 0.5rem !important;
       min-height: 3.5rem !important;
       min-width: 104px !important;
       border-radius: 0.875rem !important; /* 14px */
-      background: #FFFFFF !important;
-      border: 1px solid rgba(15, 23, 42, 0.09) !important;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02) !important;
-      color: #334155 !important;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.16) !important;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.12) !important;
+      color: #E2E8F0 !important;
       cursor: pointer !important;
       flex-shrink: 0 !important;
       text-align: center !important;
@@ -350,11 +350,11 @@
       user-select: none !important;
     }
     .top-nav-link:hover {
-      background: #F8FAFC !important;
-      border-color: rgba(0, 113, 227, 0.35) !important;
-      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.12) !important;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.08) 100%) !important;
+      border-color: rgba(255, 255, 255, 0.35) !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
       transform: translateY(-1.5px) !important;
-      color: #0F172A !important;
+      color: #FFFFFF !important;
     }
     .top-nav-link:active {
       transform: translateY(0.5px) scale(0.98) !important;
@@ -362,31 +362,32 @@
     .top-nav-link.nav-pill-active {
       background: linear-gradient(135deg, #0071E3 0%, #005BB5 100%) !important;
       color: #FFFFFF !important;
-      border-color: #0071E3 !important;
-      box-shadow: 0 4px 16px -1px rgba(0, 113, 227, 0.45), 0 2px 6px -1px rgba(0, 113, 227, 0.3) !important;
+      border-color: rgba(255, 255, 255, 0.5) !important;
+      box-shadow: 0 4px 20px rgba(0, 113, 227, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
       transform: translateY(0) !important;
     }
     .top-nav-link .top-nav-icon-box {
       width: 1.75rem !important;
       height: 1.75rem !important;
       border-radius: 0.55rem !important;
-      background: #F1F5F9 !important;
-      border: 1px solid rgba(15, 23, 42, 0.06) !important;
+      background: rgba(0, 0, 0, 0.3) !important;
+      border: 1px solid rgba(255, 255, 255, 0.14) !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
       flex-shrink: 0 !important;
-      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04) !important;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3) !important;
       transition: all 0.2s ease !important;
     }
     .top-nav-link:hover .top-nav-icon-box {
-      background: #E2E8F0 !important;
+      background: rgba(0, 0, 0, 0.45) !important;
+      border-color: rgba(255, 255, 255, 0.25) !important;
       transform: scale(1.06) !important;
     }
     .top-nav-link.nav-pill-active .top-nav-icon-box {
-      background: rgba(255, 255, 255, 0.22) !important;
-      border-color: rgba(255, 255, 255, 0.35) !important;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+      background: rgba(255, 255, 255, 0.25) !important;
+      border-color: rgba(255, 255, 255, 0.4) !important;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
     }
     .top-nav-link.nav-pill-active span,
     .top-nav-link.nav-pill-active i,
@@ -401,10 +402,10 @@
       line-height: 1.15 !important;
       text-align: center !important;
       white-space: nowrap !important;
-      color: #475569 !important;
+      color: #E2E8F0 !important;
     }
     .top-nav-link:hover .top-nav-label {
-      color: #0F172A !important;
+      color: #FFFFFF !important;
     }
     .top-nav-link.nav-pill-active .top-nav-label {
       color: #FFFFFF !important;
@@ -420,7 +421,7 @@
       padding: 0.1rem 0.35rem !important;
       border-radius: 9999px !important;
       line-height: 1 !important;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15) !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
       z-index: 10 !important;
     }
     .top-nav-link.nav-pill-active .top-nav-icon-badge {
@@ -431,20 +432,21 @@
 
     /* Style spécifique pour l'onglet Auteurs & Éditeur (Barouba Group) */
     .top-nav-link-author {
-      background: linear-gradient(180deg, #FFFBEB 0%, #FEF3C7 100%) !important;
-      border: 1px solid rgba(245, 158, 11, 0.3) !important;
-      color: #92400E !important;
+      background: linear-gradient(180deg, rgba(245, 158, 11, 0.2) 0%, rgba(245, 158, 11, 0.08) 100%) !important;
+      border: 1px solid rgba(245, 158, 11, 0.4) !important;
+      color: #FDE68A !important;
     }
     .top-nav-link-author .top-nav-label {
-      color: #92400E !important;
+      color: #FDE68A !important;
     }
     .top-nav-link-author:hover {
-      background: linear-gradient(180deg, #FEF3C7 0%, #FDE68A 100%) !important;
-      border-color: rgba(245, 158, 11, 0.5) !important;
+      background: linear-gradient(180deg, rgba(245, 158, 11, 0.3) 0%, rgba(245, 158, 11, 0.15) 100%) !important;
+      border-color: rgba(245, 158, 11, 0.6) !important;
+      color: #FFFFFF !important;
     }
     .top-nav-link-author.nav-pill-active {
       background: linear-gradient(135deg, #0071E3 0%, #005BB5 100%) !important;
-      border-color: #0071E3 !important;
+      border-color: rgba(255, 255, 255, 0.5) !important;
       color: #FFFFFF !important;
     }
     .top-nav-link-author.nav-pill-active .top-nav-label {
@@ -455,7 +457,7 @@
     #topRibbonNavScroll {
       overflow-x: auto !important;
       scrollbar-width: thin !important;
-      scrollbar-color: rgba(0, 113, 227, 0.6) rgba(15, 23, 42, 0.06) !important;
+      scrollbar-color: rgba(0, 113, 227, 0.7) rgba(255, 255, 255, 0.08) !important;
       scroll-behavior: smooth !important;
       padding-bottom: 4px !important;
       -webkit-overflow-scrolling: touch !important;
@@ -464,7 +466,7 @@
       height: 5px !important;
     }
     #topRibbonNavScroll::-webkit-scrollbar-track {
-      background: rgba(15, 23, 42, 0.06) !important;
+      background: rgba(255, 255, 255, 0.08) !important;
       border-radius: 9999px !important;
     }
     #topRibbonNavScroll::-webkit-scrollbar-thumb {
@@ -955,22 +957,25 @@
     <!-- ========================================== -->
     <!-- RUBAN DE NAVIGATION SUPÉRIEUR (STYLE APPLE/WORD LUMINEUX) -->
     <!-- ========================================== -->
-    <div id="appTopRibbonBar" class="bg-white/95 backdrop-blur-2xl border-b border-slate-200/80 px-2 sm:px-6 py-2 sticky top-[53px] z-19 no-print shadow-xs">
+    <!-- ========================================== -->
+    <!-- RUBAN DE NAVIGATION SUPÉRIEUR (BLEU NUIT SAPHIR PRESTIGE) -->
+    <!-- ========================================== -->
+    <div id="appTopRibbonBar" class="bg-gradient-to-r from-[#0B1E38] via-[#0E2A4F] to-[#0B1E38] border-b border-blue-900/40 px-2 sm:px-6 py-2 sticky top-[53px] z-19 no-print shadow-lg">
       <div class="flex items-center justify-between gap-1.5 w-full">
         
         <!-- Flèche Défilement Gauche (Visible quand écran réduit) -->
-        <button onclick="scrollRibbon('left')" id="btnRibbonScrollLeft" title="Défiler vers la gauche" class="flex items-center justify-center w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 border border-slate-200 shadow-xs shrink-0 transition-all cursor-pointer">
+        <button onclick="scrollRibbon('left')" id="btnRibbonScrollLeft" title="Défiler vers la gauche" class="flex items-center justify-center w-7 h-7 rounded-lg bg-white/10 hover:bg-white/20 active:scale-95 text-white border border-white/15 shadow-sm shrink-0 transition-all cursor-pointer">
           <i data-lucide="chevron-left" class="w-3.5 h-3.5"></i>
         </button>
 
-        <!-- Zone des 8 Boutons d'Onglets (Style Luminous Glass) -->
+        <!-- Zone des 8 Boutons d'Onglets (Style Saphir Prestige) -->
         <div id="topRibbonNavScroll" class="flex-1 w-full min-w-0">
           <nav class="flex items-center gap-1.5 w-full py-0.5">
             
             <!-- 1. Tableau de Bord -->
             <button onclick="switchTab('dashboard')" id="top-nav-dashboard" title="Tableau de Bord Exécutif (⌘1)" class="top-nav-link">
               <div class="relative flex items-center justify-center">
-                <span class="top-nav-icon-box text-blue-600 bg-blue-50 border-blue-100">
+                <span class="top-nav-icon-box text-sky-400">
                   <i data-lucide="layout-grid" class="w-4 h-4"></i>
                 </span>
               </div>
@@ -980,7 +985,7 @@
             <!-- 2. Suivi d'Atelier -->
             <button onclick="switchTab('workshop')" id="top-nav-workshop" title="Suivi d'Atelier & Retraits" class="top-nav-link">
               <div class="relative flex items-center justify-center">
-                <span class="top-nav-icon-box text-amber-600 bg-amber-50 border-amber-100">
+                <span class="top-nav-icon-box text-amber-400">
                   <i data-lucide="clock" class="w-4 h-4"></i>
                 </span>
                 <span id="topBadgeActiveOrders" class="top-nav-icon-badge bg-amber-500 text-white border border-amber-300/40">0</span>
@@ -991,7 +996,7 @@
             <!-- 3. Planning & Retraits -->
             <button onclick="switchTab('calendar')" id="top-nav-calendar" title="Planning des Retraits" class="top-nav-link">
               <div class="relative flex items-center justify-center">
-                <span class="top-nav-icon-box text-emerald-600 bg-emerald-50 border-emerald-100">
+                <span class="top-nav-icon-box text-emerald-400">
                   <i data-lucide="calendar" class="w-4 h-4"></i>
                 </span>
                 <span id="topBadgeTodayDeliveries" class="top-nav-icon-badge bg-emerald-500 text-white border border-emerald-300/40">0</span>
@@ -1002,7 +1007,7 @@
             <!-- 4. Tous les Tickets -->
             <button onclick="switchTab('orders')" id="top-nav-orders" title="Tous les Tickets & Commandes" class="top-nav-link">
               <div class="relative flex items-center justify-center">
-                <span class="top-nav-icon-box text-indigo-600 bg-indigo-50 border-indigo-100">
+                <span class="top-nav-icon-box text-indigo-400">
                   <i data-lucide="receipt" class="w-4 h-4"></i>
                 </span>
                 <span id="topBadgeTotalOrders" class="top-nav-icon-badge bg-indigo-500 text-white border border-indigo-300/40">0</span>
@@ -1013,7 +1018,7 @@
             <!-- 5. Caisse & Recettes -->
             <button onclick="switchTab('cash')" id="top-nav-cash" title="Caisse & Recettes (⌘5)" class="top-nav-link">
               <div class="relative flex items-center justify-center">
-                <span class="top-nav-icon-box text-teal-600 bg-teal-50 border-teal-100">
+                <span class="top-nav-icon-box text-teal-400">
                   <i data-lucide="wallet" class="w-4 h-4"></i>
                 </span>
               </div>
@@ -1023,7 +1028,7 @@
             <!-- 6. Répertoire Clients -->
             <button onclick="switchTab('clients')" id="top-nav-clients" title="Répertoire Clients" class="top-nav-link">
               <div class="relative flex items-center justify-center">
-                <span class="top-nav-icon-box text-sky-600 bg-sky-50 border-sky-100">
+                <span class="top-nav-icon-box text-sky-400">
                   <i data-lucide="users" class="w-4 h-4"></i>
                 </span>
                 <span id="topBadgeClientsCount" class="top-nav-icon-badge bg-sky-500 text-white border border-sky-300/40">0</span>
@@ -1034,7 +1039,7 @@
             <!-- 7. Grille Tarifaire -->
             <button onclick="switchTab('tarifs')" id="top-nav-tarifs" title="Catalogue & Grille Tarifaire" class="top-nav-link">
               <div class="relative flex items-center justify-center">
-                <span class="top-nav-icon-box text-purple-600 bg-purple-50 border-purple-100">
+                <span class="top-nav-icon-box text-purple-400">
                   <i data-lucide="tags" class="w-4 h-4"></i>
                 </span>
                 <span id="topBadgeTarifsCount" class="top-nav-icon-badge bg-purple-500 text-white border border-purple-300/40">0</span>
@@ -1045,19 +1050,19 @@
             <!-- 8. Auteurs & Éditeur : BAROUBA GROUP -->
             <button onclick="switchTab('author')" id="top-nav-author" title="Auteurs & Éditeur (BAROUBA GROUP)" class="top-nav-link top-nav-link-author">
               <div class="relative flex items-center justify-center">
-                <span class="top-nav-icon-box text-amber-700 bg-amber-100/80 border-amber-300">
+                <span class="top-nav-icon-box text-amber-300 bg-amber-500/20 border-amber-500/30">
                   <i data-lucide="award" class="w-4 h-4"></i>
                 </span>
-                <span class="top-nav-icon-badge bg-amber-500 text-white font-black border border-amber-300">PRO</span>
+                <span class="top-nav-icon-badge bg-amber-500 text-black font-black border border-amber-300">PRO</span>
               </div>
-              <span class="top-nav-label">Auteurs & Éditeur</span>
+              <span class="top-nav-label text-amber-200">Auteurs & Éditeur</span>
             </button>
 
           </nav>
         </div>
 
         <!-- Flèche Défilement Droite (Visible quand écran réduit) -->
-        <button onclick="scrollRibbon('right')" id="btnRibbonScrollRight" title="Défiler vers la droite" class="flex items-center justify-center w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-700 border border-slate-200 shadow-xs shrink-0 transition-all cursor-pointer">
+        <button onclick="scrollRibbon('right')" id="btnRibbonScrollRight" title="Défiler vers la droite" class="flex items-center justify-center w-7 h-7 rounded-lg bg-white/10 hover:bg-white/20 active:scale-95 text-white border border-white/15 shadow-sm shrink-0 transition-all cursor-pointer">
           <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
         </button>
 
