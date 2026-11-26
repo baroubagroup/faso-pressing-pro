@@ -190,9 +190,71 @@
       "totalSpent": 12500,
       "visitsCount": 4,
       "createdAt": "2026-10-15"
+    },
+    {
+      "id": "c-4",
+      "name": "555",
+      "phone": "",
+      "district": "",
+      "totalSpent": 0,
+      "visitsCount": 1,
+      "createdAt": "2026-11-26T11:17:07.257Z"
     }
   ],
   "orders": [
+    {
+      "clientName": "555",
+      "clientPhone": "",
+      "clientDistrict": "",
+      "createdAt": "2026-11-26T11:17:06.828Z",
+      "pickupDate": "2026-11-28 17:00",
+      "rackLocation": "Rayon Linge Plié",
+      "isExpress": false,
+      "items": [
+        {
+          "articleId": "art-3",
+          "name": "Faso Dan Fani complet",
+          "service": "Complet (Lavage + Repassage)",
+          "quantity": 1,
+          "unitPrice": 3000,
+          "subtotal": 3000,
+          "notes": ""
+        },
+        {
+          "articleId": "art-2",
+          "name": "Bazin Simple (Lavage + Amidonnage)",
+          "service": "Complet (Lavage + Repassage)",
+          "quantity": 1,
+          "unitPrice": 2000,
+          "subtotal": 2000,
+          "notes": ""
+        },
+        {
+          "articleId": "art-1",
+          "name": "Bazin Riche Brodé (3 pièces)",
+          "service": "Complet (Lavage + Repassage)",
+          "quantity": 1,
+          "unitPrice": 3500,
+          "subtotal": 3500,
+          "notes": ""
+        }
+      ],
+      "totalAmount": 8500,
+      "discount": 0,
+      "paidAmount": 0,
+      "balanceDue": 8500,
+      "paymentMethod": "Espèces",
+      "paymentStatus": "Non payé",
+      "status": "recu",
+      "id": "TK-1006",
+      "timeline": [
+        {
+          "time": "2026-11-26T11:17:07.257Z",
+          "event": "Dépôt enregistré à la caisse"
+        }
+      ],
+      "clientId": "c-4"
+    },
     {
       "clientName": "M. Traore Ibrahim",
       "clientPhone": "+226 65 12 34 56",
@@ -487,8 +549,8 @@
   ],
   "categories": [
     "Traditionnel & Bazin",
-    "Ville & Quotidien",
     "Maison & Literie",
+    "555",
     "Divers & Accessoires"
   ],
   "expenses": []
