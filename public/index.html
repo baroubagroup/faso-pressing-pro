@@ -328,12 +328,13 @@
       stroke: currentColor;
     }
 
-    /* Top Ribbon Navigation Styles (Style Word / Office / Desktop Moderne) */
+    /* Top Ribbon Navigation Styles (Desktop Grid 8 Colonnes Adaptatif) */
     .top-nav-link {
       display: inline-flex !important;
       align-items: center !important;
-      gap: 0.625rem !important;
-      padding: 0.45rem 0.85rem !important;
+      justify-content: center !important;
+      gap: 0.35rem !important;
+      padding: 0.45rem 0.5rem !important;
       border-radius: 0.875rem !important; /* 14px */
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.03) 100%) !important;
       border: 1px solid rgba(255, 255, 255, 0.14) !important;
@@ -344,7 +345,8 @@
       letter-spacing: -0.01em !important;
       cursor: pointer !important;
       white-space: nowrap !important;
-      flex-shrink: 0 !important;
+      min-width: 0 !important;
+      width: 100% !important;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
       user-select: none !important;
     }
@@ -366,9 +368,9 @@
       transform: translateY(0) !important;
     }
     .top-nav-link .top-nav-icon-box {
-      width: 1.85rem !important;
-      height: 1.85rem !important;
-      border-radius: 0.625rem !important;
+      width: 1.65rem !important;
+      height: 1.65rem !important;
+      border-radius: 0.55rem !important;
       background: rgba(0, 0, 0, 0.35) !important;
       border: 1px solid rgba(255, 255, 255, 0.12) !important;
       display: flex !important;
@@ -398,11 +400,12 @@
       font-size: 0.65rem !important;
       font-weight: 900 !important;
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
-      padding: 0.15rem 0.45rem !important;
+      padding: 0.1rem 0.35rem !important;
       border-radius: 9999px !important;
       background: rgba(255, 255, 255, 0.12) !important;
       border: 1px solid rgba(255, 255, 255, 0.2) !important;
       color: #F8FAFC !important;
+      flex-shrink: 0 !important;
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
       transition: all 0.2s ease !important;
     }
@@ -429,31 +432,49 @@
       color: #FFFFFF !important;
     }
 
-    /* Barre de défilement horizontale bien visible et stylée pour le Ruban Haut */
-    #topRibbonNavScroll {
-      overflow-x: auto;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(0, 113, 227, 0.7) rgba(255, 255, 255, 0.08);
-      scroll-behavior: smooth;
-      padding-bottom: 6px;
-      -webkit-overflow-scrolling: touch;
+    /* En mode Bureau (Desktop >= 1024px) : 8 colonnes égales, 100% largeur, ZÉRO scrollbar */
+    @media (min-width: 1024px) {
+      #topRibbonNavScroll {
+        overflow-x: visible !important;
+        scrollbar-width: none !important;
+        padding-bottom: 0 !important;
+      }
+      #topRibbonNavScroll::-webkit-scrollbar {
+        display: none !important;
+      }
+      #topRibbonNavScroll nav {
+        display: grid !important;
+        grid-template-columns: repeat(8, minmax(0, 1fr)) !important;
+        width: 100% !important;
+        gap: 0.35rem !important;
+        min-width: 0 !important;
+      }
+      #btnRibbonScrollLeft,
+      #btnRibbonScrollRight {
+        display: none !important;
+      }
     }
-    #topRibbonNavScroll::-webkit-scrollbar {
-      height: 6px;
-    }
-    #topRibbonNavScroll::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 9999px;
-      margin: 0 4px;
-    }
-    #topRibbonNavScroll::-webkit-scrollbar-thumb {
-      background: linear-gradient(90deg, #0071E3, #38BDF8);
-      border-radius: 9999px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 0 0 8px rgba(0, 113, 227, 0.5);
-    }
-    #topRibbonNavScroll::-webkit-scrollbar-thumb:hover {
-      background: #60A5FA;
+
+    /* En mode Mobile / Tablette (< 1024px) : Défilement fluide avec barre visible */
+    @media (max-width: 1023px) {
+      #topRibbonNavScroll {
+        overflow-x: auto !important;
+        scrollbar-width: thin !important;
+        scrollbar-color: rgba(0, 113, 227, 0.7) rgba(255, 255, 255, 0.08) !important;
+        scroll-behavior: smooth !important;
+        padding-bottom: 6px !important;
+      }
+      #topRibbonNavScroll::-webkit-scrollbar {
+        height: 6px !important;
+      }
+      #topRibbonNavScroll::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.08) !important;
+        border-radius: 9999px !important;
+      }
+      #topRibbonNavScroll::-webkit-scrollbar-thumb {
+        background: linear-gradient(90deg, #0071E3, #38BDF8) !important;
+        border-radius: 9999px !important;
+      }
     }
 
     /* Modes de Disposition : Haut (Ruban) vs Côté (Sidebar) */
@@ -864,6 +885,13 @@
           </button>
         </div>
 
+        <!-- Indicateur Charge Atelier en Mode Ruban Haut -->
+        <div class="topbar-utilities-group hidden items-center space-x-1.5 px-3 py-1.5 bg-[#F1F5F9] rounded-full border border-black/[0.06] text-xs font-bold text-slate-700 shrink-0">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="text-slate-500 font-medium text-[11px] hidden lg:inline">Charge :</span>
+          <span id="topWorkshopPct" class="font-mono text-emerald-600 font-black text-xs">13%</span>
+        </div>
+
         <!-- Bouton Bascule Disposition (Ruban Haut / Menu Latéral) -->
         <button onclick="toggleNavLayout()" id="btnNavLayoutToggle" title="Changer la disposition : Ruban Haut ou Menu Latéral" class="flex items-center space-x-1.5 px-3 py-2 text-xs font-bold text-slate-700 bg-[#F1F5F9] hover:bg-[#E2E8F0] active:scale-95 rounded-full transition-all border border-black/[0.06] shrink-0">
           <i data-lucide="layout-template" class="w-3.5 h-3.5 text-[#0071E3]"></i>
@@ -887,104 +915,98 @@
     <!-- ========================================== -->
     <!-- RUBAN DE NAVIGATION SUPÉRIEUR (STYLE WORD) -->
     <!-- ========================================== -->
-    <div id="appTopRibbonBar" class="bg-gradient-to-r from-[#070D1C] via-[#0D182E] to-[#070D1C] border-b border-white/10 px-2 sm:px-6 py-2.5 sticky top-[53px] z-19 no-print shadow-xl">
-      <div class="flex items-center justify-between gap-2 max-w-full">
+    <!-- ========================================== -->
+    <!-- RUBAN DE NAVIGATION SUPÉRIEUR (STYLE WORD) -->
+    <!-- ========================================== -->
+    <div id="appTopRibbonBar" class="bg-gradient-to-r from-[#070D1C] via-[#0D182E] to-[#070D1C] border-b border-white/10 px-2 sm:px-6 py-2 sticky top-[53px] z-19 no-print shadow-xl">
+      <div class="flex items-center justify-between gap-1.5 w-full">
         
-        <!-- Flèche Défilement Gauche (Visible quand écran réduit) -->
-        <button onclick="scrollRibbon('left')" id="btnRibbonScrollLeft" title="Défiler vers la gauche" class="hidden sm:flex items-center justify-center w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 active:scale-95 text-white border border-white/15 shadow-sm shrink-0 transition-all cursor-pointer">
-          <i data-lucide="chevron-left" class="w-4 h-4"></i>
+        <!-- Flèche Défilement Gauche (Visible uniquement sur mobile/tablette < 1024px) -->
+        <button onclick="scrollRibbon('left')" id="btnRibbonScrollLeft" title="Défiler vers la gauche" class="flex lg:hidden items-center justify-center w-7 h-7 rounded-lg bg-white/10 hover:bg-white/20 active:scale-95 text-white border border-white/15 shadow-sm shrink-0 transition-all cursor-pointer">
+          <i data-lucide="chevron-left" class="w-3.5 h-3.5"></i>
         </button>
 
-        <!-- Zone Défilante des 8 Boutons d'Onglets avec Barre Visible -->
-        <div id="topRibbonNavScroll" class="flex-1 overflow-x-auto">
-          <nav class="flex items-center space-x-2 shrink-0 py-0.5 px-1 min-w-max">
+        <!-- Zone des 8 Boutons d'Onglets (Grid Responsive 100% Plein Écran) -->
+        <div id="topRibbonNavScroll" class="flex-1 w-full min-w-0">
+          <nav class="flex lg:grid items-center gap-1.5 w-full py-0.5">
             
             <!-- 1. Tableau de Bord -->
-            <button onclick="switchTab('dashboard')" id="top-nav-dashboard" title="Tableau de Bord Exécutif" class="top-nav-link">
+            <button onclick="switchTab('dashboard')" id="top-nav-dashboard" title="Tableau de Bord Exécutif (⌘1)" class="top-nav-link">
               <span class="top-nav-icon-box text-sky-400">
-                <i data-lucide="layout-grid" class="w-4 h-4"></i>
+                <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
               </span>
-              <span>Tableau de Bord</span>
-              <kbd class="hidden xl:inline-block text-[9px] font-mono bg-white/10 text-slate-300 px-1.5 py-0.5 rounded border border-white/10">⌘1</kbd>
+              <span class="truncate">Tableau de Bord</span>
             </button>
 
             <!-- 2. Suivi d'Atelier -->
             <button onclick="switchTab('workshop')" id="top-nav-workshop" title="Suivi d'Atelier & Retraits" class="top-nav-link">
               <span class="top-nav-icon-box text-amber-400">
-                <i data-lucide="clock" class="w-4 h-4"></i>
+                <i data-lucide="clock" class="w-3.5 h-3.5"></i>
               </span>
-              <span>Suivi d'Atelier</span>
+              <span class="truncate"><span class="hidden 2xl:inline">Suivi </span>Atelier</span>
               <span id="topBadgeActiveOrders" class="top-nav-badge text-amber-300">0</span>
             </button>
 
             <!-- 3. Planning & Retraits -->
             <button onclick="switchTab('calendar')" id="top-nav-calendar" title="Planning des Retraits" class="top-nav-link">
               <span class="top-nav-icon-box text-emerald-400">
-                <i data-lucide="calendar" class="w-4 h-4"></i>
+                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
               </span>
-              <span>Planning & Retraits</span>
+              <span class="truncate">Planning<span class="hidden 2xl:inline"> & Retraits</span></span>
               <span id="topBadgeTodayDeliveries" class="top-nav-badge text-emerald-300">0</span>
             </button>
 
             <!-- 4. Tous les Tickets -->
             <button onclick="switchTab('orders')" id="top-nav-orders" title="Tous les Tickets & Commandes" class="top-nav-link">
               <span class="top-nav-icon-box text-indigo-400">
-                <i data-lucide="receipt" class="w-4 h-4"></i>
+                <i data-lucide="receipt" class="w-3.5 h-3.5"></i>
               </span>
-              <span>Tous les Tickets</span>
+              <span class="truncate"><span class="hidden 2xl:inline">Tous les </span>Tickets</span>
               <span id="topBadgeTotalOrders" class="top-nav-badge text-indigo-300">0</span>
             </button>
 
             <!-- 5. Caisse & Recettes -->
-            <button onclick="switchTab('cash')" id="top-nav-cash" title="Caisse & Recettes" class="top-nav-link">
+            <button onclick="switchTab('cash')" id="top-nav-cash" title="Caisse & Recettes (⌘5)" class="top-nav-link">
               <span class="top-nav-icon-box text-teal-400">
-                <i data-lucide="wallet" class="w-4 h-4"></i>
+                <i data-lucide="wallet" class="w-3.5 h-3.5"></i>
               </span>
-              <span>Caisse & Recettes</span>
-              <kbd class="hidden xl:inline-block text-[9px] font-mono bg-white/10 text-slate-300 px-1.5 py-0.5 rounded border border-white/10">⌘5</kbd>
+              <span class="truncate">Caisse<span class="hidden 2xl:inline"> & Recettes</span></span>
             </button>
 
             <!-- 6. Répertoire Clients -->
             <button onclick="switchTab('clients')" id="top-nav-clients" title="Répertoire Clients" class="top-nav-link">
               <span class="top-nav-icon-box text-sky-400">
-                <i data-lucide="users" class="w-4 h-4"></i>
+                <i data-lucide="users" class="w-3.5 h-3.5"></i>
               </span>
-              <span>Répertoire Clients</span>
+              <span class="truncate"><span class="hidden 2xl:inline">Répertoire </span>Clients</span>
               <span id="topBadgeClientsCount" class="top-nav-badge text-sky-300">0</span>
             </button>
 
             <!-- 7. Grille Tarifaire -->
             <button onclick="switchTab('tarifs')" id="top-nav-tarifs" title="Catalogue & Grille Tarifaire" class="top-nav-link">
               <span class="top-nav-icon-box text-purple-400">
-                <i data-lucide="tags" class="w-4 h-4"></i>
+                <i data-lucide="tags" class="w-3.5 h-3.5"></i>
               </span>
-              <span>Grille Tarifaire</span>
+              <span class="truncate">Grille Tarifs</span>
               <span id="topBadgeTarifsCount" class="top-nav-badge text-purple-300">0</span>
             </button>
 
             <!-- 8. Auteurs & Éditeur : BAROUBA GROUP -->
             <button onclick="switchTab('author')" id="top-nav-author" title="Auteurs & Éditeur (BAROUBA GROUP)" class="top-nav-link top-nav-link-author">
               <span class="top-nav-icon-box text-amber-300 bg-amber-500/20 border-amber-500/30">
-                <i data-lucide="award" class="w-4 h-4"></i>
+                <i data-lucide="award" class="w-3.5 h-3.5"></i>
               </span>
-              <span>Auteurs & Éditeur</span>
+              <span class="truncate">Auteurs<span class="hidden 2xl:inline"> & Éditeur</span></span>
               <span class="top-nav-badge text-amber-300 border-amber-400/40 bg-amber-500/20">BAROUBA</span>
             </button>
 
           </nav>
         </div>
 
-        <!-- Flèche Défilement Droite (Visible quand écran réduit) -->
-        <button onclick="scrollRibbon('right')" id="btnRibbonScrollRight" title="Défiler vers la droite" class="hidden sm:flex items-center justify-center w-8 h-8 rounded-xl bg-white/10 hover:bg-white/20 active:scale-95 text-white border border-white/15 shadow-sm shrink-0 transition-all cursor-pointer">
-          <i data-lucide="chevron-right" class="w-4 h-4"></i>
+        <!-- Flèche Défilement Droite (Visible uniquement sur mobile/tablette < 1024px) -->
+        <button onclick="scrollRibbon('right')" id="btnRibbonScrollRight" title="Défiler vers la droite" class="flex lg:hidden items-center justify-center w-7 h-7 rounded-lg bg-white/10 hover:bg-white/20 active:scale-95 text-white border border-white/15 shadow-sm shrink-0 transition-all cursor-pointer">
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
         </button>
-
-        <!-- Indicateur Atelier à droite du Ruban -->
-        <div class="hidden 2xl:flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-[11px] shrink-0 ml-1">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span class="text-slate-300 font-medium">Charge Atelier :</span>
-          <span id="topWorkshopPct" class="font-mono font-bold text-emerald-400">13%</span>
-        </div>
 
       </div>
     </div>
