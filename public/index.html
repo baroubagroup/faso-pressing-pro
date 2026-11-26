@@ -538,14 +538,13 @@
     }
 
     /* Modes de Disposition : Haut (Ruban) vs Côté (Sidebar) */
-    body.nav-layout-top #appSidebar {
+    body.nav-layout-top #appSidebar,
+    body.nav-layout-top #mobileSidebarOverlay,
+    body.nav-layout-top .topbar-sidebar-toggle {
       display: none !important;
     }
     body.nav-layout-top #appMainContent {
       padding-left: 0 !important;
-    }
-    body.nav-layout-top .topbar-sidebar-toggle {
-      display: none !important;
     }
     body.nav-layout-top .topbar-brand-group {
       display: flex !important;
@@ -586,7 +585,7 @@
   </style>
   <script src="/vendor/qrcode-generator.js"></script>
 </head>
-<body class="h-full flex antialiased text-[#0F172A] selection:bg-[#0071E3] selection:text-white overflow-x-hidden">
+<body class="nav-layout-top h-full flex antialiased text-[#0F172A] selection:bg-[#0071E3] selection:text-white overflow-x-hidden">
 
   <!-- ========================================== -->
   <!-- ÉCRAN DE SÉCURITÉ / CODE PIN (APPLE GLASS) -->
@@ -953,9 +952,9 @@
         </div>
 
         <!-- Bouton Bascule Disposition (Ruban Haut / Menu Latéral) -->
-        <button onclick="toggleNavLayout()" id="btnNavLayoutToggle" title="Changer la disposition : Ruban Haut ou Menu Latéral" class="flex items-center space-x-1.5 px-3 py-2 text-xs font-bold text-slate-700 bg-[#F1F5F9] hover:bg-[#E2E8F0] active:scale-95 rounded-full transition-all border border-black/[0.06] shrink-0">
+        <button onclick="toggleNavLayout()" id="btnNavLayoutToggle" title="Basculer vers le Menu Latéral" class="flex items-center space-x-1.5 px-3 py-2 text-xs font-bold text-slate-700 bg-[#F1F5F9] hover:bg-[#E2E8F0] active:scale-95 rounded-full transition-all border border-black/[0.06] shrink-0">
           <i data-lucide="layout-template" class="w-3.5 h-3.5 text-[#0071E3]"></i>
-          <span id="navLayoutToggleText" class="hidden md:inline">Ruban Haut</span>
+          <span id="navLayoutToggleText" class="hidden md:inline">Menu Latéral</span>
         </button>
 
         <!-- Bouton Plein Écran -->
@@ -3171,7 +3170,6 @@
     let selectedCalendarDateStr = new Date().toISOString().split('T')[0];
     let calendarCurrentDate = new Date();
     let currentCashPeriod = 'all';
-    let isSoundEnabled = true;
 
     // ==========================================
     // SYNTHÉTISEUR AUDIO TAPTIC (WEB AUDIO API)
@@ -4146,16 +4144,24 @@
         document.body.classList.add('nav-layout-top');
         document.body.classList.remove('nav-layout-side');
         localStorage.setItem('faso_nav_layout', 'top');
+        const sidebar = document.getElementById('appSidebar');
+        if (sidebar) sidebar.classList.add('-translate-x-full');
+        const overlay = document.getElementById('mobileSidebarOverlay');
+        if (overlay) overlay.classList.add('hidden');
+        const btnToggle = document.getElementById('btnNavLayoutToggle');
         const txt = document.getElementById('navLayoutToggleText');
-        if (txt) txt.textContent = 'Ruban Haut';
+        if (txt) txt.textContent = 'Menu Latéral';
+        if (btnToggle) btnToggle.title = 'Basculer vers le Menu Latéral';
         const topRibbon = document.getElementById('appTopRibbonBar');
         if (topRibbon) topRibbon.classList.remove('hidden');
       } else {
         document.body.classList.remove('nav-layout-top');
         document.body.classList.add('nav-layout-side');
         localStorage.setItem('faso_nav_layout', 'side');
+        const btnToggle = document.getElementById('btnNavLayoutToggle');
         const txt = document.getElementById('navLayoutToggleText');
-        if (txt) txt.textContent = 'Menu Latéral';
+        if (txt) txt.textContent = 'Ruban Haut';
+        if (btnToggle) btnToggle.title = 'Basculer vers le Ruban Haut';
         const topRibbon = document.getElementById('appTopRibbonBar');
         if (topRibbon) topRibbon.classList.add('hidden');
       }
