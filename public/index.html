@@ -327,6 +327,77 @@
     .sidebar-link .nav-icon-box svg {
       stroke: currentColor;
     }
+
+    /* Top Ribbon Navigation Styles (Style Word / Office / Desktop Moderne) */
+    .top-nav-link {
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .top-nav-link:hover {
+      color: #FFFFFF !important;
+      background: rgba(255, 255, 255, 0.1) !important;
+    }
+    .top-nav-link.nav-pill-active {
+      background: linear-gradient(135deg, #0071E3 0%, #005BB5 100%) !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 4px 16px -2px rgba(0, 113, 227, 0.5) !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+    .top-nav-link.nav-pill-active span,
+    .top-nav-link.nav-pill-active i,
+    .top-nav-link.nav-pill-active svg {
+      color: #FFFFFF !important;
+      stroke: #FFFFFF !important;
+    }
+    .top-nav-link.nav-pill-active .top-nav-icon-box {
+      background: rgba(255, 255, 255, 0.25) !important;
+    }
+
+    /* Modes de Disposition : Haut (Ruban) vs Côté (Sidebar) */
+    body.nav-layout-top #appSidebar {
+      display: none !important;
+    }
+    body.nav-layout-top #appMainContent {
+      padding-left: 0 !important;
+    }
+    body.nav-layout-top .topbar-sidebar-toggle {
+      display: none !important;
+    }
+    body.nav-layout-top .topbar-brand-group {
+      display: flex !important;
+    }
+    body.nav-layout-top .topbar-page-title-group {
+      display: none !important;
+    }
+    body.nav-layout-top .topbar-utilities-group {
+      display: flex !important;
+    }
+    body.nav-layout-top #appTopRibbonBar {
+      display: block !important;
+    }
+
+    body.nav-layout-side #appTopRibbonBar {
+      display: none !important;
+    }
+    body.nav-layout-side .topbar-brand-group {
+      display: none !important;
+    }
+    body.nav-layout-side .topbar-page-title-group {
+      display: block !important;
+    }
+    body.nav-layout-side .topbar-utilities-group {
+      display: none !important;
+    }
+    body.nav-layout-side .topbar-sidebar-toggle {
+      display: inline-flex !important;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
   </style>
   <script src="/vendor/qrcode-generator.js"></script>
 </head>
@@ -611,32 +682,54 @@
   <div id="appMainContent" class="flex-1 flex flex-col md:pl-72 min-w-0 min-h-screen">
     
     <!-- Topbar épurée & translucide -->
-    <header class="bg-white/80 backdrop-blur-2xl sticky top-0 z-20 border-b border-black/[0.05] px-4 sm:px-8 py-3 flex items-center justify-between no-print shadow-xs">
+    <!-- Topbar épurée & translucide -->
+    <header class="bg-white/90 backdrop-blur-2xl sticky top-0 z-20 border-b border-black/[0.05] px-4 sm:px-8 py-2.5 flex items-center justify-between no-print shadow-xs">
       
-      <!-- Titre & Bouton Replier Navigation (Flex No-Wrap Élégant) -->
+      <!-- Gauche : Titre (Mode Latéral) OU Marque Barouba & Traffic Lights (Mode Ruban Haut) -->
       <div class="flex items-center space-x-3 shrink-0">
-        <!-- Bouton Replier/Déplier Sidebar Desktop -->
-        <button onclick="toggleSidebarCollapse()" title="Replier / Déplier la navigation latérale" class="hidden md:inline-flex items-center justify-center p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/90 active:scale-95 transition-all shrink-0">
+        <!-- Bouton Replier/Déplier Sidebar Desktop (Mode Latéral) -->
+        <button onclick="toggleSidebarCollapse()" title="Replier / Déplier la navigation latérale" class="topbar-sidebar-toggle hidden md:inline-flex items-center justify-center p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100/90 active:scale-95 transition-all shrink-0">
           <i id="topbarSidebarToggleIcon" data-lucide="panel-left" class="w-4 h-4"></i>
         </button>
-        <!-- Bouton Menu Mobile -->
-        <button onclick="toggleMobileSidebar()" class="md:hidden text-[#64748B] hover:text-[#0F172A] p-1.5 rounded-xl hover:bg-black/[0.04] shrink-0">
+        <!-- Bouton Menu Mobile (Mode Latéral) -->
+        <button onclick="toggleMobileSidebar()" class="topbar-sidebar-toggle md:hidden text-[#64748B] hover:text-[#0F172A] p-1.5 rounded-xl hover:bg-black/[0.04] shrink-0">
           <i data-lucide="menu" class="w-5 h-5"></i>
         </button>
-        <div class="shrink-0">
+        
+        <!-- Titre en Mode Menu Latéral -->
+        <div class="topbar-page-title-group shrink-0">
           <div class="flex items-center space-x-2 whitespace-nowrap shrink-0 select-none">
             <span class="text-xs text-[#94A3B8] font-medium hidden lg:inline whitespace-nowrap">Pressing & Blanchisserie</span>
             <span class="text-xs text-[#94A3B8] hidden lg:inline">&bull;</span>
             <h1 id="topbarPageTitle" class="text-base sm:text-lg font-black text-[#0F172A] tracking-tight whitespace-nowrap inline-block shrink-0">Tableau de Bord</h1>
           </div>
         </div>
+
+        <!-- Marque Barouba & Traffic Lights en Mode Ruban Haut (Style Desktop / Office) -->
+        <div class="topbar-brand-group hidden items-center space-x-3 shrink-0">
+          <div class="flex items-center space-x-1.5 mr-1 hidden sm:flex">
+            <span class="traffic-dot bg-[#FF5F56] border border-[#E0443E]"></span>
+            <span class="traffic-dot bg-[#FFBD2E] border border-[#DEA123]"></span>
+            <span class="traffic-dot bg-[#27C93F] border border-[#1AAB29]"></span>
+          </div>
+          <div onclick="switchTab('author'); soundEngine.pop();" title="BAROUBA GROUP - Éditeur Logiciel" class="w-8 h-8 rounded-full overflow-hidden border border-amber-400/60 shadow-md bg-black flex items-center justify-center cursor-pointer hover:scale-105 transition-transform shrink-0">
+            <img src="assets/barouba-logo.png" alt="Barouba Group" class="w-full h-full object-cover">
+          </div>
+          <div class="leading-tight">
+            <div class="flex items-center space-x-2">
+              <span class="text-sm font-black tracking-tight text-[#0F172A]">Pressing Élite Faso</span>
+              <span class="text-[9px] font-black px-1.5 py-0.5 rounded-full bg-[#0071E3]/10 text-[#0071E3] font-mono border border-[#0071E3]/20">PRO POS</span>
+            </div>
+            <p class="text-[10px] text-[#64748B] font-medium hidden sm:block">Ouagadougou BF &bull; 100% Hors Ligne</p>
+          </div>
+        </div>
       </div>
 
-      <!-- Recherche Spotlight universelle + Raccourci Dépôt -->
-      <div class="flex items-center space-x-3">
+      <!-- Centre & Droite : Spotlight + Dépôt + Utilitaires + Bascule Disposition + Plein Écran -->
+      <div class="flex items-center space-x-2 sm:space-x-3">
         
         <!-- Spotlight Search Bar -->
-        <div class="relative w-52 sm:w-80">
+        <div class="relative w-40 sm:w-60 md:w-72 lg:w-80">
           <i data-lucide="search" class="w-3.5 h-3.5 absolute left-3.5 top-2.5 text-[#94A3B8]"></i>
           <input type="text" id="topQuickTicketSearch" oninput="handleTopQuickSearch(this.value)" placeholder="Rechercher ticket, client... (⌘K)" class="w-full pl-9 pr-10 py-2 text-xs bg-[#F1F5F9]/80 hover:bg-[#E2E8F0]/80 border border-transparent focus:border-[#0071E3] focus:bg-white rounded-full focus:outline-none transition-all placeholder:text-[#94A3B8]">
           <kbd class="hidden sm:inline-block absolute right-3 top-2 text-[10px] font-mono bg-white/80 border border-black/[0.06] text-[#94A3B8] px-1.5 py-0.5 rounded-md shadow-xs">/</kbd>
@@ -645,22 +738,137 @@
           <div id="topSearchResults" class="absolute top-11 right-0 w-80 bg-white/95 backdrop-blur-2xl border border-black/[0.08] rounded-2xl shadow-apple-modal z-50 hidden max-h-72 overflow-y-auto p-1.5 divide-y divide-black/[0.04]"></div>
         </div>
 
-        <!-- Bouton Plein Écran Plein Confort -->
-        <button onclick="toggleAppFullScreen()" title="Basculer en Plein Écran (F11)" class="flex items-center space-x-1.5 px-3 py-2 text-xs font-bold text-slate-700 bg-[#F1F5F9] hover:bg-[#E2E8F0] active:scale-95 rounded-full transition-all border border-black/[0.04]">
-          <i id="topbarFullscreenIcon" data-lucide="maximize" class="w-3.5 h-3.5 text-[#0071E3]"></i>
-          <span class="hidden sm:inline">Plein Écran</span>
-          <kbd class="hidden lg:inline text-[9px] font-mono bg-white px-1 py-0.5 rounded border border-black/10 text-slate-500">F11</kbd>
-        </button>
-
         <!-- Bouton Dépôt Topbar -->
-        <button onclick="openNewDepositModal(); soundEngine.pop();" class="hidden sm:inline-flex items-center space-x-1.5 px-4 py-2 bg-gradient-to-r from-[#0071E3] to-[#005BB5] hover:from-[#005BB5] hover:to-[#00478F] text-white text-xs font-bold rounded-full shadow-glow-blue active:scale-95 transition-all">
+        <button onclick="openNewDepositModal(); soundEngine.pop();" class="inline-flex items-center space-x-1.5 px-3.5 sm:px-4 py-2 bg-gradient-to-r from-[#0071E3] to-[#005BB5] hover:from-[#005BB5] hover:to-[#00478F] text-white text-xs font-bold rounded-full shadow-glow-blue active:scale-95 transition-all shrink-0">
           <i data-lucide="plus" class="w-3.5 h-3.5"></i>
           <span>Dépôt</span>
+        </button>
+
+        <!-- Utilitaires en Mode Ruban Supérieur (Son, À Propos, Paramètres, Verrouiller) -->
+        <div class="topbar-utilities-group hidden items-center space-x-1 shrink-0">
+          <button onclick="toggleSoundEngine()" id="topSoundToggleBtn" title="Effets sonores taptics" class="p-2 text-slate-600 hover:text-slate-900 rounded-xl hover:bg-slate-100 transition-colors">
+            <i data-lucide="volume-2" class="w-4 h-4 text-emerald-600"></i>
+          </button>
+          <button onclick="openAboutModal(); soundEngine.pop();" title="À Propos & Licence" class="p-2 text-slate-600 hover:text-slate-900 rounded-xl hover:bg-slate-100 transition-colors">
+            <i data-lucide="info" class="w-4 h-4 text-purple-600"></i>
+          </button>
+          <button onclick="openSettingsModal(); soundEngine.pop();" title="Paramètres & Sauvegardes" class="p-2 text-slate-600 hover:text-slate-900 rounded-xl hover:bg-slate-100 transition-colors">
+            <i data-lucide="settings" class="w-4 h-4"></i>
+          </button>
+          <button onclick="lockScreen(); soundEngine.click();" title="Verrouiller le terminal" class="p-2 text-slate-600 hover:text-slate-900 rounded-xl hover:bg-slate-100 transition-colors">
+            <i data-lucide="lock" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Bouton Bascule Disposition (Ruban Haut / Menu Latéral) -->
+        <button onclick="toggleNavLayout()" id="btnNavLayoutToggle" title="Changer la disposition : Ruban Haut ou Menu Latéral" class="flex items-center space-x-1.5 px-3 py-2 text-xs font-bold text-slate-700 bg-[#F1F5F9] hover:bg-[#E2E8F0] active:scale-95 rounded-full transition-all border border-black/[0.06] shrink-0">
+          <i data-lucide="layout-template" class="w-3.5 h-3.5 text-[#0071E3]"></i>
+          <span id="navLayoutToggleText" class="hidden md:inline">Ruban Haut</span>
+        </button>
+
+        <!-- Bouton Plein Écran -->
+        <button onclick="toggleAppFullScreen()" title="Basculer en Plein Écran (F11)" class="hidden sm:flex items-center space-x-1.5 px-3 py-2 text-xs font-bold text-slate-700 bg-[#F1F5F9] hover:bg-[#E2E8F0] active:scale-95 rounded-full transition-all border border-black/[0.04] shrink-0">
+          <i id="topbarFullscreenIcon" data-lucide="maximize" class="w-3.5 h-3.5 text-[#0071E3]"></i>
+          <span class="hidden lg:inline">Plein Écran</span>
+          <kbd class="hidden xl:inline text-[9px] font-mono bg-white px-1 py-0.5 rounded border border-black/10 text-slate-500">F11</kbd>
         </button>
 
       </div>
 
     </header>
+
+    <!-- ========================================== -->
+    <!-- RUBAN DE NAVIGATION SUPÉRIEUR (STYLE WORD) -->
+    <!-- ========================================== -->
+    <div id="appTopRibbonBar" class="bg-gradient-to-r from-[#0A1128] via-[#0D182E] to-[#070D1A] border-b border-white/10 px-4 sm:px-8 py-2 sticky top-[53px] z-19 no-print shadow-md">
+      <div class="flex items-center justify-between gap-3 overflow-x-auto no-scrollbar">
+        
+        <!-- 8 Onglets Horizontaux avec Icônes, Titres et Badges Dynamiques -->
+        <nav class="flex items-center space-x-1 sm:space-x-2 shrink-0">
+          
+          <!-- 1. Tableau de Bord -->
+          <button onclick="switchTab('dashboard')" id="top-nav-dashboard" title="Tableau de Bord Exécutif" class="top-nav-link flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer whitespace-nowrap shrink-0">
+            <span class="top-nav-icon-box w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center text-blue-400 shrink-0">
+              <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+            </span>
+            <span>Tableau de Bord</span>
+            <kbd class="hidden xl:inline-block text-[9px] font-mono bg-white/10 text-slate-400 px-1.5 py-0.5 rounded border border-white/10">⌘1</kbd>
+          </button>
+
+          <!-- 2. Suivi d'Atelier -->
+          <button onclick="switchTab('workshop')" id="top-nav-workshop" title="Suivi d'Atelier & Retraits" class="top-nav-link flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer whitespace-nowrap shrink-0">
+            <span class="top-nav-icon-box w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center text-amber-400 shrink-0">
+              <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+            </span>
+            <span>Suivi d'Atelier</span>
+            <span id="topBadgeActiveOrders" class="text-[10px] font-black px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-mono border border-amber-500/30">0</span>
+          </button>
+
+          <!-- 3. Planning & Retraits -->
+          <button onclick="switchTab('calendar')" id="top-nav-calendar" title="Planning des Retraits" class="top-nav-link flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer whitespace-nowrap shrink-0">
+            <span class="top-nav-icon-box w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center text-emerald-400 shrink-0">
+              <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+            </span>
+            <span>Planning & Retraits</span>
+            <span id="topBadgeTodayDeliveries" class="text-[10px] font-black px-1.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono border border-emerald-500/30">0</span>
+          </button>
+
+          <!-- 4. Tous les Tickets -->
+          <button onclick="switchTab('orders')" id="top-nav-orders" title="Tous les Tickets & Commandes" class="top-nav-link flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer whitespace-nowrap shrink-0">
+            <span class="top-nav-icon-box w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center text-indigo-400 shrink-0">
+              <i data-lucide="receipt" class="w-3.5 h-3.5"></i>
+            </span>
+            <span>Tous les Tickets</span>
+            <span id="topBadgeTotalOrders" class="text-[10px] font-black px-1.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 font-mono border border-indigo-500/30">0</span>
+          </button>
+
+          <!-- 5. Caisse & Recettes -->
+          <button onclick="switchTab('cash')" id="top-nav-cash" title="Caisse & Recettes" class="top-nav-link flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer whitespace-nowrap shrink-0">
+            <span class="top-nav-icon-box w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center text-emerald-400 shrink-0">
+              <i data-lucide="wallet" class="w-3.5 h-3.5"></i>
+            </span>
+            <span>Caisse & Recettes</span>
+            <kbd class="hidden xl:inline-block text-[9px] font-mono bg-white/10 text-slate-400 px-1.5 py-0.5 rounded border border-white/10">⌘5</kbd>
+          </button>
+
+          <!-- 6. Répertoire Clients -->
+          <button onclick="switchTab('clients')" id="top-nav-clients" title="Répertoire Clients" class="top-nav-link flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer whitespace-nowrap shrink-0">
+            <span class="top-nav-icon-box w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center text-sky-400 shrink-0">
+              <i data-lucide="users" class="w-3.5 h-3.5"></i>
+            </span>
+            <span>Répertoire Clients</span>
+            <span id="topBadgeClientsCount" class="text-[10px] font-black px-1.5 py-0.5 rounded-full bg-sky-500/20 text-sky-300 font-mono border border-sky-500/30">0</span>
+          </button>
+
+          <!-- 7. Grille Tarifaire -->
+          <button onclick="switchTab('tarifs')" id="top-nav-tarifs" title="Catalogue & Grille Tarifaire" class="top-nav-link flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/10 transition-all cursor-pointer whitespace-nowrap shrink-0">
+            <span class="top-nav-icon-box w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center text-purple-400 shrink-0">
+              <i data-lucide="tags" class="w-3.5 h-3.5"></i>
+            </span>
+            <span>Grille Tarifaire</span>
+            <span id="topBadgeTarifsCount" class="text-[10px] font-black px-1.5 py-0.5 rounded-full bg-purple-500/20 text-purple-300 font-mono border border-purple-500/30">0</span>
+          </button>
+
+          <!-- 8. Auteurs & Éditeur : BAROUBA GROUP -->
+          <button onclick="switchTab('author')" id="top-nav-author" title="Auteurs & Éditeur (BAROUBA GROUP)" class="top-nav-link flex items-center space-x-2 px-3 py-2 rounded-xl text-xs font-semibold text-amber-200 border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 transition-all cursor-pointer whitespace-nowrap shrink-0">
+            <span class="top-nav-icon-box w-6 h-6 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-300 shrink-0">
+              <i data-lucide="award" class="w-3.5 h-3.5"></i>
+            </span>
+            <span class="font-bold">Auteurs & Éditeur</span>
+            <span class="text-[9px] font-black px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-mono border border-amber-500/40">BAROUBA</span>
+          </button>
+
+        </nav>
+
+        <!-- Indicateur Atelier à droite du Ruban -->
+        <div class="hidden lg:flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-[11px] shrink-0">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="text-slate-300 font-medium">Charge Atelier :</span>
+          <span id="topWorkshopPct" class="font-mono font-bold text-emerald-400">13%</span>
+        </div>
+
+      </div>
+    </div>
 
 
     <!-- CONTENU DYNAMIQUE DES ONGLETS -->
@@ -3542,12 +3750,13 @@
       soundEngine.pop();
       // Masquer tous les onglets sans délai
       document.querySelectorAll('.tab-view').forEach(el => el.classList.add('hidden'));
-      document.querySelectorAll('.sidebar-link').forEach(btn => {
+      document.querySelectorAll('.sidebar-link, .top-nav-link').forEach(btn => {
         btn.classList.remove('nav-pill-active', 'font-bold');
       });
 
       const activeView = document.getElementById(`view-${tabName}`);
       const activeBtn = document.getElementById(`nav-${tabName}`);
+      const activeTopBtn = document.getElementById(`top-nav-${tabName}`);
 
       if (activeView) {
         activeView.classList.remove('hidden');
@@ -3555,6 +3764,9 @@
       }
       if (activeBtn) {
         activeBtn.classList.add('nav-pill-active', 'font-bold');
+      }
+      if (activeTopBtn) {
+        activeTopBtn.classList.add('nav-pill-active', 'font-bold');
       }
 
       document.getElementById('topbarPageTitle').textContent = tabTitles[tabName] || 'Pressing Élite';
@@ -3574,6 +3786,7 @@
       if (tabName === 'cash') renderCashJournal();
       if (tabName === 'tarifs') renderTarifs();
       if (tabName === 'clients') renderClientsTable();
+      if (typeof syncNavBadges === 'function') syncNavBadges();
       if (window.lucide) lucide.createIcons();
     }
 
@@ -3613,6 +3826,87 @@
         }
       } catch (err) {
         console.warn('Plein écran non supporté:', err);
+      }
+    }
+
+
+    // ========================================================
+    // GESTION DU MODE DE NAVIGATION (RUBAN HAUT / MENU LATÉRAL)
+    // ========================================================
+    function initNavLayout() {
+      try {
+        const saved = localStorage.getItem('faso_nav_layout') || 'top';
+        setNavLayout(saved);
+      } catch (e) {
+        setNavLayout('top');
+      }
+    }
+
+    function setNavLayout(mode) {
+      if (mode === 'top') {
+        document.body.classList.add('nav-layout-top');
+        document.body.classList.remove('nav-layout-side');
+        localStorage.setItem('faso_nav_layout', 'top');
+        const txt = document.getElementById('navLayoutToggleText');
+        if (txt) txt.textContent = 'Ruban Haut';
+        const topRibbon = document.getElementById('appTopRibbonBar');
+        if (topRibbon) topRibbon.classList.remove('hidden');
+      } else {
+        document.body.classList.remove('nav-layout-top');
+        document.body.classList.add('nav-layout-side');
+        localStorage.setItem('faso_nav_layout', 'side');
+        const txt = document.getElementById('navLayoutToggleText');
+        if (txt) txt.textContent = 'Menu Latéral';
+        const topRibbon = document.getElementById('appTopRibbonBar');
+        if (topRibbon) topRibbon.classList.add('hidden');
+      }
+      syncNavBadges();
+      const currentTab = getCurrentActiveTab();
+      if (currentTab) {
+        document.querySelectorAll('.top-nav-link').forEach(btn => btn.classList.remove('nav-pill-active', 'font-bold'));
+        const topBtn = document.getElementById('top-nav-' + currentTab);
+        if (topBtn) topBtn.classList.add('nav-pill-active', 'font-bold');
+      }
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function toggleNavLayout() {
+      soundEngine.click();
+      const current = localStorage.getItem('faso_nav_layout') || 'top';
+      const next = (current === 'top') ? 'side' : 'top';
+      setNavLayout(next);
+      showToast(next === 'top' ? 'Mode Ruban Haut activé (Style Bureau)' : 'Mode Menu Latéral activé', 'info');
+    }
+
+    function getCurrentActiveTab() {
+      const tabs = ['dashboard', 'workshop', 'calendar', 'orders', 'cash', 'clients', 'tarifs', 'author'];
+      for (const t of tabs) {
+        const view = document.getElementById('view-' + t);
+        if (view && !view.classList.contains('hidden')) return t;
+      }
+      return 'dashboard';
+    }
+
+    function syncNavBadges() {
+      const map = [
+        ['badgeActiveOrders', 'topBadgeActiveOrders'],
+        ['badgeTodayDeliveries', 'topBadgeTodayDeliveries'],
+        ['badgeTotalOrders', 'topBadgeTotalOrders'],
+        ['badgeClientsCount', 'topBadgeClientsCount'],
+        ['badgeTarifsCount', 'topBadgeTarifsCount']
+      ];
+      map.forEach(([sideId, topId]) => {
+        const sEl = document.getElementById(sideId);
+        const tEl = document.getElementById(topId);
+        if (sEl && tEl) {
+          tEl.textContent = sEl.textContent;
+        }
+      });
+
+      const sidePct = document.getElementById('sidebarWorkshopPct');
+      const topPct = document.getElementById('topWorkshopPct');
+      if (sidePct && topPct) {
+        topPct.textContent = sidePct.textContent;
       }
     }
 
@@ -6331,6 +6625,7 @@
     }
     window.addEventListener('DOMContentLoaded', () => {
       initSidebarState();
+      initNavLayout();
       applyPlatformBranding();
       fetchAppData();
     });
